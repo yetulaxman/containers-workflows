@@ -1,23 +1,11 @@
 ---
-title: Workflows and Containers in Bioinformatics
+title: Containers and Workflows in Bioinformatics
 author: CSC Training
 ---
 
-# Material for _Workflows and Containers in Bioinformatics_ -course
+# Material for _Containers and Workflows in Bioinformatics_ -course
 
 {% assign items = site.hands-on |  sort: "title" | reverse %}
-
-### Tutorials and exercises
-{% for hands-on in items %}
-{% if hands-on.topic == 'connecting' %}
-1. [{{ hands-on.title }}]({{ hands-on.url | relative_url }})
-{% endif %}
-{% if hands-on.topic == 'Linux Prerequisites' %}
-1. [{{ hands-on.title }}]({{ hands-on.url | relative_url }})
-{% endif %}
-{% endfor %}
-1. [Advanced tutorial - Login Puhti with NoMachine](https://docs.csc.fi/support/tutorials/nomachine-usage/)
-2. [Advanced tutorial - Run R studio/Jupyter Notebook on Puhti via ssh-tunnel and browser](https://docs.csc.fi/support/tutorials/rstudio-or-jupyter-notebooks/) This requires ssh-keys (see above) but is the recommended way to use these interactive tools.
 
 ## 2. Introduction to HPC environment
 ### 2.1 [Slides](https://a3s.fi/CSC_training/02_environment.html)
