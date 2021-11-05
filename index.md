@@ -5,6 +5,8 @@ author: CSC Training
 
 # Material for _Workflows and Containers in Bioinformatics_ -course
 
+{% assign items = site.hands-on |  sort: "title" | reverse %}
+
 ### Tutorials and exercises
 {% for hands-on in items %}
 {% if hands-on.topic == 'connecting' %}
