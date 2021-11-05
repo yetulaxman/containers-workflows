@@ -1,6 +1,6 @@
 ---
 topic: nextflow
-title: tutorial - Hello-world example
+title: Tutorial - Hello-world example
 ---
 
 # Nextflow (101) tutorial for  Puhti users 
