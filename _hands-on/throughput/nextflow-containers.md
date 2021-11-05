@@ -1,6 +1,6 @@
 ---
 topic: nextflow
-title: Tutorial - Nextflow example with containers 
+title: Tutorial2 - Nextflow example with containers 
 ---
 
 ## Tutorial 3: Nextflow pipeline with containers and other useful features
