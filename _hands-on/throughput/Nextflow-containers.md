@@ -1,6 +1,6 @@
 ---
-title: Nextflow(101) for Puhti users
-author: CSC Training
+topic: nextflow
+title: Tutorial - Nextflow example with containers 
 ---
 
 ## Tutorial 3: Nextflow pipeline with containers and other useful features
