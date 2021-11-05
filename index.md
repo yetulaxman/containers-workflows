@@ -43,7 +43,7 @@ author: CSC Training
 
 ## 4. Workflows (Nextflow) on HPC 
 ### 4.1 [Slides: Introduction to workflows](https://a3s.fi/containers-workflows/Introduction_to_workflows.pdf)
-### 4.2 [Slides: Workflows with singularity containers](lhttps://a3s.fi/containers-workflows/workflow_singularity_containers.pdf)
+### 4.2 [Slides: Workflows with singularity containers](https://a3s.fi/containers-workflows/workflow_singularity_containers.pdf)
 ### 4.3 Tutorials and exercises
 {% for hands-on in items %}
 {% if hands-on.topic == 'nextflow' %}
