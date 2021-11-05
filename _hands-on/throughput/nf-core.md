@@ -1,4 +1,7 @@
-(Bonus) Tutorial 4: Running a nf-core pipeline
+---
+topic: nextflow
+title: (Bonus) Tutorial1 - Hello-world example
+---
 
 nf-core is a community effort to collect a curated set of analysis pipelines built using Nextflow. Here we use nfcore/atacseq as an example pipeline for ATAC-seq data.
 
