@@ -1,6 +1,6 @@
 ---
 topic: nextflow
-title: Tutorial - fastqc example
+title: Tutorial2 - fastqc example
 ---
 
 ## Tutorial 2: A real-world example with `fastqc` software
