@@ -7,81 +7,46 @@ author: CSC Training
 
 {% assign items = site.hands-on |  sort: "title" | reverse %}
 
-## 2. Introduction to HPC environment
-### 2.1 [Slides](https://a3s.fi/CSC_training/02_environment.html)
-### 2.2 [Video: CSC Datacenter in Kajaani](https://www.youtube.com/watch?v=HeqN0h391wg)
+## 0. Course Preliminaries
+###  [Slides](link)
 
-## 3. Disk areas
-### 3.1 [Slides](https://a3s.fi/CSC_training/03_disk_areas.html)
-### 3.2 Tutorials and exercises
+
+## 1.  Introduction to CSC HPC environment and containers
+### 1.1 [Slides:Introduction to CSC HPC environment](link)
+### 1.2 [Slides:Fundamentals of containers](link)
+### 1.3 Tutorials and exercises
 {% for hands-on in items %}
-{% if hands-on.topic == 'disk-areas' %}
+{% if hands-on.topic == 'csc-hpc-containers' %}
 1. [{{ hands-on.title }}]({{ hands-on.url | relative_url }})
 {% endif %}
 {% endfor %}
 
-## 4. Module system
-### 4.1 [Slides](https://a3s.fi/CSC_training/04_modules.html)
-### 4.2 Tutorials and exercises
+## 2. Using Pre-existing Images for Bioapplications
+### 2.1 [Slides: Using container images in HPC environment](link)
+### 2.2 [Slides:Containerised bio applications](link)
+### 2.3 Tutorials and exercises
 {% for hands-on in items %}
-{% if hands-on.topic == 'modules' %}
+{% if hands-on.topic == 'bioapplications' %}
 1. [{{ hands-on.title }}]({{ hands-on.url | relative_url }})
 {% endif %}
 {% endfor %}
 
-## 5. Batch queue system and interactive use
-### 5.1 [Slides](https://a3s.fi/CSC_training/05_batch_jobs.html)
-### 5.2 Tutorials and exercises
-{% for hands-on in items %}
-{% if hands-on.topic == 'Batch jobs' %}
-1. [{{ hands-on.title }}]({{ hands-on.url | relative_url }})
-{% endif %}
-{% endfor %}
-1. [Exercise - Serial, array and parallel jobs with R + contours calculation from DEM with raster package (GIS) ](https://github.com/csc-training/geocomputing/tree/master/R/puhti)
-1. [Exercise - Serial, array and parallel jobs with Python + NDVI calculation rasterio package (GIS) ](https://github.com/csc-training/geocomputing/tree/master/python/puhti)
-
-## 6. Batch job resource usage
-### 6.1 [Slides](https://a3s.fi/CSC_training/06_understanding_usage.html)
-### 6.2 Tutorials and exercises
-{% for hands-on in items %}
-{% if hands-on.topic == 'batch resources' %}
-1. [{{ hands-on.title }}]({{ hands-on.url | relative_url }})
-{% endif %}
-{% endfor %}
-
-## 7. Allas and where to keep your data
-### 7.1 [Slides](https://a3s.fi/CSC_training/07_allas.html)
-### 7.2 [Video: Using Allas](https://youtu.be/q5PZot62kv8)
-### 7.3 Tutorials and exercises
-{% for hands-on in items %}
-{% if hands-on.topic == 'allas' %}
-1. [{{ hands-on.title }}]({{ hands-on.url | relative_url }})
-{% endif %}
-{% endfor %}
-
-## 8. Installing your own software
-### 8.1 [Slides](https://a3s.fi/CSC_training/08_installing.html)
-### 8.2 Tutorials and exercises
-{% for hands-on in items %}
-{% if hands-on.topic == 'installing' %}
-1. [{{ hands-on.title }}]({{ hands-on.url | relative_url }})
-{% endif %}
-{% endfor %}
-
-## 9. Containers and Singularity
-### 9.1 [Slides](https://a3s.fi/CSC_training/09_singularity.html)
-### 9.2 Tutorials and exercises
+## 3. Running Singularity on HPC Environment 
+### 3.1 [Slides: Converting docker images to singularity images](link)
+### 3.2 [Slides: Building singularity container images](link)
+### 3.3 Tutorials and exercises
 {% for hands-on in items %}
 {% if hands-on.topic == 'singularity' %}
 1. [{{ hands-on.title }}]({{ hands-on.url | relative_url }})
 {% endif %}
 {% endfor %}
 
-## 10. How to speed up jobs
-### 10.1 [Slides](https://a3s.fi/CSC_training/10_speed_up_jobs.html)
-### 10.2 Tutorials and exercises
+## 4. Workflows (Nextflow) on HPC 
+### 4.1 [Slides: Introduction to workflows](link)
+### 4.2 [Slides: Workflows with singularity containers](link)
+### 4.3 Tutorials and exercises
 {% for hands-on in items %}
-{% if hands-on.topic == 'throughput' %}
+{% if hands-on.topic == 'nextflow' %}
 1. [{{ hands-on.title }}]({{ hands-on.url | relative_url }})
 {% endif %}
 {% endfor %}
