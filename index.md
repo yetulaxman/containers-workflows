@@ -5,7 +5,6 @@ author: CSC Training
 
 # Material for _Containers and Workflows in Bioinformatics_ -course
 
-{% assign items = site.hands-on |  sort: "title" | reverse %}
 
 ## 0. Course Preliminaries
 ###  [Slides](link)
@@ -47,7 +46,7 @@ author: CSC Training
 ### 4.3 Tutorials and exercises
 {% for hands-on in items %}
 {% if hands-on.topic == 'nextflow' %}
-1. [{{ hands-on.title }}]({{ hands-on.url | relative_url }})
+[{{ hands-on.title }}]({{ hands-on.url | relative_url }})
 {% endif %}
 {% endfor %}
 
