@@ -1,9 +1,9 @@
 ---
 topic: nextflow
-title: Tutorial2 - fastqc example
+title: Tutorial2 - FastQC example
 ---
 
-## Tutorial 2: A real-world example with `fastqc` software
+## Tutorial 2: A real-world example with `FastQC` software
 In this example,  let's use some real-world example that involves working with samples from sequencing experiments. We specifically learn:
 - Declaring (and overriding default) pipeline parameters
 - Moving results from analysis to a convenient folder
