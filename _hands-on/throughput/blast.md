@@ -1,6 +1,6 @@
 ---
 topic: bioapplications
-title: Tutorial1 - Hello-world example
+title: Tutorial1 - BLAST example
 ---
 
 There are many bioinformatics applications available as docker images in  different registries such as [Docker Hub](https://hub.docker.com), [Red Hat Quay](https://quay.io) and [Biocontainers](https://biocontainers.pro). Our aim here is to acquire some basic skills to use any containerised application from the registries for your bioinformatics analysis in HPC environment.  These skills greatly empowers bioinformatician as there are several thousands of containerised applictaions which can be easily deoployed in a reproducible manner. This tutorial provides hands-on experience with one of the popular bioinformatics tool called, BLAST.
