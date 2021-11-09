@@ -8,7 +8,7 @@ author: CSC Training
 {% assign items = site.hands-on |  sort: "title" %}
 
 ## 0. Course Preliminaries
-###  [Slides]
+###  [Slides](https://a3s.fi/containers-workflows/0_course_preliminaries.pdf)
 
 
 ## 1.  Introduction to CSC HPC environment and containers
@@ -23,7 +23,7 @@ author: CSC Training
 
 ## 2. Using Pre-existing Images for Bioapplications
 ### 2.1 [Slides: Using container images in HPC environment]
-### 2.2 [Slides:Containerised bio applications](link)
+### 2.2 [Slides:Containerised bio applications](https://a3s.fi/containers-workflows/Bioaaplications_v0.pdf)
 ### 2.3 Tutorials and exercises
 {% for hands-on in items %}
 {% if hands-on.topic == 'bioapplications' %}
@@ -32,8 +32,8 @@ author: CSC Training
 {% endfor %}
 
 ## 3. Running Singularity on HPC Environment 
-### 3.1 [Slides: Converting docker images to singularity images](link)
-### 3.2 [Slides: Building singularity container images](link)
+### 3.1 [Slides: Converting docker images to singularity images](https://a3s.fi/containers-workflows/Docker2singularity.pdf)
+### 3.2 [Slides: Building singularity container images]
 ### 3.3 Tutorials and exercises
 {% for hands-on in items %}
 {% if hands-on.topic == 'singularity' %}
