@@ -8,12 +8,12 @@ author: CSC Training
 {% assign items = site.hands-on |  sort: "title" %}
 
 ## 0. Course Preliminaries
-###  [Slides](link)
+###  [Slides]
 
 
 ## 1.  Introduction to CSC HPC environment and containers
-### 1.1 [Slides:Introduction to CSC HPC environment](link)
-### 1.2 [Slides:Fundamentals of containers](link)
+### 1.1 [Slides:Introduction to CSC HPC environment]
+### 1.2 [Slides:Fundamentals of containers]
 ### 1.3 Tutorials and exercises
 {% for hands-on in items %}
 {% if hands-on.topic == 'csc-hpc-containers' %}
@@ -22,7 +22,7 @@ author: CSC Training
 {% endfor %}
 
 ## 2. Using Pre-existing Images for Bioapplications
-### 2.1 [Slides: Using container images in HPC environment](link)
+### 2.1 [Slides: Using container images in HPC environment]
 ### 2.2 [Slides:Containerised bio applications](link)
 ### 2.3 Tutorials and exercises
 {% for hands-on in items %}
