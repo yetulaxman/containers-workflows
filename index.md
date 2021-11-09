@@ -3,7 +3,7 @@ title: Containers and Workflows in Bioinformatics
 author: CSC Training
 ---
 
-# Material for _Containers and Workflows in Bioinformatics_ -course
+# Course material for _Containers and Workflows in Bioinformatics_ 
 
 {% assign items = site.hands-on |  sort: "title" %}
 
