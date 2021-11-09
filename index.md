@@ -16,7 +16,7 @@ author: CSC Training
 ### 1.2 [Slides:Fundamentals of containers]
 ### 1.3 Tutorials and exercises
 {% for hands-on in items %}
-{% if hands-on.topic == 'csc-hpc-containers' %}
+{% if hands-on.topic == 'containers' %}
 1. [{{ hands-on.title }}]({{ hands-on.url | relative_url }})
 {% endif %}
 {% endfor %}
