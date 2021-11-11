@@ -35,13 +35,13 @@ silence some unnecessary warnings.
 export SINGULARITY_TMPDIR=$LOCAL_SCRATCH
 export SINGULARITY_CACHEDIR=$LOCAL_SCRATCH
 unset XDG_RUNTIME_DIR
-singularity build deepvariant_cpu.sif docker://gcr.io/deepvariant-docker/deepvariant:0.8.0
+singularity build deepvariant_cpu_1.2.0.sif docker://google/deepvariant:1.2.0
 exit
 ```
-Copy test data
+Download test data 
 ```
-mkdir Deepvariant_singularity 
-cp -fr /scratch/project_xxxx/Deepvariant_singularity/testdata  Deepvariant_singularity
+wget https://a3s.fi/containers-workflows/deepvariant_testdata.tar.gz
+tar -xavf deepvariant_testdata.tar.gz
 
 ```
 
@@ -56,40 +56,11 @@ cp -fr /scratch/project_xxxx/Deepvariant_singularity/testdata  Deepvariant_singu
 #SBATCH --cpus-per-task=1
 #SBATCH --mem=4000
 
-
-singularity_wrapper exec deepvariant_cpu.sif \
+singularity_wrapper exec deepvariant_cpu_1.2.0.sif \
 /opt/deepvariant/bin/run_deepvariant \
---model_type=WGS   --ref=/testdata/ucsc.hg19.chr20.unittest.fasta \
---reads=/testdata/NA12878_S1.chr20.10_10p1mb.bam \
+--model_type=WGS   --ref=./testdata/ucsc.hg19.chr20.unittest.fasta \
+--reads=./testdata/NA12878_S1.chr20.10_10p1mb.bam \
 --regions "chr20:10,000,000-10,010,000" \
 --output_vcf=$PWD/output.vcf.gz \
 --output_gvcf=$PWD/output.g.vcf.gz
-```
-
-### Submit the job using sbatch command
-
-```
-sbatch  deepvariant_puhti.sh
-```
-
-Please **note** that one can use gpu version of deepvariant with the following sbatch script
-
-```
-#!/bin/bash
-#SBATCH --time=00:05:00
-#SBATCH --partition=gpu
-#SBATCH --account=project_xxxx
-#SBATCH --ntasks=1
-#SBATCH --cpus-per-task=1
-#SBATCH --mem=4000
-#SBATCH --gres=gpu:v100:1
-
-singularity_wrapper exec --nv deepvariant_gpu.sif \
-/opt/deepvariant/bin/run_deepvariant \
---model_type=WGS   --ref=/testdata/ucsc.hg19.chr20.unittest.fasta \
---reads=/testdata/NA12878_S1.chr20.10_10p1mb.bam \
---regions "chr20:10,000,000-10,010,000" \
---output_vcf=$PWD/output.vcf.gz \
---output_gvcf=$PWD/output.g.vcf.gz
-
 ```
