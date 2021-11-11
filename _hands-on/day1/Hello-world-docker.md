@@ -12,10 +12,9 @@ In this tutorial, you will learn to:
 - Understand the mechanism behind running a docker container
 
 ## Launch an instance using play-with-docker
-[![Try in PWD](https://cdn.rawgit.com/play-with-docker/stacks/cff22438/assets/images/button.png)](http://labs.play-with-docker.com/)
+[![Try in PWD](https://cdn.rawgit.com/play-with-docker/stacks/cff22438/assets/images/button.png)](http://labs.play-with-docker.com/). 
 
-Within [play-with-docker](http://labs.play-with-docker.com/) webpage click on **create session**. Then, another page
-will open with a big counter on the upper left corner. Click on **+ add new instance** and a terminal like instance should be generated on the right. 
+You need DockerHub (https://hub.docker.com/)credentials to work with PWD. Within [play-with-docker](http://labs.play-with-docker.com/) webpage, create a session for this tutorial. Click on **+ add new instance** and a terminal like instance should be generated on the right. 
 
 ## Spin up a hello-world Container 
 
