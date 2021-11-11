@@ -1,5 +1,5 @@
 ---
-topic: docker2singularity
+topic: singularity
 title: Tutorial1 -  Conversion of Docker images to singularity
 ---
 
