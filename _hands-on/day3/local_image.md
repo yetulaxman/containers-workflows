@@ -1,6 +1,6 @@
 ---
 topic: singularity
-title: Tutorial1 -  Conversion of local Docker images to singularity image
+title: Tutorial2 -  Conversion of local Docker images to singularity image
 ---
 
 We have seen in previous episodes where we have converted Docker images from registries. Sometimes, you may want to convert local docker images to singularity images
