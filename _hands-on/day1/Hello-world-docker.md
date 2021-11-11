@@ -1,12 +1,14 @@
 ---
 topic: containers
-title: Tutorial1 - Hello-world example
+title: Tutorial1 - Hello-world Docker example
 ---
 
+This short tutorial gives a very brief idea on how docker containers are launched. Although we don't work with docker containers in this course, we will be referring to docker images and containers in this course. Docker is one of the most popular container platforms and it is good to have some basic idea.
+
 ## Learning Objectives
-In this session, you will be able to: 
-- See Docker image in action
-- Learn where to find pre-made docker images
+In this tutorial, you will learn to: 
+- launch an instance from [Play with Docker](https://labs.play-with-docker.com/) as a Docker environment
+- spawn a hello-world docker container 
 - Understand the mechanism behind running a docker container
 
 ## Tutorial Environment using play-with-docker
@@ -17,7 +19,7 @@ will open with a big counter on the upper left corner. Click on **+ add new inst
 
 ## Tutorial with Hello-World Container 
 
-Let’s start with a simple *hello-world* container from [Dockerhub](https://hub.docker.com) which is a docker registry for sharing images. Try running  the following command on your linux terminal:
+Let’s start with a simple *hello-world* container from [Dockerhub](https://hub.docker.com) which is a docker registry for sharing images. Try running the following command on your linux terminal:
 
 ```bash
 docker run hello-world
