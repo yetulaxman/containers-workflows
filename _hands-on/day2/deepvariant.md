@@ -6,8 +6,12 @@ title: Tutorial2 - DeepVariant example
 ## Analysis of whole genome sequencing (WGS) data using DeepVariant singularity container
 Run [deepvariant method](https://github.com/google/deepvariant) to perform variant calling on WGS and WES data sets in Puhti supercomputing environment using singularity container. One needs to prepare deepvariant singualrity image, models and test data in order to run the pipeline. Additionally, other prerequisites for running deepvariant method includes 1) obtaining A reference genome in [FASTA](https://en.wikipedia.org/wiki/FASTA_format) format and its corresponding index file (.fai). 2) An aligned reads file in [BAM](http://genome.sph.umich.edu/wiki/BAM) format and its corresponding index file (.bai). For the sake of this tutorial, testdata is provided as a downloadable link in the following sections. 
 
-Learning outcomes:
+### Expected learning from tutorial:
+Upon completion of this tutorial you will learn to: 
+- Prepare a singularity image (in this case, deepvariant) from DockerHub
+- Deploy a singularity container as a batch job on Puhti cluster
 
+### Run WGS analysis on Puhti:
 
 1. First login to Puhti supecomputer using *SSH*:
    ```bash
