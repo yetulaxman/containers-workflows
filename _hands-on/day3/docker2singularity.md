@@ -1,45 +1,50 @@
 ---
 topic: bioapplications
-title: Tutorial1 - BLAST example
+title: Tutorial1 -  Conversion of Docker images to singularity
 ---
 
-## (WIP) This section is in progress
+We have seen in previous episodes where we have converted Docker images to singularity images using *singularity build* subcommand. In most cases that conversion would work just fine. Please also note that we can use *singularity pull* subcommand to convert docker images to singularity images.  We will use a bionda package called, [trimmomatic](https://bioconda.github.io/recipes/trimmomatic/README.html) which is a flexible read trimming tool for Illumina NGS data. 
 
-## how can you convert a docker image (e.g.,fastx software) on bioconda environment to singularity image?
+###  Expected outcome of this tutorial:
+- Build a singularity container from the a bioconda package (trimmomatic)
+- Understand singularity tmp and cache directories
+- Efficient ways of image converion in HPC environment
 
-Expected outcome of this tutorial:
-- Searching a biocontainer from container registry
-- Able to convert a docker image to container image
-- Able to run a container
+### how can you convert a docker image (e.g.,trimmomatic software) on bioconda environment to singularity image?
 
-Visit the fastqc software tool available on the bioconda page (https://bioconda.github.io/recipes/fastqc/README.html) and take path of the image from  docker pull command from above page as below:
+Start interactive node on Puhti:
 
+Visit the trimmomatic software tool available on the [bioconda](https://bioconda.github.io/recipes/trimmomatic/README.html) page and copy the path of the trimmomatic image (something docker:quay.io/biocontainers/trimmomatic:<tag>). One can use the singularity pull subcommnad as below:
+
+however, we are still missing a valid tag for the image. Look for the [latest tag](https://quay.io/repository/biocontainers/trimmomatic?tab=tags) available for trimmomatic software in docker registry. You can now use the following command to convert a docker image to singularity one.
+
+```bash
+singularity pull docker://quay.io/biocontainers/trimmomatic:0.32--hdfd78af_4
 ```
-docker pull quay.io/biocontainers/fastx_toolkit:<tag>
-docker pull quay.io/biocontainers/fastqc:0.11.9--hdfd78af_1 
+Upon successful completion of above command, you will be able to see trimmomatic singulairty image (trimmomatic_0.32--hdfd78af_4.sif) in the current directory.
+
+You can check the disk space taken up by the image in cache folder as below:
+  
+```bash  
+  singularity cache list
 ```
+when you convert multiple images or bigger image, the cache can take up lot of space. In HPC environment, cache directory is located in HOME directory whose quota is limited by default. You can clean the cache as below:
+ ```bash
+  singularity cache clean
+ ```
 
-Path for above image is here: docker://quay.io/biocontainers/fastx_toolkit:<tag>
-
-And pick your tag from here: (https://quay.io/repository/biocontainers/fastx_toolkit?tab=tags)
-
-And now, you can use any linux machine that has singularity installed 
-
-Use the following command to convert a docker image to singularity using tag (here i picked 0.0.14--he1b5a44_8) :
-
+To avoid such cache issues which will result in disk quota errors, we can reset singularity tmp and cache directories to scratch as below:
+```  
+export SINGULARITY_TMPDIR=/scratch/project_xxxx/$USER
+export SINGULARITY_CACHEDIR=/scratch/project_xxxx/$USER
+unset XDG_RUNTIME_DIR
+singularity pull docker://quay.io/biocontainers/trimmomatic:0.32--hdfd78af_4
 ```
-
-singularity build fastx_toolkit.sif docker://quay.io/biocontainers/fastx_toolkit:0.0.14--he1b5a44_8
-
-```
-
-Alternatively,  on Puhti interactive terminal, you can use the the following commands:
-
-```
-
+  
+or better yet would be is to use LOCAL_SCRATCH directories on Puhti. This is quite useful especially when the image sizes are quite big (in the order of GBs). Docker images are composed of layers and unpacking the layers and flaten into one single image file can I/O intensive. For the the sake simple example we can use same trimmomatic software. 
+```  
 export SINGULARITY_TMPDIR=$LOCAL_SCRATCH
 export SINGULARITY_CACHEDIR=$LOCAL_SCRATCH
 unset XDG_RUNTIME_DIR
-singularity build fastx_toolkit.sif docker://quay.io/biocontainers/fastx_toolkit:0.0.14--he1b5a44_8
-
+singularity pull docker://quay.io/biocontainers/trimmomatic:0.32--hdfd78af_4
 ```
