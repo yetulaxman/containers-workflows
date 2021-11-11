@@ -11,13 +11,13 @@ In this tutorial, you will learn to:
 - Spawn a hello-world docker container 
 - Understand the mechanism behind running a docker container
 
-## Tutorial Environment using play-with-docker
+## Launch an instance using play-with-docker
 [![Try in PWD](https://cdn.rawgit.com/play-with-docker/stacks/cff22438/assets/images/button.png)](http://labs.play-with-docker.com/)
 
 Within [play-with-docker](http://labs.play-with-docker.com/) webpage click on **create session**. Then, another page
 will open with a big counter on the upper left corner. Click on **+ add new instance** and a terminal like instance should be generated on the right. 
 
-## Tutorial with Hello-World Container 
+## Spin up a hello-world Container 
 
 Let’s start with a simple *hello-world* container from [Dockerhub](https://hub.docker.com) which is a docker registry for sharing images. Try running the following command on your linux terminal:
 
