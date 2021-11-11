@@ -1,66 +1,66 @@
 ---
 topic: bioapplications
-title: Tutorial2 - deepvariant example
+title: Tutorial2 - DeepVariant example
 ---
 
-### Deepvariant pipeline as developed by GoogleAI ###
-Run [deepvariant method](https://github.com/google/deepvariant) to perform variant calling on WGS and WES data sets in Puhti supercomputing environment using deepvariant singularity container
+## Analysis of whole genome sequencing (WGS) data using DeepVariant singularity container
+Run [deepvariant method](https://github.com/google/deepvariant) to perform variant calling on WGS and WES data sets in Puhti supercomputing environment using singularity container. One needs to prepare deepvariant singualrity image, models and test data in order to run the pipeline. Additionally, other prerequisites for running deepvariant method includes 1) obtaining A reference genome in [FASTA](https://en.wikipedia.org/wiki/FASTA_format) format and its corresponding index file (.fai). 2) An aligned reads file in [BAM](http://genome.sph.umich.edu/wiki/BAM) format and its corresponding index file (.bai). For the sake of this tutorial, testdata is provided as a downloadable link in the following sections. 
 
+1. First login to Puhti supecomputer using *SSH*:
+   ```bash
+   ssh yourcscusername@puhti.csc.fi
+   ```
+2. Navigate to project scratch directory and prepare a folder for analysis:
+   ```bash
+    cd /scratch/project_xxxx/$USER   # replace xxxx with your project number
+    mkdir deepvariant
+    cd deepvariant
+   ```
+4. start interactive session on Puhti:
+   ```
+    sinteractive -c 2 -m 4G -d 250
+   ```
+    One has to choose course project on the command prompt to start an interactive session.
 
-## How to get started
-One needs the DeepVariant programs (https://github.com/google/deepvariant) and some test data. One can download data from Pouta object storage  (or from google bucket)  Storage.
+5. Prepare singularity image from docker images for DeepVariant analysis:
 
-### Prepare deepvariant singulairty image from docker image
+  We want to use LOCAL_SCRATCH for Singularity tmp and cache. Unsetting XDG_RUNTIME_DIR will silence some unnecessary warnings. We will learn more about these 
+  settings later presentations.
 
-One needs to get deepvariant docker image, models and test data in order to run the pipeline. Additionally, other prerequisites for running deepvariant method includes 1) obtaining A reference genome in [FASTA](https://en.wikipedia.org/wiki/FASTA_format) format and its corresponding index file (.fai). 2) An aligned reads file in [BAM](http://genome.sph.umich.edu/wiki/BAM) format and its corresponding index file (.bai).
+   ```bash
+    export SINGULARITY_TMPDIR=$LOCAL_SCRATCH
+    export SINGULARITY_CACHEDIR=$LOCAL_SCRATCH
+    unset XDG_RUNTIME_DIR
+    singularity build deepvariant_cpu_1.2.0.sif docker://google/deepvariant:1.2.0
+   ```
 
-#### _Convert docker image to singularity_ ####
+6. Download and unpack the testdata for deepvariant analysis
+   ```bash
+    wget https://a3s.fi/containers-workflows/deepvariant_testdata.tar.gz
+    tar -xavf deepvariant_testdata.tar.gz
+   ```
 
-Log in to Puhti using your CSC credentials
+7. Prepare slurm scripts to run on Puhti (e.g., deepvariant_puhti.sh):
 
-Go to your subdirectory in the project scratch directory (created in last exercise):
-```
-cd /scratch/project_xxxx/$USER
-```
-Singularity is only available in compute nodes. We can use **sinteractive** to build the 
-Singularity image in an interactive session.
-```
-sinteractive -i
-```
-Choose the course project. Set memory to 4 GB. You can use defaults for other parameters.
+   ```bash
+   #!/bin/bash
+   #SBATCH --time=00:10:00
+   #SBATCH --partition=small     # You can also choose partition : "test" for this toy example
+   #SBATCH --account=project_xxxx
+   #SBATCH --ntasks=1
+   #SBATCH --cpus-per-task=1
+   #SBATCH --mem=4000
 
-We want to use LOCAL_SCRATCH for Singularity tmp and cache. Unsetting XDG_RUNTIME_DIR will 
-silence some unnecessary warnings.
-```
-export SINGULARITY_TMPDIR=$LOCAL_SCRATCH
-export SINGULARITY_CACHEDIR=$LOCAL_SCRATCH
-unset XDG_RUNTIME_DIR
-singularity build deepvariant_cpu_1.2.0.sif docker://google/deepvariant:1.2.0
-exit
-```
-Download test data 
-```
-wget https://a3s.fi/containers-workflows/deepvariant_testdata.tar.gz
-tar -xavf deepvariant_testdata.tar.gz
+   singularity_wrapper exec deepvariant_cpu_1.2.0.sif \
+   /opt/deepvariant/bin/run_deepvariant \
+   --model_type=WGS   --ref=./testdata/ucsc.hg19.chr20.unittest.fasta \
+   --reads=./testdata/NA12878_S1.chr20.10_10p1mb.bam \
+   --regions "chr20:10,000,000-10,010,000" \
+   --output_vcf=$PWD/output.vcf.gz \
+   --output_gvcf=$PWD/output.g.vcf.gz
+   ```
+8. submit your job to Puhti cluster
 
-```
-
-### Prepare slurm scripts to run on Puhti (e.g., deepvariant_puhti.sh)
-
-```
-#!/bin/bash
-#SBATCH --time=00:05:00
-#SBATCH --partition=small
-#SBATCH --account=project_xxxx
-#SBATCH --ntasks=1
-#SBATCH --cpus-per-task=1
-#SBATCH --mem=4000
-
-singularity_wrapper exec deepvariant_cpu_1.2.0.sif \
-/opt/deepvariant/bin/run_deepvariant \
---model_type=WGS   --ref=./testdata/ucsc.hg19.chr20.unittest.fasta \
---reads=./testdata/NA12878_S1.chr20.10_10p1mb.bam \
---regions "chr20:10,000,000-10,010,000" \
---output_vcf=$PWD/output.vcf.gz \
---output_gvcf=$PWD/output.g.vcf.gz
-```
+  ```bash
+   sbatch deepvariant_puhti.sh
+  ```
