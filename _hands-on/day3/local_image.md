@@ -10,7 +10,7 @@ we will learn:
 - how to save a docker image locally (on PWD)
 - how to start a singularity container from local archive
 
-### how can you convert a docker image (e.g.,trimmomatic software) on bioconda environment to singularity image?
+### how can you convert a local docker image to singularity image
 
 Start interactive node on Puhti:
 
