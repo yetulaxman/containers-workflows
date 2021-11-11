@@ -18,12 +18,12 @@ You need [DockerHub](https://hub.docker.com/) credentials to work with PWD. With
 
 ## Spin up a hello-world Container 
 
-Let’s start with a simple *hello-world* container from [Dockerhub](https://hub.docker.com) which is a docker registry for sharing images. Try running the following command on your linux terminal:
+Let’s start with a simple *hello-world* container from [Dockerhub](https://hub.docker.com) which is a docker registry for sharing images. Try running the following command on linux terminal:
 
 ```bash
 docker run hello-world
 ```
-When a `docker run` command is issued *via* commandline interface (CLI), docker client contacts Docker daemon to check whether an image named, "hello-world" exists locally. If the image is not found locally, docker daemon pulls "hello-world" official image from DockerHub (*Note*: default registry for docker is DockerHub and for other docker registries one has to explicitly mention registry name as well). Once docker image is available locally, `docker run` command creates a new container from that image. Docker daemon then streams the default output of container to Docker client (= something we see as an output on terminal). Yes...lot of stuff has happened behind the scenes !!!
+When a `docker run` command is issued *via* commandline interface (CLI), docker client contacts Docker daemon to check whether an image named, "hello-world" exists locally. If the image is not found locally, docker daemon pulls "hello-world" official image from DockerHub (*Note*: default registry for docker is DockerHub and for other docker registries one has to explicitly mention registry name as well). Once docker image is available locally, `docker run` command creates a new container from that image.
 
 #### What is the terminal output from the above `docker run` command? #####
 
@@ -50,9 +50,7 @@ By default, an image is pulled with `latest` tag. It is possible to pull an imag
 
 Congratulations, you have run a “Hello-World” Docker successfully !!!
 
-## Exercises
+## (Bonus) Exercises
 
 1. Run a container from an image named "alpine" from DockerHub and execute a command inside that container so that output from the container is "Welcome to CSC !"
-
-2. How would you run the same *hello-world example* from docker registry with fully qualified reference path for an image? Name few third-party docker registries besides DockerHub.
 
