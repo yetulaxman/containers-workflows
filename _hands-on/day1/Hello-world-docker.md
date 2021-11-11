@@ -50,7 +50,7 @@ By default, an image is pulled with `latest` tag. It is possible to pull an imag
 
 Congratulations, you have run a “Hello-World” Docker successfully !!!
 
-## (Bonus) Exercises
+## (Bonus) Exercise
 
 1. Run a container from an image named "alpine" from DockerHub and execute a command inside that container so that output from the container is "Welcome to CSC !"
 
