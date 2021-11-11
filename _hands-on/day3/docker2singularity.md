@@ -1,6 +1,9 @@
+---
+topic: bioapplications
+title: Tutorial1 - BLAST example
+---
 
 ## (WIP) This section is in progress
-
 
 ## how can you convert a docker image (e.g.,fastx software) on bioconda environment to singularity image?
 
@@ -9,10 +12,11 @@ Expected outcome of this tutorial:
 - Able to convert a docker image to container image
 - Able to run a container
 
-Visit the fastqc software tool available on the bioconda page (https://bioconda.github.io/recipes/fastx_toolkit/README.html) and take path of the image from  docker pull command from above page as below:
+Visit the fastqc software tool available on the bioconda page (https://bioconda.github.io/recipes/fastqc/README.html) and take path of the image from  docker pull command from above page as below:
 
 ```
 docker pull quay.io/biocontainers/fastx_toolkit:<tag>
+docker pull quay.io/biocontainers/fastqc:0.11.9--hdfd78af_1 
 ```
 
 Path for above image is here: docker://quay.io/biocontainers/fastx_toolkit:<tag>
