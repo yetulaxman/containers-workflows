@@ -3,12 +3,12 @@ topic: containers
 title: Tutorial1 - Hello-world Docker example
 ---
 
-This short tutorial gives a very brief idea on how docker containers are launched. Although we don't work with docker containers in this course, we will be referring to docker images and containers in this course. Docker is one of the most popular container platforms and it is good to have some basic idea.
+This short tutorial gives a very brief idea on how docker containers are launched. Although we don't work with docker containers in this course, we will be referring to docker images occasionally in this course. Docker is one of the most popular container platforms and it is worth having a basic idea.
 
 ## Learning Objectives
 In this tutorial, you will learn to: 
-- launch an instance from [Play with Docker](https://labs.play-with-docker.com/) as a Docker environment
-- spawn a hello-world docker container 
+- Launch an instance for Docker environment in [Play with Docker](https://labs.play-with-docker.com/)
+- Spawn a hello-world docker container 
 - Understand the mechanism behind running a docker container
 
 ## Tutorial Environment using play-with-docker
