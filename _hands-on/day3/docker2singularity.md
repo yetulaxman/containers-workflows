@@ -50,8 +50,9 @@ Upon completion of this tutorial, you will be able to:
     singularity exec trimmomatic_0.32--hdfd78af_4.sif trimmomatic --help
    ```
   
-4. In order to avoid such cache issues which would result in disk space errors, we recommend resetting Singularity TMPDIR and CACHEDIR directories either to scratch
-   or  local scratch before doing image conversion as below:
+4. As a best practice tip, do not pull a Singularity image to your Puhti Home Directory. In order to avoid such cache issues which would result in disk space
+   errors, we recommend resetting Singularity TMPDIR and CACHEDIR directories either to Lustre scratch or  LOCAL_SCRATCH  before performing image conversion as 
+   below:
   
    ```bash  
     export SINGULARITY_TMPDIR=/scratch/project_xxxx/$USER
