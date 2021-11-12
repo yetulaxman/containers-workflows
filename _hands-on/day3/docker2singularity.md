@@ -62,8 +62,8 @@ Upon completion of this tutorial, you will be able to:
    ```
   
    or better yet would be is to use LOCAL_SCRATCH directories on Puhti especially if the image sizes are quite big (in the order of GBs). Usually larger docker 
-  images are composed of several layers and importing and unpacking the layers into ne single image file for singularity can be I/O intensive. For the the sake of
-  simple example we can use the same trimmomatic example here. 
+   images are composed of several layers and importing and unpacking the layers into one single image file for singularity can be I/O intensive. For the the sake of
+   this tutorial example we can use the same trimmomatic example as below:
   
    ```bash  
    export SINGULARITY_TMPDIR=$LOCAL_SCRATCH
