@@ -46,7 +46,7 @@ After this tutorial, you will be able to:
     singularity build local_trimmomatic_image.sif docker-archive://trimmomatic_tar
     ```
   
-6. Check if the trimmomatic software is working properly
+6. Check if you can get a commandline help for trimmomatic software
 
     ```bash
    singularity exec local_trimmomatic_image.sif trimmomatic --help
