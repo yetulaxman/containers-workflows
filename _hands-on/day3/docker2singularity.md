@@ -3,7 +3,7 @@ topic: singularity
 title: Tutorial1 -  Conversion of Docker images to singularity
 ---
 
-# Conversion of Docker image to Singularity image 
+# Converting Docker image to Singularity
 
 We converted a Docker image to singularity one using *singularity build* subcommand in previous episodes. And also, we can use *singularity pull* subcommand to achieve the same outcome. As an example for the image conversion, we will use a biconda package named, trimmomatic software which is available as docker image in quay.io registry. Trimmomatic is a flexible read trimming tool for Illumina NGS data. 
 
