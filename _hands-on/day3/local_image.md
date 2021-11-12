@@ -42,7 +42,7 @@ After this tutorial, you will be able to:
 5. Convert the tarball to a Singularity image. 
  
     ```bash
-    cd /users/project_xxx/CSCUSERNAME
+    cd /scratch/project_xxx/CSCUSERNAME
     singularity build local_trimmomatic_image.sif docker-archive://trimmomatic_tar
     ```
   
