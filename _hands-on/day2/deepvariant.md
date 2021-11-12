@@ -47,7 +47,7 @@ Upon completion of this tutorial you will learn to:
     tar -xavf deepvariant_testdata.tar.gz
    ```
 
-7. Prepare slurm scripts to run on Puhti (e.g., deepvariant_puhti.sh):
+7. Prepare a batch script (e.g., deepvariant_puhti.sh) to run WGS analysis on Puhti:
 
    ```bash
    #!/bin/bash
