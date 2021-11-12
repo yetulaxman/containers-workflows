@@ -8,7 +8,7 @@ Run [deepvariant method](https://github.com/google/deepvariant) to perform varia
 
 ### Expected learning from tutorial:
 Upon completion of this tutorial you will learn to: 
-- Prepare a singularity image (in this case, deepvariant) interactively from DockerHub
+- Prepare a singularity image (in this case, deepvariant) interactively from [DockerHub](https://hub.docker.com/)
 - Deploy a singularity container as a batch job on Puhti cluster
 
 ### Run WGS analysis with DeepVarinat singularity container on Puhti
@@ -32,7 +32,7 @@ Upon completion of this tutorial you will learn to:
 5. Prepare singularity image from docker image for DeepVariant analysis:
 
     We want to use LOCAL_SCRATCH for Singularity tmp and cache. Unsetting XDG_RUNTIME_DIR will silence some unnecessary warnings. We will learn more about these 
-    settings later presentations.
+    settings later in the course.
 
    ```bash
     export SINGULARITY_TMPDIR=$LOCAL_SCRATCH
@@ -66,8 +66,8 @@ Upon completion of this tutorial you will learn to:
    --output_vcf=$PWD/output.vcf.gz \
    --output_gvcf=$PWD/output.g.vcf.gz
    ```
-8. submit your job to Puhti cluster
+8. Submit your job to Puhti cluster
 
-  ```bash
+   ```bash
    sbatch deepvariant_puhti.sh
-  ```
+   ```
