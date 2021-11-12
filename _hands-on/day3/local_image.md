@@ -1,45 +1,54 @@
 ---
 topic: singularity
-title: Tutorial2 -  Conversion of local Docker images to singularity image
+title: Tutorial2 -  Converting of local Docker images to singularity 
 ---
 
-We have seen in previous episodes where we have converted Docker images from registries. Sometimes, you may want to convert local docker images to singularity images
+We have converted Docker images from registries to singularity in previous tutorial. Sometimes, the images may not be readily available in image registeries for our purpose. In that case either we have to modify some existing docker image or build a new one. This can be done on your local machines or any host machine where you have prelilized root access. This tutorial explains how to build a singularity image from local docker image. 
 
 ###  Expected outcome of this tutorial:
-we will learn:
-- how to save a docker image locally (on PWD)
-- how to start a singularity container from local archive
+After this tutorial, you will be able to:
+- Save a docker image locally 
+- Launch a singularity container from local docker image archive
 
-### how can you convert a local docker image to singularity image
+### Converting a local docker image to singularity 
 
-Start interactive node on Puhti:
+1. Let's use the same trimmomatic software example we have used in previous tutorial. On [PWD terminal](https://cdn.rawgit.com/play-with-docker/stacks/cff22438
+   /assets/images/button.png)](http://labs.play-with-docker.com/),run the following command to pull an image:
 
-On PWD terminal, run the following command:
-
-```bash
-docker pull quay.io/biocontainers/trimmomatic:0.32--hdfd78af_4
-```
-Check if the image is saved using the following command:
+   ```bash
+    docker pull quay.io/biocontainers/trimmomatic:0.32--hdfd78af_4
+   ```
+  In a real world use case, this image can be a modified image registries or a new image built on this local machines.
   
-```bash  
- docker images
-```
-once you identified the image on PWD, copy the image_id corresponding to that image and save the image as below:
-```bash
-docker save cc8b303fee58 -o trimmomatic_image.tar  # in my case image_id is : cc8b303fee58
-```
+2. Once image is pulled or built on you local machine, they are in  local registry (usually at /var/lib/docker) on host machines. In order to find those stored
+   docker images, use **docker images** commannd. 
+  
+   ```bash  
+   docker images
+   ```
+  Find the Docker image ID corresponding to trimmomatic image.
+  
+3. Create a tarball of the Docker image (with image id as cc8b303fee58)  using the **docker save** command:
+  
+   ```bash
+   docker save cc8b303fee58 -o trimmomatic_image.tar  # in my case image_id is : cc8b303fee58
+   ```
 
-copy the image on PWD to Puhti :
-```  
-scp trimmomatic_image.tar CSCUSERNAME@puhti.csc.fi:/users/project_xxx/CSCUSERNAME
-```
-Load local archive onn Puhti terminal:
-```bash
-cd /users/project_xxx/CSCUSERNAME
-singularity build local_trimmomatic_image.sif docker-archive://trimmomatic_tar
-```
-Check if the software is working properly:
+4. Copy the image tarball on PWD to scratch folder on Puhti 
 
-```bash
-singularity exec local_trimmomatic_image.sif trimmomatic --help
-```
+   ```  
+   scp trimmomatic_image.tar CSCUSERNAME@puhti.csc.fi:/users/project_xxx/CSCUSERNAME
+   ```
+
+5. Convert the tarball to a Singularity image. 
+ 
+  ```bash
+  cd /users/project_xxx/CSCUSERNAME
+  singularity build local_trimmomatic_image.sif docker-archive://trimmomatic_tar
+  ```
+  
+6. Check if the trimmomatic software is working properly
+
+  ```bash
+   singularity exec local_trimmomatic_image.sif trimmomatic --help
+  ```
