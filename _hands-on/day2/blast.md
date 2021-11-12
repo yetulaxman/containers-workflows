@@ -13,7 +13,7 @@ After this tutorial you will be able to
 
 ### Run BLAST analysis using a singularity container
 
-1. Navigate to scratch folder and launch interactive terminal on Puhti
+1. Navigate to scratch folder and launch an interactive terminal on Puhti supercomputer:
 
    ```bash 
    cd /scratch/project_xxxx/$USER
