@@ -9,7 +9,7 @@ title: Tutorial4(Binus) -  Conversion of Docker images to singularity
 
 Lustre-based project-specific directories, *scratch* and *projappl*, can store large amounts of data and are accessible to all compute nodes of Puhti. However, these directories are not good for managing a large number of files.  If you need to work with a huge number of smaller files, you should consider using the NVMe based local temporary scratch directories, either through normal or interactive batch jobs. Read more about the advantages of using local scratch drive on [CSC docs pages](https://docs.csc.fi/support/faq/local_scratch_for_data_processing/)
  
-## Convert the following normal batch job script into the one that uses local scratch drive for faster computational tasks? 
+## Image conversion with local scratch disks: Convert the following normal batch job script into the one that uses local scratch drive for faster computational tasks? 
 
 Below is a normal batch job that pulls docker image from DockerHub and converts into a singularity one that is compatible with working in HPC environments such as CSC Puhti and Mahti supercomputers. During the conversion process, several layers are retrieved, cached and then converted into a singularity file (.sif format)
 
@@ -31,7 +31,7 @@ sbatch batch_job.sh
 
 ```
 
-### How much tim,e did it take to finish above job?
+### How much time did it take to finish above job?
 
 ### Hints
 
