@@ -41,13 +41,13 @@ After this tutorial, you will be able to:
 
 5. Convert the tarball to a Singularity image. 
  
-  ```bash
-  cd /users/project_xxx/CSCUSERNAME
-  singularity build local_trimmomatic_image.sif docker-archive://trimmomatic_tar
-  ```
+    ```bash
+    cd /users/project_xxx/CSCUSERNAME
+    singularity build local_trimmomatic_image.sif docker-archive://trimmomatic_tar
+    ```
   
 6. Check if the trimmomatic software is working properly
 
-  ```bash
+    ```bash
    singularity exec local_trimmomatic_image.sif trimmomatic --help
-  ```
+   ```
