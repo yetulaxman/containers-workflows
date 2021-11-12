@@ -1,6 +1,6 @@
 ---
 topic: bioapplications
-title: Tutorial2 - DeepVariant example
+title: Tutorial2 - WGS analysis with DeepVariant container 
 ---
 
 ## Analysis of whole genome sequencing (WGS) data using DeepVariant singularity container
@@ -11,7 +11,7 @@ Upon completion of this tutorial you will learn to:
 - Prepare a singularity image (in this case, deepvariant) interactively from DockerHub
 - Deploy a singularity container as a batch job on Puhti cluster
 
-### Run WGS analysis with DeepVarinat singularity container on Puhti:
+### Run WGS analysis with DeepVarinat singularity container on Puhti
 
 1. First login to Puhti supecomputer using *SSH*:
    ```bash
