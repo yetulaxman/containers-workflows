@@ -21,9 +21,9 @@ Upon completion of this tutorial, you will be able to:
    # start interactive node as below and choose your project name on prompt
    sinteractive -c 2 -m 4G -d 100
    ```
-2. Visit trimmomatic software webpage as available on [bioconda](https://bioconda.github.io/recipes/trimmomatic/README.html) channel. Look for URI of trimmomatic
-   image (Looks something like quay.io/biocontainers/trimmomatic:<tag> ) and incorporate the [latest tag](https://quay.io/repository/biocontainers
-   /trimmomatic?tab=tags) information for trimmomatic software as availabe in *quay.io* registry. Once you have information of URI and tag information, you can 
+2. Visit trimmomatic software webpage as available on [bioconda](https://bioconda.github.io/recipes/trimmomatic/README.html) channel. Look for the URI of
+   trimmomatic image (Looks something like quay.io/biocontainers/trimmomatic:<tag>) and incorporate the latest tag information for trimmomatic software as 
+   availabe in [*quay.io* registry](https://quay.io/repository/biocontainer/trimmomatic?tab=tags). Once you have information of URI and tag information, you can 
    build a singularity image as below:
   
    ```bash
