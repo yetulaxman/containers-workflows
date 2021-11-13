@@ -6,7 +6,7 @@ title: Tutorial1 - BLAST example
 There are many bioinformatics applications available as docker images in  different registries such as [DockerHub](https://hub.docker.com), [Quay Container Registry](https://quay.io) and [Biocontainers](https://biocontainers.pro). Our aim here is to acquire some basic skills to use any containerised application from the registries for our bioinformatics analysis in HPC environment.  These skills greatly empower bioinformatician as there are several thousands of containerised applicataions which can be easily deployed in a reproducible manner. This tutorial provides hands-on experience with one of the popular bioinformatics tools called, BLAST which compares nucleotide or protein sequences to sequence in a database and calculates the statistical significance of the matches.
 
 ### Expected learning from tutorial:
-After this tutorial, you will be able to 
+After this tutorial, you will be able to: 
 - Search a bioinformatics application (in this case, BLAST) as a docker image from a registry (from Red Hat Quay)
 - Deploy the application as a singularity container in Puhti environment interactively
 
