@@ -28,10 +28,9 @@ Upon completion of this tutorial you will learn to:
    ```
     You have to choose project number of the course  on the command prompt to start an interactive session.
 
-5. Prepare Singularity image from docker image for DeepVariant analysis:
-
-    It is advisable to use LOCAL_SCRATCH for Singularity TMPDIR and CACHEDIR. Unsetting XDG_RUNTIME_DIR will silence some unnecessary warnings. We will learn 
-    more about these settings later in the course.
+5. Prepare Singularity image from docker image for DeepVariant analysis. Here we use Deepvariant Docker image from [DockerHub](https://hub.docker.com/) with a
+   specific tag (i.e., 1.2.0). You can explore more about the image on the DokcerHub. It is advisable to use LOCAL_SCRATCH for Singularity TMPDIR and CACHEDIR. 
+   Unsetting XDG_RUNTIME_DIR will silence some unnecessary warnings. We will learn more about these settings later in the course.
 
    ```bash
     export SINGULARITY_TMPDIR=$LOCAL_SCRATCH
@@ -39,23 +38,21 @@ Upon completion of this tutorial you will learn to:
     unset XDG_RUNTIME_DIR
     singularity build deepvariant_cpu_1.2.0.sif docker://google/deepvariant:1.2.0
    ```
-
+   This image conversion process for DeepVariant takes sometime as it is a bigger image with several layers.
 6. Download and unpack the test data for DeepVariant analysis
    ```bash
     wget https://a3s.fi/containers-workflows/deepvariant_testdata.tar.gz
     tar -xavf deepvariant_testdata.tar.gz
    ```
-
 7. Prepare a batch script (e.g., deepvariant_puhti.sh) to run WGS analysis on Puhti. A batch script template with all necessary information is provided below. 
   Please note that this batch also uses a special CSC-specific [singualrity_wrapper](https://docs.csc.fi/computing/containers/run-existing/) command to set
   appropriate options automatically for running Singularity. You are free to use plain singularity command by taking care of bind mounts appropriately. You
   are required to change the project number of this course or your own project before submitting the script on Puhti cluster.
    
-
    ```bash
    #!/bin/bash
    #SBATCH --time=00:10:00
-   #SBATCH --partition=small     # You can also choose partition : "test" for this toy example
+   #SBATCH --partition=test     # You can also choose partition : "small" for this toy example
    #SBATCH --account=project_xxxx
    #SBATCH --ntasks=1
    #SBATCH --cpus-per-task=1
