@@ -69,6 +69,6 @@ Upon completion of this tutorial you will learn to:
 8. Submit your job to Puhti cluster
 
    ```bash
-   sbatch deepvariant_puhti.sh
+   sbatch -J deepvairiant deepvariant_puhti.sh
    ```
-   if the analysis is completed successfully, you are able to see the vcf files as output in the current directory.
+   If the analysis is completed successfully (**hint**: job status check using `squeue -u $USER` command), you are able to see the vcf files as output in the current directory.
