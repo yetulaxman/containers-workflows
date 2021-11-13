@@ -13,7 +13,7 @@ After this tutorial, you will learn to:
 ### Converting a local docker image to singularity 
 
 1. Let's use the same trimmomatic software example we have used in the previous tutorial. On PWD terminal [![PWD terminal](https://cdn.rawgit.com/play-with-docker
-   /stacks/cff22438/assets/images/button.png)](http://labs.play-with-docker.com/){:target="_blank"}, run the following command to pull an image:
+   /stacks/cff22438/assets/images/button.png)](http://labs.play-with-docker.com/){target="_blank"}, run the following command to pull an image:
 
    ```bash
     docker pull quay.io/biocontainers/trimmomatic:0.32--hdfd78af_4
