@@ -17,7 +17,7 @@ Upon completion of this tutorial you will learn to:
    ```bash
    ssh yourcscusername@puhti.csc.fi
    ```
-2. Navigate to project your *scratch* directory and prepare a folder for analysis:
+2. Navigate to your *scratch* directory and prepare a folder for analysis:
    ```bash
     cd /scratch/project_xxxx/$USER   # replace xxxx with your course (or own) project number
     mkdir deepvariant && cd deepvariant
