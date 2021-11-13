@@ -3,10 +3,10 @@ topic: singularity
 title: Tutorial2 -  Converting of local Docker images to singularity 
 ---
 
-We have converted Docker images from registries to singularity in the previous tutorial. Sometimes, the images may not be readily available in image registries for our purpose. In that case, we have to either modify some existing docker image or build a new one. This can only be done on our local machines or any host machine where we have privileged root access. This tutorial explains how to build a singularity image from a local docker image. 
+We have earlier converted Docker image from registries to singularity in the previous tutorials. Sometimes, the images may not be readily available in image registries for our purpose. In that case, we have to either modify some existing docker image or build a new one. This can only be done on our local machines or any host machine where we have privileged root access. This tutorial explains how to build a singularity image from a local docker image. 
 
 ###  Expected outcome of this tutorial:
-After this tutorial, you will be able to:
+After this tutorial, you will learn to:
 - Save a docker image locally 
 - Launch a singularity container from a local docker image 
 
@@ -26,9 +26,9 @@ After this tutorial, you will be able to:
    ```bash  
    docker images
    ```
-   From the above command, you can find an image ID of trimmomatic image. 
+   From the above command, you need to find an image ID of trimmomatic image to save it locally. 
   
-3. Create a tarball of the Docker image (with image id as cc8b303fee58)  using the **docker save** command:
+3. Create a tarball of the Docker image (with image id as cc8b303fee58)  using the **docker save** command as below:
   
    ```bash
    docker save cc8b303fee58 -o trimmomatic_image.tar  # in this case image_id is : cc8b303fee58
