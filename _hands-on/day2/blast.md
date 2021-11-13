@@ -17,6 +17,7 @@ After this tutorial, you will be able to
 
    ```bash 
    cd /scratch/project_xxxx/$USER    # choose your course (or your own) project 
+   mkdir -p BLAST && cd BLAST   #  create a separate folder for this analysis
    sinteractive -c 2 -m 4G -d 100   # choose project number upon terminal prompt
    ``` 
 2. We'll use a BLAST (Basic Local Alignment Search Tool) container image as available from [Quay Registry](https://quay.io). Visit the Quay registry webpage and
