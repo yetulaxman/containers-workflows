@@ -3,43 +3,43 @@ topic: bioapplications
 title: Tutorial1 - BLAST example
 ---
 
-There are many bioinformatics applications available as docker images in  different registries such as [Docker Hub](https://hub.docker.com), [Red Hat Quay](https://quay.io) and [Biocontainers](https://biocontainers.pro). Our aim here is to acquire some basic skills to use any containerised application from the registries for your bioinformatics analysis in HPC environment.  These skills greatly empowers bioinformatician as there are several thousands of containerised applictaions which can be easily deoployed in a reproducible manner. This tutorial provides hands-on experience with one of the popular bioinformatics tool called, BLAST which compares nucleotide or protein sequences to sequence in a database and calculates the statistical significance of the matches.
+There are many bioinformatics applications available as docker images in  different registries such as [DockerHub](https://hub.docker.com), [Quay Container Registry](https://quay.io) and [Biocontainers](https://biocontainers.pro). Our aim here is to acquire some basic skills to use any containerised application from the registries for our bioinformatics analysis in HPC environment.  These skills greatly empower bioinformatician as there are several thousands of containerised applicataions which can be easily deployed in a reproducible manner. This tutorial provides hands-on experience with one of the popular bioinformatics tools called, BLAST which compares nucleotide or protein sequences to sequence in a database and calculates the statistical significance of the matches.
 
 ### Expected learning from tutorial:
-After this tutorial you will be able to 
+After this tutorial, you will be able to 
 - Search a bioinformatics application (in this case, BLAST) as a docker image from a registry (from Red Hat Quay)
 - Deploy the application as a singularity container in Puhti environment interactively
 
 
 ### Run BLAST analysis using a singularity container
 
-1. Navigate to scratch folder and launch an interactive terminal on Puhti supercomputer:
+1. Navigate to your *scratch* folder and launch an interactive terminal on Puhti supercomputer:
 
    ```bash 
    cd /scratch/project_xxxx/$USER
    sinteractive -c 2 -m 4G -d 250   # enter project number  upon prompting
    ``` 
-2. We'll use a BLAST (Basic Local Alignment Search Tool) a image as available from [Quay Registry](https://quay.io). Visit the Quay registry webpage and search for 
-   the BLAST image (using key word: BLAST) on the right hand top corner. You can find the blast images from different repositories/accounts. Pick the one under 
-   biocontainer repository (i.e., biocontainers/blast). And asl search for different tags available for the image (on left side menu, click on *tags* icon). Once
-   we have a fully qualified URI (= docker://hostname/repository/imagename:tag) for docker image, we can convert it to singularity image using **singularity build**
-   subcommand as below:
+2. We'll use a BLAST (Basic Local Alignment Search Tool) container image as available from [Quay Registry](https://quay.io). Visit the Quay registry webpage and
+   search for the BLAST image (using keyword: BLAST) on the right hand top corner. You can find the BLAST images from different repositories/accounts. Pick the one
+   under biocontainer repository (i.e., biocontainers/blast). And also search for different tags available for the image (hint: on lthe eft side menu, click on
+   *tags* icon). Once we managed to find a fully qualified URI (= docker://hostname/repository/imagename:tag) for docker image, we can convert it to singularity a 
+   image using **singularity build** subcommand as below:
     
    ```bash
    singularity build blast_quay.sif docker://quay.io/biocontainers/blast:2.12.0--pl5262h3289130_0
    ```
 
-3. Run a simple command inside the singularity container to get help information from blastp  
+3. Run a simple command inside the singularity container to get commanline help from blastp  
    ```bash
    singularity exec blast_quay.sif blastp -help
    ```
 
-4. Let's download and prepare the data needed to start analysis with BLAST tool
+4. Download and prepare the data needed to start analysis with BLAST tool
 
    ```bash
     wget https://www.uniprot.org/uniprot/Q61074.fasta # mouse Protein phosphatase 1G
     ```
-   This is a mouse FASTA sequence.  We'll also need a reference database to blast against and can be downloaded here:
+   This is a mouse FASTA sequence.  We'll also need a reference database to BLAST against and the database can be downloaded from the link as shown  below:
 
    ```bash
     curl -O ftp://ftp.ncbi.nih.gov/refseq/M_musculus/mRNA_Prot/mouse.1.protein.faa.gz
@@ -51,9 +51,9 @@ After this tutorial you will be able to
     mkdir makeblastdb
     msingularity exec -B $PWD:$PWD blast_quay.sif makeblastdb -in mouse.1.protein.faa -dbtype prot
     ```  
-    After the container has terminated, you should see several new files in the current directory.
+    After the container has finished the job, you should see several new files in the current directory.
     
-5. Finally, as we have all the input data ready for anlaysis, we can now do the final alignment step using `blastp` as below:
+5. Finally, as we have all the input data ready for analysis, we can now do the final alignment step using `blastp` as below:
 
    ```bash
    singularity exec -B $PWD:$PWD blast.sif blastp -query Q61074.fasta -db mouse.1.protein.faa -out results.txt
@@ -61,7 +61,7 @@ After this tutorial you will be able to
    The final results are stored in `results.txt`;
 
    ```blast
-   less results.txt   # you should be able to match some isoforms of phosphatases in mouses as best hits in the blast search
+   less results.txt   # we should be able to see the sequenc matches the isoforms of phosphatases in mouse databse as best hits in this blast search
    ```
 
    ```bash
