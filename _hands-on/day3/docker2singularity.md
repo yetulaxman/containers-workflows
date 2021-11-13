@@ -23,8 +23,7 @@ Upon completion of this tutorial, you will be able to:
    ```
 2. Visit trimmomatic software webpage as available on [bioconda](https://bioconda.github.io/recipes/trimmomatic/README.html) channel. Look for the URI (Looks
    something like the following for trimmomatic: quay.io/biocontainers/trimmomatic:tag) of trimmomatic image  and incorporate the latest tag information for 
-   trimmomatic software as availabe in [*quay.io* registry](https://quay.io/repository/biocontainers/trimmomatic?tab=tags). Once you have information of URI and tag
-   information, you can build a singularity image as below:
+   trimmomatic software. Once you have URI path with tag information, you can build a singularity image as below:
   
    ```bash
     singularity pull docker://quay.io/biocontainers/trimmomatic:0.32--hdfd78af_4
