@@ -13,12 +13,7 @@ In this tutorial, you will learn to:
 
 ## Launch an instance using play-with-docker
 
-1. Let's use the same trimmomatic software example we have used in the previous tutorial. On PWD terminal [![PWD terminal](https://cdn.rawgit.com/play-with-docker
-   /stacks/cff22438/assets/images/button.png)](http://labs.play-with-docker.com/){target="_blank"}, run the following command to pull an image:
-
-   ```bash
-    docker pull quay.io/biocontainers/trimmomatic:0.32--hdfd78af_4
-   ```
+ [![PWD terminal](https://cdn.rawgit.com/play-with-docker/stacks/cff22438/assets/images/button.png)](http://labs.play-with-docker.com/)
 
 You need [DockerHub](https://hub.docker.com/) credentials to work with PWD. Within PWD webpage, create a session for this tutorial. Click on **+ add new instance** and a terminal like instance should be generated on the right. 
 
