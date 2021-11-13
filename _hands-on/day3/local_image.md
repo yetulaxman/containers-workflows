@@ -3,7 +3,7 @@ topic: singularity
 title: Tutorial2 -  Converting of local Docker images to singularity 
 ---
 
-We have earlier converted Docker image from registries to singularity in the previous tutorials. Sometimes, the images may not be readily available in image registries for our purpose. In that case, we have to either modify some existing docker image or build a new one. This can only be done on our local machines or any host machine where we have privileged root access. This tutorial explains how to build a singularity image from a local docker image. 
+We have earlier converted Docker images from registries to corresponding singularity images in the previous tutorials. Sometimes, the images may not be readily available in image registries for our purpose. In that case, we have to either modify an existing docker image or build a new one. Unfortunately, the docker-related operations can only be done on our local machines or any host machine where we have privileged root access. This tutorial explains how to build a singularity image from a local docker image. 
 
 ###  Expected outcome of this tutorial:
 After this tutorial, you will learn to:
@@ -12,7 +12,7 @@ After this tutorial, you will learn to:
 
 ### Converting a local docker image to singularity 
 
-1. Let's use the same trimmomatic software example we have used in previous tutorial. On PWD terminal [![PWD terminal](https://cdn.rawgit.com/play-with-docker
+1. Let's use the same trimmomatic software example we have used in the previous tutorial. On PWD terminal [![PWD terminal](https://cdn.rawgit.com/play-with-docker
    /stacks/cff22438/assets/images/button.png)](http://labs.play-with-docker.com/), run the following command to pull an image:
 
    ```bash
@@ -35,7 +35,7 @@ After this tutorial, you will learn to:
    ls -l  trimmomatic_image.tar  # to see the local copy of image tarball
    ```
 
-4. Copy the image tarball from PWD to scratch folder on Puhti 
+4. Copy the image tarball from PWD to your **scratch* folder on Puhti 
 
    ```  
    scp trimmomatic_image.tar YOURCSCUSERNAME@puhti.csc.fi:/scratch/project_xxx/YOURCSCUSERNAME
@@ -48,7 +48,7 @@ After this tutorial, you will learn to:
     singularity build local_trimmomatic_image.sif docker-archive://trimmomatic_tar
     ```
   
-6. Launch singularity container and check if you can get a commandline help for trimmomatic software
+6. Launch singularity container and check if you can get a command-line help for trimmomatic software
 
     ```bash
    singularity exec local_trimmomatic_image.sif trimmomatic --help
