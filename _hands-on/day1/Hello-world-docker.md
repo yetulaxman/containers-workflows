@@ -11,7 +11,7 @@ In this tutorial, you will learn to:
 - Spawn a hello-world docker container 
 - Understand the mechanism behind running a docker container
 
-## Launch an instance using play-with-docker
+## Launch an instance using play-with-docker(PWD)
 
  <a href="http://labs.play-with-docker.com/" target="_blank">[![PWD terminal](https://cdn.rawgit.com/play-with-docker/stacks/cff22438/assets/images/button.png)]</a>
 
