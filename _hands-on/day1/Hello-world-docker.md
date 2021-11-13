@@ -15,7 +15,6 @@ In this tutorial, you will learn to:
 
  <a href="http://labs.play-with-docker.com//" target="_blank">[![PWD terminal](https://cdn.rawgit.com/play-with-docker/stacks/cff22438/assets/images/button.png)]</a>
 
-
 You need [DockerHub](https://hub.docker.com/) credentials to work with PWD. Within PWD webpage, create a session for this tutorial. Click on **+ add new instance** and a terminal like instance should be generated on the right. 
 
 ## Spin up a hello-world Container 
