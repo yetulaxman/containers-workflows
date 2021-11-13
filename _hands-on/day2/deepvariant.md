@@ -4,11 +4,11 @@ title: Tutorial2 - WGS analysis with DeepVariant container
 ---
 
 ## Analysis of whole genome sequencing (WGS) data using DeepVariant singularity container
-Run [deepvariant method](https://github.com/google/deepvariant) to perform variant calling on WGS and WES data sets in Puhti supercomputing environment using singularity container. One needs to prepare deepvariant singualrity image, models and test data in order to run the pipeline. Additionally, other prerequisites for running deepvariant method includes 1) obtaining A reference genome in [FASTA](https://en.wikipedia.org/wiki/FASTA_format) format and its corresponding index file (.fai). 2) An aligned reads file in [BAM](http://genome.sph.umich.edu/wiki/BAM) format and its corresponding index file (.bai). For the sake of this tutorial, testdata is provided as a downloadable link in the following sections. 
+Run [DeepVariant method](https://github.com/google/deepvariant) to perform variant calling on WGS and WES data sets in Puhti supercomputing environment using singularity container. One needs to prepare DeepVariant singularity image, models and test data to run the analysis. Additionally, other input files for running DeepVariant method include 1) A reference genome in [FASTA](https://en.wikipedia.org/wiki/FASTA_format) format and its corresponding index file (.fai). 2) An aligned reads file in [BAM](http://genome.sph.umich.edu/wiki/BAM) format and its corresponding index file (.bai). For the sake of this tutorial, test data is provided as a downloadable link in the later sections. 
 
 ### Expected learning from tutorial:
 Upon completion of this tutorial you will learn to: 
-- Prepare a singularity image (in this case, deepvariant) interactively from [DockerHub](https://hub.docker.com/)
+- Prepare a singularity image (in this case, DeepVariant) interactively from [DockerHub](https://hub.docker.com/)
 - Deploy a singularity container as a batch job on Puhti cluster
 
 ### Run WGS analysis with DeepVarinat singularity container on Puhti
@@ -17,22 +17,21 @@ Upon completion of this tutorial you will learn to:
    ```bash
    ssh yourcscusername@puhti.csc.fi
    ```
-2. Navigate to project scratch directory and prepare a folder for analysis:
+2. Navigate to project your *scratch* directory and prepare a folder for analysis:
    ```bash
-    cd /scratch/project_xxxx/$USER   # replace xxxx with your project number
-    mkdir deepvariant
-    cd deepvariant
+    cd /scratch/project_xxxx/$USER   # replace xxxx with your course (or own) project number
+    mkdir deepvariant && cd deepvariant
    ```
 4. Start interactive session on Puhti:
    ```
     sinteractive -c 2 -m 4G -d 250
    ```
-    One has to choose course project on the command prompt to start an interactive session.
+    you have to choose course project number on the command prompt to start an interactive session.
 
-5. Prepare singularity image from docker image for DeepVariant analysis:
+5. Prepare Singularity image from docker image for DeepVariant analysis:
 
-    We want to use LOCAL_SCRATCH for Singularity tmp and cache. Unsetting XDG_RUNTIME_DIR will silence some unnecessary warnings. We will learn more about these 
-    settings later in the course.
+    We want to use LOCAL_SCRATCH for Singularity TMPDIR and CACHEDIR. Unsetting XDG_RUNTIME_DIR will silence some unnecessary warnings. We will learn more about 
+    these settings later in the course.
 
    ```bash
     export SINGULARITY_TMPDIR=$LOCAL_SCRATCH
