@@ -16,8 +16,8 @@ After this tutorial, you will be able to
 1. Navigate to your *scratch* folder and launch an interactive terminal on Puhti supercomputer:
 
    ```bash 
-   cd /scratch/project_xxxx/$USER
-   sinteractive -c 2 -m 4G -d 250   # enter project number  upon prompting
+   cd /scratch/project_xxxx/$USER    # choose your course (or your own) project 
+   sinteractive -c 2 -m 4G -d 100   # choose project number upon terminal prompt
    ``` 
 2. We'll use a BLAST (Basic Local Alignment Search Tool) container image as available from [Quay Registry](https://quay.io). Visit the Quay registry webpage and
    search for the BLAST image (using keyword: BLAST) on the right hand top corner. You can find the BLAST images from different repositories/accounts. Pick the one
@@ -28,6 +28,7 @@ After this tutorial, you will be able to
    ```bash
    singularity build blast_quay.sif docker://quay.io/biocontainers/blast:2.12.0--pl5262h3289130_0
    ```
+   Once the image is built successfully, we should be able to singularity image file (file name: blast_quay.sif) in the current directory.
 
 3. Run a simple command inside the singularity container to get commanline help from blastp  
    ```bash
@@ -49,14 +50,14 @@ After this tutorial, you will be able to
 
     ```bash
     mkdir makeblastdb
-    msingularity exec -B $PWD:$PWD blast_quay.sif makeblastdb -in mouse.1.protein.faa -dbtype prot
+    singularity exec -B $PWD:$PWD blast_quay.sif makeblastdb -in mouse.1.protein.faa -dbtype prot
     ```  
     After the container has finished the job, you should see several new files in the current directory.
     
 5. Finally, as we have all the input data ready for analysis, we can now do the final alignment step using `blastp` as below:
 
    ```bash
-   singularity exec -B $PWD:$PWD blast.sif blastp -query Q61074.fasta -db mouse.1.protein.faa -out results.txt
+   singularity exec -B $PWD:$PWD blast_quay.sif blastp -query Q61074.fasta -db mouse.1.protein.faa -out results.txt
    ```
    The final results are stored in `results.txt`;
 
