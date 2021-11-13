@@ -9,11 +9,11 @@ Run [DeepVariant method](https://github.com/google/deepvariant) to perform varia
 ### Expected learning from tutorial:
 Upon completion of this tutorial you will learn to: 
 - Prepare a singularity image (in this case, DeepVariant) interactively from [DockerHub](https://hub.docker.com/)
-- Deploy a singularity container as a batch job on Puhti cluster
+- Deploy a singularity container as a batch job on Puhti
 
 ### Run WGS analysis with DeepVarinat singularity container on Puhti
 
-1. First login to Puhti supecomputer using *SSH*:
+1. First login to Puhti supercomputer using *SSH*:
    ```bash
    ssh yourcscusername@puhti.csc.fi
    ```
@@ -24,14 +24,14 @@ Upon completion of this tutorial you will learn to:
    ```
 4. Start interactive session on Puhti:
    ```
-    sinteractive -c 2 -m 4G -d 250
+    sinteractive -c 2 -m 4G -d 100
    ```
-    you have to choose course project number on the command prompt to start an interactive session.
+    You have to choose project number of the course  on the command prompt to start an interactive session.
 
 5. Prepare Singularity image from docker image for DeepVariant analysis:
 
-    We want to use LOCAL_SCRATCH for Singularity TMPDIR and CACHEDIR. Unsetting XDG_RUNTIME_DIR will silence some unnecessary warnings. We will learn more about 
-    these settings later in the course.
+    It is advisable to use LOCAL_SCRATCH for Singularity TMPDIR and CACHEDIR. Unsetting XDG_RUNTIME_DIR will silence some unnecessary warnings. We will learn 
+    more about these settings later in the course.
 
    ```bash
     export SINGULARITY_TMPDIR=$LOCAL_SCRATCH
@@ -40,13 +40,17 @@ Upon completion of this tutorial you will learn to:
     singularity build deepvariant_cpu_1.2.0.sif docker://google/deepvariant:1.2.0
    ```
 
-6. Download and unpack the testdata for deepvariant analysis
+6. Download and unpack the test data for DeepVariant analysis
    ```bash
     wget https://a3s.fi/containers-workflows/deepvariant_testdata.tar.gz
     tar -xavf deepvariant_testdata.tar.gz
    ```
 
-7. Prepare a batch script (e.g., deepvariant_puhti.sh) to run WGS analysis on Puhti:
+7. Prepare a batch script (e.g., deepvariant_puhti.sh) to run WGS analysis on Puhti. A batch script template with all necessary information is provided below. 
+  Please note that this batch also uses a special CSC-specific [singualrity_wrapper](https://docs.csc.fi/computing/containers/run-existing/) command to set
+  appropriate options automatically for running Singularity. You are free to use plain singularity command by taking care of bind mounts appropriately. You
+  are required to change the project number of this course or your own project before submitting the script on Puhti cluster.
+   
 
    ```bash
    #!/bin/bash
@@ -70,3 +74,4 @@ Upon completion of this tutorial you will learn to:
    ```bash
    sbatch deepvariant_puhti.sh
    ```
+   if the analysis is completed successfully, you are able to see the vcf files as output in the current directory.
