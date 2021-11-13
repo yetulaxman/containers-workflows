@@ -9,7 +9,7 @@ Run [DeepVariant method](https://github.com/google/deepvariant) to perform varia
 ### Expected learning from tutorial:
 Upon completion of this tutorial you will learn to: 
 - Prepare a singularity image (in this case, DeepVariant) interactively from [DockerHub](https://hub.docker.com/)
-- Deploy a singularity container as a batch job on Puhti
+- Deploy a singularity container for WGS analysis as a batch job on Puhti
 
 ### Run WGS analysis with DeepVarinat singularity container on Puhti
 
