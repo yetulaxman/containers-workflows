@@ -18,7 +18,7 @@ After this tutorial, you will be able to:
    ```bash
     docker pull quay.io/biocontainers/trimmomatic:0.32--hdfd78af_4
    ```
-   In a real-world use case, this image can be a modified image pulled from registries or completely a new image built on your local machines to meet your needs. 
+   In a real-world use case, this image can be a modified image pulled from registries or completely a new image built on your local machine to meet your needs. 
   
 2. Once an image is pulled or built on your local machine, the image is stored in local registry (usually at /var/lib/docker) on host machines. In order to find
    the stored docker images, use **docker images** command. 
