@@ -21,7 +21,7 @@ After this tutorial, you will be able to:
    sinteractive -c 2 -m 4G -d 100   # choose project number upon terminal prompt
    ``` 
 2. We'll use a BLAST (Basic Local Alignment Search Tool) container image as available from [Quay Registry](https://quay.io). Visit the Quay registry webpage and
-   search for the BLAST image (using keyword: BLAST) on the right hand top corner. You can find the BLAST images from different repositories/accounts. Pick the one
+   search for the BLAST image (using keyword: BLAST) on the top right hand corner. You can find the BLAST images from different repositories/accounts. Pick the one
    under biocontainer repository (i.e., biocontainers/blast). And also search for different tags available for the image (hint: on lthe eft side menu, click on
    *tags* icon). Once we managed to find a fully qualified URI (= docker://hostname/repository/imagename:tag) for docker image, we can convert it to singularity a 
    image using **singularity build** subcommand as below:
