@@ -30,16 +30,14 @@ sbatch batch_job.sh
 ### Hints
 
 - Request NVME fast local storage using the --gres flag  in sbatch directive as below:
-
 ```
 #SBATCH --gres=nvme:<local_storage_space_per_node>  # e.g., to claim 200 GB of storage, use option --gres=nvme:200 
-
 ```
 - Use environment variable $LOCAL_SCRATCH to access the local storage on each node.
-
 - Please move any data to shared area once  the job is finished
 
-Once the job is finished, compare the times taken with and without NVMe drives.
+
+Once the job is finished, compare the times taken with and without NVMe drives.<br>
 
  <details><summary><b>click me for solution </b></summary>
  <p>
