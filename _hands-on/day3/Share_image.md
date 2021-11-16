@@ -3,7 +3,7 @@ topic: singularity1
 title: Tutorial1 -  sharing images using registries
 ---
 
-we have to sometimes prepare custom images to meet our needs either by building a new image from Dockerfile or adding missing software tools on pre-built images. And also, we usually want to re-use the customised image later or share it with other collaborators. One way to share images with others is use image registries such as DockerHub! In this session, you will learn to modify existing Docker image and share it with others via DockerHub. For this purpose, we will make use of FastQC image from DockerHub as a starting image for modification. 
+we have to sometimes prepare custom images to meet our needs either by building a new image from Dockerfile or adding missing software tools on pre-built images. And also, we usually want to re-use the customised image later or share it with other collaborators. One way to share images with others is to use image registries such as DockerHub! In this session, you will learn to modify existing Docker image and share it with others via DockerHub. For this purpose, we will make use of [FastQC software](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/) image from DockerHub as a starting image for modification. 
 
 ## Sharing docker image via DcokerHub
 
@@ -19,7 +19,7 @@ we have to sometimes prepare custom images to meet our needs either by building 
 
 2. Modify FastQC Container
 
-   Now that you are inside the container, you can modify the image as you wish. Just for illustartion, as FastQC container lacks vim editor, you can install **vim**
+   Now that you are inside the container, you can modify the image as you wish. Just for illustration, as FastQC container lacks vim editor, you can install **vim**
    inside the container as shown below:
   
    ```bash
@@ -29,7 +29,7 @@ we have to sometimes prepare custom images to meet our needs either by building 
 
 3. Commit the modified changes to FastQC image
 
-   Let's find out container id corresponding to the *FastQC* container into which you have installed **vim** editor using  `docker ps -a` command on the
+   Let's find out the **container id** corresponding to the *FastQC* container into which you have installed **vim** editor using  `docker ps -a` command on the
    terminal. Once we have container id, you are ready to commit the changes as shown below:
 
    ```bash
@@ -41,14 +41,14 @@ we have to sometimes prepare custom images to meet our needs either by building 
 4. Push your image to your DockerHub repository
  
    Sharing an image *via* docker registry such as  DockerHub (the most popular image registry, hosting hundreds of thousands of images) is an efficient way of 
-   sharing and managing your images. Once image is in a docker (public) registry, anyone can pull it from there. However, this involves setting up an account in 
+   sharing and managing your images. Once an image is in a docker (public) registry, anyone can pull it from there. However, this involves setting up an account in 
    Docker registry. Here are few steps you can do to set-up your account:
        - One can create an account on the DockerHub using instructions [here](https://hub.docker.com/account/signup/). After verifying your email you are ready to 
    go and upload your first docker image.
        - Click on Create Repository.
        - Choose a name  and a description for your repository and click Create.
 
-   Once you have docker credentials in place, you are ready to push the image.  Before pushing your docker image to DockerHub,  you just need to rename docker image
+   Once you have docker credentials in place, you are ready to push the image. Before pushing your docker image to DockerHub,  you just need to rename docker image
    to your namespace/account first using `docker tag` command as below:
 
     ```bash
@@ -63,4 +63,4 @@ we have to sometimes prepare custom images to meet our needs either by building 
       docker push your-dockerhub-user-name/image-name[:tag]
       ```
     Once the push  to repository is successful, your image is now available for everyone to use. Go to your profile page on the DockerHub  to view  your new docker 
-    image. Anybody can now pull your image from Dockerhub now.
+    image. Anybody can now pull your image from DockerHub.
