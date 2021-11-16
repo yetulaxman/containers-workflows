@@ -7,24 +7,25 @@ Sometimes, we have to build custom images to meet our needs either by building a
 
 ## Modifying content inside the container.
 
+In this tutorial we will use FastQC image from DockerHub as starting image for modification.  
+
 1. Deploy FastQC Container
 
-Let's launch fastqc container interactively as it is useful for testing or development. Here you ran the docker run ... command with special flags -it so that it attaches you to an interactive tty in the container. You can run any command inside a container if it is provisioned by author of image! Take some time to run a useful command (e.g., get some documentation help from a software). 
-
-
-```bash
-docker container run -it biocontainers/fastqc:v0.11.9_cv7 /bin/sh
-```
-
-Note: the flags -it are short for -i -t which are the short forms of --interactive (Keep STDIN open) and --tty (allocate a terminal).
+   Let's launch FastQC container interactively as it is useful for testing or development. Here we use *docker run* command with special flags -it so that it    attaches us to an interactive tty in the container. You can run any command inside a container if it is provisioned by author of image! 
+   
+    ```bash
+    docker container run -it biocontainers/fastqc:v0.11.9_cv7 /bin/sh
+    ```
+   Note: the flags -it are short for -i -t which are the short forms of --interactive (Keep STDIN open) and --tty (allocate a terminal).
 
 2. Modify the Container
 
-Now that you are in the container, you can modify the image. Just for illustartion, as fastQC lacks vim editor inside, we can try to install vim inaside the container.
-
-```
-apt-get install vim
-```
+  Now that you are in the container, you can modify the image. Just for illustartion, as fastQC lacks vim editor inside, we can try to install vim inaside the 
+  container.
+  ```bash
+  apt-get install vim
+  ```
+  Use control+p and control+q  to save and exit out of the container.
 
 3. Commit Changes to Image
 
