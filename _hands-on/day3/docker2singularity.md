@@ -50,7 +50,7 @@ Upon completion of this tutorial, you will be able to:
    ```
   
 4. As a best practice tip, do not pull a Singularity image cache to your Puhti Home Directory. In order to avoid such cache issues which would result in disk space
-   errors, we recommend resetting Singularity TMPDIR and CACHEDIR directories either to Lustre scratch before performing image conversion as 
+   errors, we recommend resetting Singularity TMPDIR and CACHEDIR directories to Lustre scratch folders before performing image conversion as 
    below:
   
    ```bash  
