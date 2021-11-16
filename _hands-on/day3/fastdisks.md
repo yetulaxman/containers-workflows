@@ -38,9 +38,8 @@ sbatch batch_job.sh
 
 
 <details>
-	<summary> <b> Click me for solution </b></summary>
-	<pre>
-		
+<summary> <b> Click me for solution </b></summary>
+<pre>	
 #!/bin/bash
 #SBATCH --time=01:00:00
 #SBATCH --partition=small
@@ -56,6 +55,5 @@ cd $LOCAL_SCRATCH
 #df -lh
 singularity pull --name trinity.simg docker://trinityrnaseq/trinityrnaseq
 mv trinity.simg /scratch/project_xxx/$USER/    
-	</pre>
-
+</pre>
 </details>
