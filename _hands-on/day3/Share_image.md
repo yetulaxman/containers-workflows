@@ -60,7 +60,7 @@ we have to sometimes prepare custom images to meet our needs either by building 
     Push your image finally as below:
  
      ```bash
-      docker push your-dockerhub-user-name/repo-name[:tag]
+      docker push your-dockerhub-user-name/image-name[:tag]
       ```
     Once the push  to repository is successful, your image is now available for everyone to use. Go to your profile page on the DockerHub  to view  your new docker 
-    image on DockerHub. Anybody can pull your image from Dockerhub now.
+    image. Anybody can now pull your image from Dockerhub now.
