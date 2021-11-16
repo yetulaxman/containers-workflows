@@ -50,7 +50,7 @@ Upon completion of this tutorial, you will be able to:
    ```
   
 4. As a best practice tip, do not pull a Singularity image to your Puhti Home Directory. In order to avoid such cache issues which would result in disk space
-   errors, we recommend resetting Singularity TMPDIR and CACHEDIR directories either to Lustre scratch or  LOCAL_SCRATCH  before performing image conversion as 
+   errors, we recommend resetting Singularity TMPDIR and CACHEDIR directories either to Lustre scratch before performing image conversion as 
    below:
   
    ```bash  
@@ -60,9 +60,9 @@ Upon completion of this tutorial, you will be able to:
     singularity pull docker://quay.io/biocontainers/trimmomatic:0.32--hdfd78af_4
    ```
   
-   or better yet would be is to use LOCAL_SCRATCH directories on Puhti especially if the image sizes are quite big (in the order of GBs). Usually larger docker 
-   images are composed of several layers and importing and unpacking the layers into one single image file for singularity can be I/O intensive. For the the sake of
-   this tutorial example we can use the same trimmomatic example as below:
+   It is even better to use LOCAL_SCRATCH directories for Singularity TMPDIR and CACHEDIR directories especially if the image sizes are quite big (in the order of 
+   GBs). Usually larger docker images are composed of several layers and importing and unpacking the layers into one single image file for singularity can be I/O
+   intensive. For the sake of this tutorial example we can use the same trimmomatic example as below:
   
    ```bash  
    export SINGULARITY_TMPDIR=$LOCAL_SCRATCH
