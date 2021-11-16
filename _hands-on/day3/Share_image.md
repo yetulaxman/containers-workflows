@@ -11,14 +11,15 @@ In this tutorial we will use FastQC image from DockerHub as starting image for m
 
 1. Deploy FastQC Container
 
-   Let's launch FastQC container interactively as it is useful for testing or development. Here we use *docker run* command with special flags -it so that it    attaches us to an interactive tty in the container. You can run any command inside a container if it is provisioned by author of image! 
+   Let's launch FastQC container interactively as it is useful for testing or development. Here we use *docker run* command with special flags -it so that it
+   attaches us to an interactive tty in the container. You can run any command inside a container if it is provisioned by author of image! 
    
     ```bash
     docker container run -it biocontainers/fastqc:v0.11.9_cv7 /bin/sh
     ```
    Note: the flags -it are short for -i -t which are the short forms of --interactive (Keep STDIN open) and --tty (allocate a terminal).
 
-2. Modify the Container
+2. Modify FastQC Container
 
   Now that you are in the container, you can modify the image. Just for illustartion, as fastQC lacks vim editor inside, we can try to install vim inaside the 
   container.
