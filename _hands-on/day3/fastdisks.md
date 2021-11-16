@@ -3,11 +3,9 @@ topic: singularity
 title: Tutorial4(Binus) -  Conversion of Docker images to singularity
 ---
 
-## Background
-
 Lustre-based project-specific directories, *scratch* and *projappl*, can store large amounts of data and are accessible to all compute nodes of Puhti. However, these directories are not good for managing a large number of files.  If you need to work with a huge number of smaller files, you should consider using the NVMe based local temporary scratch directories, either through normal or interactive batch jobs. Read more about the advantages of using local scratch drive on [CSC docs pages](https://docs.csc.fi/support/faq/local_scratch_for_data_processing/)
  
-## Image conversion with local scratch disks: Convert the following normal batch job script into the one that uses local scratch drive for faster computational tasks? 
+## Convert the following normal batch job script into the one that uses local scratch (NVMe) drive  for faster image conversion
 
 Below is a normal batch job that pulls docker image from DockerHub and converts into a singularity one that is compatible with working in HPC environments such as CSC Puhti and Mahti supercomputers. During the conversion process, several layers are retrieved, cached and then converted into a singularity file (.sif format)
 
@@ -29,8 +27,6 @@ sbatch batch_job.sh
 
 ```
 
-### How much time did it take to finish above job?
-
 ### Hints
 
 - Request NVME fast local storage using the --gres flag  in sbatch directive as below:
@@ -43,6 +39,9 @@ sbatch batch_job.sh
 
 - Please move any data to shared area once  the job is finished
 
+
+<details><summary>click me for solution </summary>
+<p>
 
 ### Solution for script
 
@@ -64,8 +63,7 @@ singularity pull --name trinity.simg docker://trinityrnaseq/trinityrnaseq
 mv trinity.simg /scratch/project_xxx/$USER/                                                            
 ```
 
-Below is the comparison of execution time for running the same job in LOCAL_SCRATCH *vs.* normal scratch.  
+</p>
+</details>
 
-|                               | LOCAL_SCRATCH |         scratch|
-|-------------------------------|---------------|----------------|    
-|Wall-clock time     |22m 06s      |  50m 06s        |
+
