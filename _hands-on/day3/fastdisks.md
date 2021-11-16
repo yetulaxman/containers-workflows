@@ -40,7 +40,7 @@ sbatch batch_job.sh
 Once the job is finished, compare the times taken with and without NVMe drives.<br>
 
  <details><summary><b>click me for solution </b></summary>
-
+</p>
 
 ```bash
 #!/bin/bash
