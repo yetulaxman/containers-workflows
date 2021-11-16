@@ -42,7 +42,7 @@ Once the job is finished, compare the times taken with and without NVMe drives.<
  <details><summary><b>click me for solution </b></summary>
  <p>
 
-### Solution for script
+### Solution for script <br>
 
 ```bash
 #!/bin/bash
