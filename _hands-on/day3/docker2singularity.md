@@ -44,9 +44,9 @@ Upon completion of this tutorial, you will be able to:
     singularity cache clean
    ```
   
-3. Launch trimmomatic container and check the comamndline help 
+3. Launch trimmomatic container and check comamndline help 
     ```bash
-    singularity exec trimmomatic_0.32--hdfd78af_4.sif trimmomatic --help
+    singularity exec trimmomatic_0.32--hdfd78af_4.sif trimmomatic --help   # or simply ./trimmomatic_0.32--hdfd78af_4.sif
    ```
   
 4. As a best practice tip, do not pull a Singularity image to your Puhti Home Directory. In order to avoid such cache issues which would result in disk space
