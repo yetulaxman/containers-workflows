@@ -37,36 +37,8 @@ sbatch batch_job.sh
 - Please move any data to shared area once  the job is finished
 
 
-Once the job is finished, compare the times taken with and without NVMe drives.<br>
-
- <details><summary><b>click me for solution </b></summary>
-</p> <br>
-
-```bash
-#!/bin/bash
-#SBATCH --time=01:00:00
-#SBATCH --partition=small
-#SBATCH --account=project_xxx
-#SBATCH  --gres=nvme:100
-
-export SINGULARITY_TMPDIR=$LOCAL_SCRATCH
-export SINGULARITY_CACHEDIR=$LOCAL_SCRATCH
-unset XDG_RUNTIME_DIR
-
-cd $LOCAL_SCRATCH
-#pwd
-#df -lh
-singularity pull --name trinity.simg docker://trinityrnaseq/trinityrnaseq
-mv trinity.simg /scratch/project_xxx/$USER/                                                            
-```
-
-</p>
-</details>
-
-
-
 <details>
-	<summary>Click to expand</summary>
+	<summary> <b> Click me for solution </b></summary>
 	<pre>
 		
 #!/bin/bash
