@@ -5,6 +5,8 @@ title: Tutorial1 -  sharing images using registries
 
 we have to sometimes prepare custom images to meet our needs either by building a new image from Dockerfile or adding missing software tools on pre-built images. And also, we usually want to re-use the customised image later or share it with other collaborators. One way to share images with others is to use image registries such as DockerHub! In this session, you will learn to modify existing Docker image and share it with others via DockerHub. For this purpose, we will make use of [FastQC software](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/) image from DockerHub as a starting image for modification. 
 
+This exercise requires workstation with docker client and thus can't be done in CSC HPC environment.  <a href="http://labs.play-with-docker.com/" target="_blank"> Use PWD terminal</a> instead.
+
 ## Sharing docker image via DcokerHub
 
 1. Deploy FastQC Container
