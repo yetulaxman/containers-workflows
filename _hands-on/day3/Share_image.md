@@ -1,17 +1,34 @@
 ---
-title: Sharing Docker Images
+topic: singularity1
+title: Tutorial1 -  sharing images using registries
 ---
-## Learning Objectives 
 
-We’ve spent sometime in gaining a reasonable understanding of running a docker container. Sometimes, we have to go bit further to customise docker images by adding missing software tools or any package dependencies you need for your  analysis. And the we want to re-use the customised image later or share it with other collaborators. This brings us to the point of sharing your image with others!
+Sometimes, we have to build custom images to meet our needs either by building a new image from Dockerfile or adding missing software tools on pre-built images. And we usually want to re-use the customised image later or share it with other collaborators. Image registries are better choice for sharing our image with others! In this session, you will learn to modify existing Docker image and share it with others via registries
 
-Upon completion of this session, you will learn: 
+## Modifying content inside the container.
 
-- How to share your Docker image with others.
+1. Deploy FastQC Container
 
-### Sharing Docker Images without dockerhub (=tarball approach)
+Let's launch fastqc container interactively as it is useful for testing or development. Here you ran the docker run ... command with special flags -it so that it attaches you to an interactive tty in the container. You can run any command inside a container if it is provisioned by author of image! Take some time to run a useful command (e.g., get some documentation help from a software). 
 
-Sharing a docker image involves making your local image available for other people to use it. Docker has *docker save* command option where you can save your image into a tar file. Let's look at our *fastqc* container into which you have installed e.g., vim editor and you wish to share the new image now with your friend.
+
+```bash
+docker container run -it biocontainers/fastqc:v0.11.9_cv7 /bin/sh
+```
+
+Note: the flags -it are short for -i -t which are the short forms of --interactive (Keep STDIN open) and --tty (allocate a terminal).
+
+2. Modify the Container
+
+Now that you are in the container, you can modify the image. Just for illustartion, as fastQC lacks vim editor inside, we can try to install vim inaside the container.
+
+```
+apt-get install vim
+```
+
+3. Commit Changes to Image
+
+Sharing a docker image involves making your local image available for other people to use it. Let's look at our *fastqc* container into which you have installed e.g., vim editor and you wish to share the new image now with your friend.
 
 Find container id corresponding to *fastqc* container (tip: use `docker ps -a`command) and use it with the following *docker commit* command:
 
@@ -34,7 +51,7 @@ docker load < fastqc-vim.test.tar
 ```
 Once image is loaded, you can now use it as if it is downloaded from DockerHub. The newly loaded image can be viewed using `docker images` command on host machine
 
-### Sharing your image with DockerHub (=registry approach)
+### Push your image to your DockerHub repository
 
 Sharing an image *via* docker registry such as  DockerHub (the most popular image registry, hosting hundreds of thousands of images) is an efficient way of sharing and managing your images. Once image is in a docker (public) registry, anyone can pull it from there. 
 
