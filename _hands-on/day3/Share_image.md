@@ -34,7 +34,7 @@ we have to sometimes prepare custom images to meet our needs either by building 
 
    ```bash
    docker ps -a
-   docker commit <container id> fastqc-vim:test   
+   docker commit <container id> fastqc-vim:test   # docker commit 6527b0394bdf  fastqc-vim:test
    ```
    > note: It is a good idea to stop the container if running before performing *docker commit*  
 
@@ -48,19 +48,20 @@ we have to sometimes prepare custom images to meet our needs either by building 
        - Click on Create Repository.
        - Choose a name  and a description for your repository and click Create.
 
-   Once you have docker credentials in place, you are ready to push the image. Before pushing your docker image to DockerHub,  you just need to rename docker image
+   Once you have docker credentials in place, you are ready to push the image. But before pushing your docker image to DockerHub,  you just need to rename docker image
    to your namespace/account first using `docker tag` command as below:
 
     ```bash
-     docker tag <image id> your-dockerhub-user-name/repo-name[:tag]   # find <image id> corresponding to repository, fastqc-vim  by typing `docker images` command 
-     on host machine
+     docker tag <image id> your-dockerhub-user-name/repo-name[:tag]   # find <image id> corresponding to repository, fastqc-vim  by typing `docker images` command
+     on host machine. e.g., command: docker tag f689b999263b your-dockerhub-user-name/fastqc-vim:test 
     ```
     All images should be tagged with an appropriate prefix to repository name before pushing an image.
 
     Push your image finally as below:
  
      ```bash
-      docker push your-dockerhub-user-name/image-name[:tag]
+      docker login # authenticate yourself using DockerHub credentials
+      docker push your-dockerhub-user-name/image-name[:tag]  # docker push your-dockerhub-user-name/fastqc-vim:test
       ```
     Once the push  to repository is successful, your image is now available for everyone to use. Go to your profile page on the DockerHub  to view  your new docker 
     image. Anybody can now pull your image from DockerHub.
