@@ -79,3 +79,12 @@ public class Order
 
 </p>
 </details> 
+
+<details>
+	<summary>Click to expand</summary>
+	<pre>
+		
+	Long content here
+	</pre>
+
+</details>
