@@ -30,43 +30,32 @@ Upon completion of this tutorial, you will be able to:
    ```
    Upon successful completion of above command, you will be able to see trimmomatic singulairty image (name: trimmomatic_0.32--hdfd78af_4.sif) in the current
    directory.
-
-   You can check the disk space taken up by the image in cache folder as below:
+   
+3. when you convert multiple smaller images or a bigger image, the singularity cache can take up lot of space. Please note that the singularity cache directory is 
+   by default your HOME directory which is limted by disk space quota in CSC HPC environment. As a best practice tip, do not pull a Singularity image cache to your 
+   Puhti Home Directory. In order to avoid such cache issues which would result in disk space errors, we recommend resetting Singularity TMPDIR and CACHEDIR 
+   directories either to Lustre scratch or $LOCAL_SCRATCH  before performing image conversion as below:
   
    ```bash  
-   singularity cache list
+    export SINGULARITY_TMPDIR=/scratch/project_xxxx/$USER  (or $LOCAL_SCRATCH)
+    export SINGULARITY_CACHEDIR=/scratch/project_xxxx/$USER (or $LOCAL_SCRATCH)
+    unset XDG_RUNTIME_DIR
+    singularity pull docker://quay.io/biocontainers/trimmomatic:0.32--hdfd78af_4
    ```
-   when you convert multiple smaller images or a bigger image, the singularity cache can take up lot of space. Please note that the singularity cache directory is 
-   by default your HOME directory whcih is limted by disk space quota in CSC HPC environment. It is therefore good idea to clean singularity cache every now and
-  then as below:
-  
-   ```bash
-    singularity cache clean
-   ```
-  
-3. Launch trimmomatic container and check comamndline help 
+    It is better to use LOCAL_SCRATCH directories as Singularity TMPDIR and CACHEDIR directories especially if the image sizes are quite big (in the order of 
+    GBs). Usually larger docker images are composed of several layers and importing and unpacking the layers into one single image file for singularity can be I/O
+    intensive.
+
+4. Launch trimmomatic container and check comamndline help 
     ```bash
     singularity exec trimmomatic_0.32--hdfd78af_4.sif trimmomatic --help   # or simply ./trimmomatic_0.32--hdfd78af_4.sif
    ```
   
-4. As a best practice tip, do not pull a Singularity image cache to your Puhti Home Directory. In order to avoid such cache issues which would result in disk space
-   errors, we recommend resetting Singularity TMPDIR and CACHEDIR directories to Lustre scratch folders before performing image conversion as 
-   below:
+   Few useful tips:
   
-   ```bash  
-    export SINGULARITY_TMPDIR=/scratch/project_xxxx/$USER
-    export SINGULARITY_CACHEDIR=/scratch/project_xxxx/$USER
-    unset XDG_RUNTIME_DIR
-    singularity pull docker://quay.io/biocontainers/trimmomatic:0.32--hdfd78af_4
-   ```
-  
-   It is even better to use LOCAL_SCRATCH directories for Singularity TMPDIR and CACHEDIR directories especially if the image sizes are quite big (in the order of 
-   GBs). Usually larger docker images are composed of several layers and importing and unpacking the layers into one single image file for singularity can be I/O
-   intensive. For the sake of this tutorial example we can use the same trimmomatic example as below:
-  
-   ```bash  
-   export SINGULARITY_TMPDIR=$LOCAL_SCRATCH
-   export SINGULARITY_CACHEDIR=$LOCAL_SCRATCH
-   unset XDG_RUNTIME_DIR
-   singularity pull docker://quay.io/biocontainers/trimmomatic:0.32--hdfd78af_4
-   ```
+    ```bash  
+    singularity cache list  # You can check the disk space taken up by the image in cache folder
+    singularity cache clean  # clean singularity cache
+    ```
+
+
