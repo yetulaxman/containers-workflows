@@ -36,7 +36,6 @@ sbatch batch_job.sh
 - Use environment variable $LOCAL_SCRATCH to access the local storage on each node.
 - Please move any data to shared area once  the job is finished
 
-
 <details>
 <summary> <b> Click me for solution </b></summary>
 <pre>	
