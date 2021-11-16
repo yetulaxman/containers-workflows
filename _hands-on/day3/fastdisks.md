@@ -69,7 +69,21 @@ mv trinity.simg /scratch/project_xxx/$USER/
 	<summary>Click to expand</summary>
 	<pre>
 		
-	Long content here
+#!/bin/bash
+#SBATCH --time=01:00:00
+#SBATCH --partition=small
+#SBATCH --account=project_xxx
+#SBATCH  --gres=nvme:100
+
+export SINGULARITY_TMPDIR=$LOCAL_SCRATCH
+export SINGULARITY_CACHEDIR=$LOCAL_SCRATCH
+unset XDG_RUNTIME_DIR
+
+cd $LOCAL_SCRATCH
+#pwd
+#df -lh
+singularity pull --name trinity.simg docker://trinityrnaseq/trinityrnaseq
+mv trinity.simg /scratch/project_xxx/$USER/    
 	</pre>
 
 </details>
