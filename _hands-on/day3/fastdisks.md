@@ -39,9 +39,10 @@ sbatch batch_job.sh
 
 - Please move any data to shared area once  the job is finished
 
+Once the job is finished, compare the times taken with and without NVMe drives.
 
-<details><summary>click me for solution </summary>
-<p>
+ <details><summary><b>click me for solution </b></summary>
+ <p>
 
 ### Solution for script
 
