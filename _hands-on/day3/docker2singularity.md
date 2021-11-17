@@ -9,7 +9,7 @@ We converted a Docker image to singularity one using *singularity build* subcomm
 
 ###  Expected outcome of this tutorial:
 Upon completion of this tutorial, you will be able to:
-- Launch a singularity container from a bioconda package (e.g., trimmomatic)
+- Launch a singularity container from a bioconda package which available as a docker image (e.g., trimmomatic image)
 - Manage Singularity TMPDIR and CACHEDIR directories in HPC environment
 
 
