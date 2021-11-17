@@ -1,5 +1,5 @@
 ---
-topic: singularity1
+topic: singularity
 title: Tutorial -  sharing images using registries
 ---
 
