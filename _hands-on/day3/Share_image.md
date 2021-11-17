@@ -45,10 +45,10 @@ This exercise requires workstation with docker client and thus can't be done in 
    Sharing an image *via* docker registry such as  DockerHub (the most popular image registry, hosting hundreds of thousands of images) is an efficient way of 
    sharing and managing your images. Once an image is in a docker (public) registry, anyone can pull it from there. However, this involves setting up an account in 
    Docker registry. Here are few steps you can do to set-up your account:
-       - One can create an account on the DockerHub using instructions [here](https://hub.docker.com/account/signup/). After verifying your email you are ready to 
+     - One can create an account on the DockerHub using instructions [here](https://hub.docker.com/account/signup/). After verifying your email you are ready to 
    go and upload your first docker image.
-       - Click on Create Repository.
-       - Choose a name  and a description for your repository and click Create.
+     - Click on Create Repository.
+     - Choose a name  and a description for your repository and click Create.
 
    Once you have docker credentials in place, you are ready to push the image. But before pushing your docker image to DockerHub,  you just need to rename docker image
    to your namespace/account first using `docker tag` command as below:
@@ -66,4 +66,4 @@ This exercise requires workstation with docker client and thus can't be done in 
       docker push your-dockerhub-user-name/image-name[:tag]  # docker push your-dockerhub-user-name/fastqc-vim:test
       ```
     Once the push  to repository is successful, your image is now available for everyone to use. Go to your profile page on the DockerHub  to view  your new docker 
-    image. Anybody can now pull your image from DockerHub.
+    image. 
