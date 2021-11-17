@@ -3,7 +3,7 @@ topic: containers
 title: Tutorial1 - Hello-world Docker example
 ---
 
-This short tutorial gives a very brief idea on how docker containers are launched. Although we don't work with docker containers in this course, we will be referring to docker images occasionally as we proceed. Docker is one of the most popular container platforms and it is worth having a basic idea which will be useful when working with singularity containers later.
+This short tutorial gives a very brief idea on how docker containers are launched. Although we don't work with docker containers onn HPC systems, we will be referring to docker images occasionally as we proceed. Docker is one of the most popular container platforms and it is worth having a basic idea which will be useful when working with singularity containers later.
 
 ## Learning Objectives
 In this tutorial, you will learn to: 
