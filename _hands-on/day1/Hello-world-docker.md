@@ -41,15 +41,11 @@ Note that `docker run` creates a container, executes the command in it and stops
 
 #### What will happen if you run the above command again? Did you observe any change in terminal output now?
 
-Docker image has already been downloaded locally and therefore docker can execute the container straight away.
+Docker image has already been downloaded locally and therefore docker can run the container straight away.
 
 #### What is the default image tag used in `hello-world` example?
 
-By default, an image is pulled with `latest` tag. It is possible to pull an image with a specified tag and is actually a good practice to use specific tag name for reproducible research. Tag provides a version control-like mechanism for docker images.
+By default, an image is pulled with `latest` tag if available. It is possible to pull an image with a specified tag and is actually a good practice to use specific tag name for reproducible research. Tag provides a version control-like mechanism for docker images.
 
 Congratulations, you have run a “Hello-World” Docker successfully !!!
-
-## (Bonus) Exercise
-
-1. Run a container from an image named "alpine" from DockerHub and execute a command inside that container so that output from the container is "Welcome to CSC !"
 
