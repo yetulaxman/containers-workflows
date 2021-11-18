@@ -13,7 +13,7 @@ In this tutorial, you will learn to:
 
 ## Launch an instance to run Docker commands using play-with-docker(PWD)
 
-You need [DockerHub](https://hub.docker.com/) credentials to work with PWD. <a href="http://labs.play-with-docker.com/" target="_blank"> Within PWD webpage,</a> create a session for this tutorial. Click on **+ add new instance** and a terminal like instance should be generated on the right. 
+You need [DockerHub](https://hub.docker.com/) credentials to work with PWD. <a href="http://labs.play-with-docker.com/" target="_blank">In PWD webpage,</a> create a session for this tutorial. Click on **+ add new instance** on left side panel and then a terminal like instance should be generated on the right. 
 
 ## Spin up a hello-world Container 
 
