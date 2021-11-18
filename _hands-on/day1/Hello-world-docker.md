@@ -22,7 +22,7 @@ Let’s start with a simple *hello-world* container from [Dockerhub](https://hub
 ```bash
 docker run hello-world
 ```
-When a `docker run` command is issued *via* commandline interface (CLI), docker client contacts Docker daemon to check whether an image named, "hello-world" exists locally. If the image is not found locally, docker daemon pulls "hello-world" official image from DockerHub (*Note*: default registry for docker is DockerHub and for other docker registries one has to explicitly mention registry name as well). Once docker image is available locally, `docker run` command creates a new container from that image.
+When a `docker run` command is issued *via* commandline interface (CLI), docker client contacts Docker daemon to check whether an image named, "hello-world" exists locally. If the image is not found locally, docker daemon pulls "hello-world" official image from DockerHub. Once docker image is available locally, `docker run` command creates a new container from that image.
 
 #### What is the terminal output from the above `docker run` command? #####
 
