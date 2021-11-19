@@ -11,7 +11,7 @@ Upon completion of this tutorial you will learn to:
 - Prepare a singularity image (in this case, DeepVariant) interactively from [DockerHub](https://hub.docker.com/)
 - Deploy a singularity container for WGS analysis as a batch job on Puhti
 
-### Run WGS analysis with DeepVarinat singularity container on Puhti
+### Run WGS analysis with DeepVariant singularity container on Puhti
 
 1. First login to Puhti supercomputer using *SSH*:
    ```bash
@@ -28,7 +28,7 @@ Upon completion of this tutorial you will learn to:
    ```
     You have to choose project number of the course  on the command prompt to start an interactive session.
 
-5. Prepare Singularity image from docker image for DeepVariant analysis. Here we use Deepvariant Docker image from [DockerHub](https://hub.docker.com/) with a
+5. Prepare Singularity image from docker image for DeepVariant analysis. Here we use DeepVariant Docker image from [DockerHub](https://hub.docker.com/) with a
    specific tag (i.e., 1.2.0). You can explore more about the image on the DokcerHub. It is advisable to use LOCAL_SCRATCH for Singularity TMPDIR and CACHEDIR. 
    Unsetting XDG_RUNTIME_DIR will silence some unnecessary warnings. We will learn more about these settings later in the course.
 
