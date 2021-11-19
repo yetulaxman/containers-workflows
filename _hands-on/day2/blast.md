@@ -20,16 +20,16 @@ After this tutorial, you will be able to:
    mkdir -p BLAST && cd BLAST   #  create a separate folder for this analysis
    sinteractive -c 2 -m 4G -d 100   # choose project number upon terminal prompt
    ``` 
-2. We'll use a BLAST (Basic Local Alignment Search Tool) container image as available from [Quay Registry](https://quay.io). Visit the webpage of Quay registry 
+2. You'll use a BLAST (Basic Local Alignment Search Tool) container image as available from [Quay Registry](https://quay.io). Visit the webpage of Quay registry 
    and search for the BLAST image (using keyword: BLAST) on the top right hand corner. You can find the BLAST images from different repositories/accounts. Pick the 
    one under biocontainer repository (i.e., biocontainers/blast). And also search for different tags available for the image (hint: on the left side menu, click on
-   *tags* icon). Once we managed to find a fully qualified URI (= docker://hostname/repository/imagename:tag) for docker image, we can convert it to singularity 
+   *tags* icon). Once you managed to find a fully qualified URI (= docker://hostname/repository/imagename:tag) for docker image, you can convert it to singularity 
    image using **singularity build** subcommand as below:
     
    ```bash
    singularity build blast_quay.sif docker://quay.io/biocontainers/blast:2.12.0--pl5262h3289130_0
    ```
-   Once the image is built successfully, we should be able to see singularity image file (file name: blast_quay.sif) in the current directory.
+   Once the image is built successfully, you should be able to see singularity image file (file name: blast_quay.sif) in the current directory.
 
 3. Run a simple command inside of the singularity container to get commanline help for blastp  
    ```bash
@@ -41,14 +41,14 @@ After this tutorial, you will be able to:
    ```bash
     wget https://www.uniprot.org/uniprot/Q61074.fasta # mouse Protein phosphatase 1G
     ```
-   This is a FASTA sequence for a mouse protein.  We'll also need a reference database to BLAST against and the database can be downloaded from the link as shown
+   This is a FASTA sequence for a mouse protein.  You'll also need a reference database to BLAST against and the database can be downloaded from the link as shown
    below:
 
    ```bash
     curl -O ftp://ftp.ncbi.nih.gov/refseq/M_musculus/mRNA_Prot/mouse.1.protein.faa.gz
     gunzip mouse.1.protein.faa.gz
     ```
-    We need to prepare the mouse database with `makeblastdb` for the search, so we'll run the following:
+    You need to prepare the mouse database with `makeblastdb` for the search using the following command:
 
     ```bash
     mkdir makeblastdb
@@ -56,7 +56,7 @@ After this tutorial, you will be able to:
     ```  
     After the container has finished the job, you should see several new files in the current directory.
     
-5. Finally, as we have all the input data ready for analysis, we can now do the final alignment step using `blastp` as below:
+5. Finally, as you have all the input data ready for analysis, you can now do the final alignment step using `blastp` as below:
 
    ```bash
    singularity exec -B $PWD:$PWD blast_quay.sif blastp -query Q61074.fasta -db mouse.1.protein.faa -out results.txt
@@ -64,7 +64,7 @@ After this tutorial, you will be able to:
    The final results are stored in `results.txt`;
 
    ```bash
-   less results.txt   # we should be able to see the sequenc matches the isoforms of phosphatases in mouse database as the best hits in this blast search
+   less results.txt   # you should be able to see the sequenc matches the isoforms of phosphatases in mouse database as the best hits in this blast search
    ```
 
    ```bash
@@ -85,6 +85,6 @@ After this tutorial, you will be able to:
    XP_036013148.1 protein phosphatase 1A isoform X1 [Mus musculus]       127     3e-31
    [..]
   ```
-  We can see that several proteins in the mouse genome match those in the mouse phasphatage (as expected).
+  You can see that several proteins in the mouse genome match those in the mouse phasphatage (as expected).
 
 
