@@ -24,6 +24,7 @@ Let's download material needed for this tutorial from github as shown below:
 
 ```nextflow
 cd /scratch/project_xxxx/$USER/nextflow_tutorial 
+module load git 
 git clone https://github.com/yetulaxman/nf_coverage_demo.git
 cd nf_coverage_demo
 git clone https://github.com/iarcbioinfo/data_test
@@ -73,6 +74,9 @@ copy above script and paste in `nextflow.config` file which is located in curren
 You can then launch nf_coverage workflow (from `nf_coverage_demo` folder) with defined profiles as shown below:
 
 ```bash
+module load bioconda
+source activate nextflow
+
 nextflow run plot_coverage.nf  \
           -profile singularity \
           --bam_folder data_test/BAM/BAM_multiple/ \
@@ -189,7 +193,7 @@ mkdir -p $HOME/nextflow_output
 cp *.html *.png *.txt *.pdf  $HOME/nextflow_output
 ```
 
-One has to open a port on Puhti login node to access files on your Puhti home directory from your local computer via browser. In this course, every participant should have a *unique port number* opened on Puhti login node. **Open a new terminal** on your local machine and replace *$port* value with some random number (e.g., a number between 5000 and 9000) before executing the following command:
+One has to open a port on Puhti login node to access files on your Puhti home directory from your local computer via browser. In this course, every participant should have a *unique port number* opened on Puhti login node. **Open a new terminal** on your local machine and replace *$port* value with some random number (e.g., a number between 7000 and 9000) before executing the following command:
 
 ```
 ssh -L $port:localhost:$port <your_csc_username>@puhti.csc.fi  # e.g., with port number: 7077 
