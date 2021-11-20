@@ -3,7 +3,7 @@ topic: nextflow
 title: Tutorial1 - Hello-world example
 ---
 
-# Nextflow (101) tutorial for  Puhti users 
+# Nextflow on Puhti Supercomputer
 Running and managing workflows for bioinformatics applications can be challenging as the workflows usually are fragile eco-systems of several software tools and their dependencies. We therefore need a workflow manager like Nextflow to manage our scientific workflow. [Nextflow](https://www.nextflow.io/docs/latest/index.html) is a [groovy-based](https://en.wikipedia.org/wiki/Apache_Groovy) language for expressing the entire workflow in a single script and also facilitates the ease of working with workflows by rendering several useful features as mentioned below: 
  - Workflow management
  - Reproducibility
@@ -14,7 +14,7 @@ Running and managing workflows for bioinformatics applications can be challengin
  - Partial resumption
 
 ## Learning Objectives
-Upon completion of this tutorial, you will be able to learn: 
+Upon completion of these tutorials in course, you will be able to learn: 
 - The basic understanding of how Nextflow works
 - The deployment of Nextflow scripts on Puhti supercomputer
 - How to use Singularity containers with Nextflow for your analysis
