@@ -27,7 +27,7 @@ source activate nextflow
 # RNAseq example
 nextflow run nf-core/sarek -r 2.7.1 -profile test,singularity -resume
 # proteomics example
-# nextflow run nf-core/proteomicslfq  -profile test,singularity -resume
+# nextflow run nf-core/proteomicslfq  -r 1.0.0  -profile test,singularity -resume
 #metabolomics example
 # nextflow run nf-core/metaboigniter -r 1.0.1 -profile test,singularity -resume
 ```
