@@ -3,7 +3,7 @@ topic: nextflow
 title: Tutorial4 (Bonus) - nf-core pipeline
 ---
 
-nf-core is a community effort to collect a curated set of analysis pipelines built using Nextflow. Here we use nfcore/atacseq as an example pipeline for ATAC-seq data.
+nf-core is a community effort to collect a curated set of analysis pipelines built using Nextflow. Here we use [Sarek workflow](https://github.com/nf-core/sarek) as an example pipeline to detect variants on whole genome or targeted sequencing data. 
 
 Here is an example batch script to run the pipeline on Puhti:
 ```bash
@@ -24,7 +24,7 @@ module load bioconda
 source activate nextflow
 
 # Nextflow command here
-# RNAseq example
+# Variant calling on genome data
 nextflow run nf-core/sarek -r 2.7.1 -profile test,singularity -resume
 # proteomics example
 # nextflow run nf-core/proteomicslfq  -r 1.0.0  -profile test,singularity -resume
