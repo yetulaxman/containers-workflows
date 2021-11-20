@@ -24,7 +24,12 @@ module load bioconda
 source activate nextflow
 
 # Nextflow command here
-nextflow run nf-core/atacseq -r 1.2.1 -profile test,singularity -resume
+# RNAseq example
+nextflow run nf-core/sarek -r 2.7.1 -profile test,singularity -resume
+# proteomics example
+# nextflow run nf-core/proteomicslfq  -profile test,singularity -resume
+#metabolomics example
+# nextflow run nf-core/metaboigniter -r 1.0.1 -profile test,singularity -resume
 ```
 copy and paste the above script to a file named atacseq.sh and replace your project number with project_xxxx in slurm directives.
 
