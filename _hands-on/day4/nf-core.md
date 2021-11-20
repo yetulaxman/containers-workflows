@@ -6,7 +6,7 @@ title: Tutorial4 (Bonus) - nf-core pipeline
 nf-core is a community effort to collect a curated set of analysis pipelines built using Nextflow. Here we use nfcore/atacseq as an example pipeline for ATAC-seq data.
 
 Here is an example batch script to run the pipeline on Puhti:
-
+```bash
 #!/bin/bash
 #SBATCH --time=01:00:00
 #SBATCH --partition=small
@@ -25,9 +25,11 @@ source activate nextflow
 
 # Nextflow command here
 nextflow run nf-core/atacseq -r 1.2.1 -profile test,singularity -resume
-
+```
 copy and paste the above script to a file named atacseq.sh and replace your project number with project_xxxx in slurm directives.
 
 Finally, submit your job
 
+```bash
 sbatch atacseq.sh
+```
