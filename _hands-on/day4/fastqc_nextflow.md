@@ -62,7 +62,7 @@ ls -l results/
 By using `-resume` flag, the resulting files from previous analysis are simply copied to folder *results* .
 
 ### Understanding nextflow channels and operators 
-Channels and operators as core features of nextflow. Please read and learn different ways of creating [Channels](https://www.nextflow.io/docs/latest/channel.html) and [operators](https://www.nextflow.io/docs/latest/operator.html) to manupulate content of channels.  Channels  support different data types like `file`, `val` annd `set`
+Channels and operators as core features of nextflow. Please read and learn different ways of creating [Channels](https://www.nextflow.io/docs/latest/channel.html) and [operators](https://www.nextflow.io/docs/latest/operator.html) to manupulate content of channels.  annd `set`
 
 Here are few examples on how one can create channels in nextflow script:
 ```nextflow
@@ -74,3 +74,64 @@ This default semantics can be changed using the channel operators that Nexflow p
 split         merge         view
 filter        map/reduce    group
 ```
+
+What would be the output of the following nextflow script with value channels?
+```bash
+#!/usr/bin/env nextflow
+// Examples with value channels where data us non-consumable
+ch = Channel.value('Hello')
+ch.view()
+ch.view()
+ch.view()
+
+ch1 = Channel.value()    // empty channel
+// ch1.view{ "content in ch1 channel: $it" } // if you uncomment view() method will wait for data
+ch2 = Channel.value( 'Hello there' )   //  binds a string to it
+ch2.view{ "content in ch2 channel: $it" }
+ch3 = Channel.value( [1,2,3,4,5] )  //binds a list object to it that will be emitted as a sole emission.
+ch3.view{ "content in ch3 channel: $it" }
+
+```
+
+<details>
+<summary> <b> Click me for solution </b></summary>
+<pre>	
+N E X T F L O W  ~  version 20.07.1
+Launching `value.nf` [elated_lumiere] - revision: b486c90fcb
+Hello
+Hello
+Hello
+content in ch2 channel: Hello there
+content in ch3 channel: [1, 2, 3, 4, 5]
+</pre>
+</details>
+
+What would be the output of the following nextflow script with queue channels ?
+You need to be in `fastqc_demo` folder as queue channel example needs fastq files in `fastqc_demo/data`
+```bash
+#!/usr/bin/env nextflow
+// example with queue channel where data is consumable
+params.greeting  = 'Hello world!'
+greeting_ch = Channel.from(params.greeting)
+greeting_ch.view{ "queue channel first time: $it" }
+// as the channel queue channel, if you uncomment below line, you error: Channel `greeting_ch` has been used as an input by more than a process or an operator
+// greeting_ch.view{ "queue channel second time: $it" }  
+
+list = ['hello', 'world']
+list_ch = Channel.fromList(list)
+list_ch.view{ "list channel: $it" }
+
+file_ch = Channel.fromFilePairs('./data/lung3e_subset_{1,2}.fq.gz')
+file_ch.view{ "files channel: $it" }
+```
+<details>
+<summary> <b> Click me for solution </b></summary>
+<pre>	
+N E X T F L O W  ~  version 20.07.1
+Launching `queue.nf` [pensive_becquerel] - revision: 9ddca4d6bf
+list channel: hello
+list channel: world
+queue channel first time: Hello world!
+files channel: [lung3e_subset, [/scratch/project_2003682/yetukuri/nextflow_tutorial/fastqc_demo/data/lung3e_subset_1.fq.gz, /scratch/project_2003682/yetukuri/nextflow_tutorial/fastqc_demo/data/lung3e_subset_2.fq.gz]]
+</pre>
+</details>
