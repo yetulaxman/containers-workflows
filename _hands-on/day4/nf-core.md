@@ -23,7 +23,7 @@ unset XDG_RUNTIME_DIR
 module load bioconda
 source activate nextflow
 
-# Nextflow command here
+# nf-core pipeline examples here
 # Variant calling on genome data
 nextflow run nf-core/sarek -r 2.7.1 -profile test,singularity -resume
 # proteomics example
