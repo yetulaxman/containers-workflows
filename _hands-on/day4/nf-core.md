@@ -28,7 +28,7 @@ source activate nextflow
 nextflow run nf-core/sarek -r 2.7.1 -profile test,singularity -resume
 # proteomics example
 # nextflow run nf-core/proteomicslfq  -r 1.0.0  -profile test,singularity -resume
-#metabolomics example
+# metabolomics example
 # nextflow run nf-core/metaboigniter -r 1.0.1 -profile test,singularity -resume
 ```
 copy and paste the above script to a file named atacseq.sh and replace your project number with project_xxxx in slurm directives.
