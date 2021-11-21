@@ -66,7 +66,7 @@ Channels and operators as core features of nextflow. Please read and learn diffe
 
 Here are few examples on how one can create channels in nextflow script:
 ```nextflow
-Channel.create(); Channel.empty; Channel.fromPath()
+Channel.create(); Channel.empty(); Channel.fromPath()
  ```
 This default semantics can be changed using the channel operators that Nexflow provides, some of which are shown below:
 
@@ -78,7 +78,7 @@ filter        map/reduce    group
 What would be the output of the following nextflow script with value channels?
 ```bash
 #!/usr/bin/env nextflow
-// Examples with value channels where data us non-consumable
+// Examples with value channels where data is non-consumable
 ch = Channel.value('Hello')
 ch.view()
 ch.view()
