@@ -47,7 +47,7 @@ Upon completion of this tutorial you will learn to:
 7. Prepare a batch script (e.g., deepvariant_puhti.sh) to run WGS analysis on Puhti. A batch script template with all necessary information is provided below. 
   Please note that this batch also uses a special CSC-specific [singualrity_wrapper](https://docs.csc.fi/computing/containers/run-existing/) command to set
   appropriate options automatically for running Singularity. You are free to use plain singularity command by taking care of bind mounts appropriately. You
-  are required to change the project number of this course or your own project before submitting the script on Puhti cluster.
+  are required to use a valid project number in the script before submitting it to Puhti cluster.
    
    ```bash
    #!/bin/bash
