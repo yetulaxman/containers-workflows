@@ -25,7 +25,7 @@ This exercise requires a workstation with docker client installed and thus can't
    inside the container as shown below:
   
    ```bash
-   apt-get install vim
+   apt-get update && apt-get install -y vim
    ```
    use Ctrl + p then Ctrl + q on terminal to detach from container. 
 
