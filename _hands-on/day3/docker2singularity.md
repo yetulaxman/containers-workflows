@@ -5,20 +5,20 @@ title: Tutorial1 -  Conversion of Docker Images to singularity
 
 # Converting Docker Image to Singularity
 
-We converted a Docker image to singularity using *singularity build* subcommand in previous episodes. And also, we can use *singularity pull* subcommand to achieve the same outcome. As an example for the image conversion, we will use a biconda package named, [trimmomatic](https://bioconda.github.io/recipes/trimmomatic/README.html) software which is available as docker image in Quay container registry. Trimmomatic is a flexible read trimming tool for Illumina NGS data. 
+We have learned to convert a Docker image to singularity using *singularity build* subcommand in previous episodes. And also, note that we can use *singularity pull* subcommand to achieve the same outcome. As an example for docker image conversion, we will use a bioconda package named, [trimmomatic](https://bioconda.github.io/recipes/trimmomatic/README.html) software which is available as a docker image in Quay container registry. Trimmomatic is a flexible read trimming tool for Illumina NGS data. 
 
 ###  Expected outcome of this tutorial:
 Upon completion of this tutorial, you will be able to:
-- Launch a singularity container from a bioconda package which available as a docker image (e.g., trimmomatic image)
-- Manage Singularity TMPDIR and CACHEDIR directories in HPC environment
+- Launch a singularity container of a bioconda package which is available as a docker image (e.g., trimmomatic image)
+- Manage singularity TMPDIR and CACHEDIR directories in HPC environment
 
 
 ### Launching trimmomatic software as a singularity container
 
-1. Launch interactive session on Puhti as below:
+1. Launch an interactive session on Puhti as below:
 
    ```bash
-   # start interactive node as below and choose your project name on prompt
+   # start interactive node as below and choose your project name on command prompt
    sinteractive -c 2 -m 4G -d 100
    ```
 2. Visit trimmomatic software webpage as available on [bioconda](https://bioconda.github.io/recipes/trimmomatic/README.html) channel. Look for the URI (Looks
@@ -28,10 +28,10 @@ Upon completion of this tutorial, you will be able to:
    ```bash
     singularity pull docker://quay.io/biocontainers/trimmomatic:0.32--hdfd78af_4
    ```
-   Upon successful completion of above command, you will be able to see trimmomatic singulairty image (name: trimmomatic_0.32--hdfd78af_4.sif) in the current
+   Upon successful completion of above command, you will be able to see trimmomatic singularity image (name: trimmomatic_0.32--hdfd78af_4.sif) in the current
    directory.
    
-3. when you convert multiple smaller images or a bigger image, the singularity cache can take up lot of space. Please note that the singularity cache directory is 
+3. When you convert multiple smaller images or a bigger image, the singularity cache can take up lot of space. Please note that the singularity cache directory is 
    by default your HOME directory which is limted by disk space quota in CSC HPC environment. As a best practice tip, do not pull a Singularity image cache to your 
    Puhti Home Directory. In order to avoid such cache issues which would result in disk space errors, we recommend resetting Singularity TMPDIR and CACHEDIR 
    directories either to Lustre scratch or $LOCAL_SCRATCH  before performing image conversion as below:
