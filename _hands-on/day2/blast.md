@@ -7,7 +7,7 @@ There are many bioinformatics applications available as docker images in  differ
 
 ### Expected learning outcome from tutorial:
 After this tutorial, you will be able to: 
-- Search a bioinformatics application (in this case, BLAST) as a docker image from a registry (from Red Hat Quay)
+- Search a bioinformatics application (in this case, BLAST) as a docker image from a registry (from Quay.io)
 - Deploy the application as a singularity container in Puhti environment interactively
 
 
@@ -85,6 +85,6 @@ After this tutorial, you will be able to:
    XP_036013148.1 protein phosphatase 1A isoform X1 [Mus musculus]       127     3e-31
    [..]
   ```
-  You can see that several proteins in the mouse genome match those in the mouse phasphatage (as expected).
+  You can see that several proteins phosphate isoforms in the mouse proteins database match with protein phosphatase 1G (as expected).
 
 
