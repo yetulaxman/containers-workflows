@@ -44,7 +44,7 @@ After this tutorial, you will learn to:
  
     ```bash
     cd /scratch/project_xxxx/YOURCSCUSERNAME  # replace `project_xxxx` with a valid project number 
-    singularity build local_trimmomatic_image.sif docker-archive://trimmomatic_tar
+    singularity build local_trimmomatic_image.sif docker-archive://trimmomatic_image.tar
     ```
   
 6. Launch singularity container and check if you can get a command-line help for trimmomatic software
