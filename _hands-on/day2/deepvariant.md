@@ -71,4 +71,4 @@ Upon completion of this tutorial you will learn to:
    ```bash
    sbatch -J deepvariant deepvariant_puhti.sh
    ```
-   If the analysis is completed successfully (**hint**: job status check using `squeue -u $USER` command or using `seff <jobid>`), you are able to see the vcf files as output in the current directory.
+   If the analysis is completed successfully (**hint**: check the status of submitted job using `squeue -u $USER` command or using `seff <jobid>`), you are able to see the vcf files as output in the current directory.
