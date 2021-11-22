@@ -86,10 +86,10 @@ ch.view()
 
 ch1 = Channel.value()    // empty channel
 // ch1.view{ "content in ch1 channel: $it" } // if you uncomment view() method will wait for data
-ch2 = Channel.value( 'Hello there' )   //  binds a string to it
-ch2.view{ "content in ch2 channel: $it" }
-ch3 = Channel.value( [1,2,3,4,5] )  //binds a list object to it that will be emitted as a sole emission.
-ch3.view{ "content in ch3 channel: $it" }
+ch2 = Channel.value( 'Hello there' )   //  binds a string to *ch2*
+ch2.view{ "content in ch2 channel: $it" } // *it* is an implicit variable
+ch3 = Channel.value( [1,2,3,4,5] )  // binds a list object to *ch3* which will be emitted as a sole emission.
+ch3.view{ "content in ch3 channel: $it" } 
 
 ```
 
@@ -114,7 +114,7 @@ You need to be in `fastqc_demo` folder as queue channel example needs fastq file
 params.greeting  = 'Hello world!'
 greeting_ch = Channel.from(params.greeting)
 greeting_ch.view{ "queue channel first time: $it" }
-// as the channel queue channel, if you uncomment below line, you error: Channel `greeting_ch` has been used as an input by more than a process or an operator
+// as the channel queue channel, if you uncomment below line, you can see error: Channel `greeting_ch` has been used as an input by more than a process or an operator
 // greeting_ch.view{ "queue channel second time: $it" }  
 
 list = ['hello', 'world']
