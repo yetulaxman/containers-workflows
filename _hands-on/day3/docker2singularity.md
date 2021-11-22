@@ -22,7 +22,7 @@ Upon completion of this tutorial, you will be able to:
    sinteractive -c 2 -m 4G -d 100
    ```
 2. Visit trimmomatic software webpage as available on [bioconda](https://bioconda.github.io/recipes/trimmomatic/README.html) channel. Look for the URI (Looks
-   something like the following for trimmomatic: quay.io/biocontainers/trimmomatic:tag) of trimmomatic image  and incorporate the latest tag information for 
+   something like the following: quay.io/biocontainers/trimmomatic:tag) of trimmomatic image  and incorporate the latest tag information for 
    trimmomatic software. Once you have URI path with tag information, you can build a singularity image as below:
   
    ```bash
@@ -51,7 +51,7 @@ Upon completion of this tutorial, you will be able to:
     singularity exec trimmomatic_0.32--hdfd78af_4.sif trimmomatic --help   # or simply ./trimmomatic_0.32--hdfd78af_4.sif
    ```
   
-   Few useful tips:
+   > Few useful tips for managing singularity cache:
   
     ```bash  
     singularity cache list  # You can check the disk space taken up by the image in cache folder
