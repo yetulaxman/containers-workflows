@@ -1,6 +1,6 @@
 ---
 topic: singularity
-title: Tutorial1 -  Conversion of Docker images to singularity
+title: Tutorial1 -  Conversion of Docker Images to singularity
 ---
 
 # Converting Docker image to Singularity
