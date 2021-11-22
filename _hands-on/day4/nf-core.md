@@ -31,10 +31,10 @@ nextflow run nf-core/sarek -r 2.7.1 -profile test,singularity -resume
 # metabolomics example
 # nextflow run nf-core/metaboigniter -r 1.0.1 -profile test,singularity -resume
 ```
-copy and paste the above script to a file named atacseq.sh and replace your project number with project_xxxx in slurm directives.
+copy and paste the above script to a file named sarek_nfcore.sh and replace your project number with project_xxxx in slurm directives.
 
 Finally, submit your job
 
 ```bash
-sbatch atacseq.sh
+sbatch sarek_nfcore.sh
 ```
