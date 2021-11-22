@@ -1,18 +1,18 @@
 ---
 topic: singularity
-title: Tutorial4(bonus) -  sharing images using registries
+title: Tutorial4(bonus) -  Sharing images using registries
 ---
 
-we have to sometimes prepare custom images to meet our needs either by building a new image from Dockerfile or adding missing software tools on pre-built images. And also, we usually want to re-use the customised image later or share it with other collaborators. One way to share images with others is to use image registries such as DockerHub! In this session, you will learn to modify existing Docker image and share it with others via DockerHub. For this purpose, we will make use of [FastQC software](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/) image from DockerHub as a starting image for modification. 
+We have to sometimes prepare custom images to meet our needs either by building a new image from Dockerfile or adding missing software tools on pre-built images. And also, we usually want to re-use the customised image later by ourselves or share it with other collaborators. One way to share images with others is to use image registries such as DockerHub! In this session, you will learn to modify existing Docker image and share it with others via DockerHub. For this purpose, we will make use of [FastQC software](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/) image from DockerHub as a starting image for modification. 
 
-This exercise requires workstation with docker client and thus can't be done in CSC HPC environment.  <a href="http://labs.play-with-docker.com/" target="_blank"> Use PWD terminal</a> instead.
+This exercise requires a workstation with docker client installed and thus can't be done in CSC HPC environment.  <a href="http://labs.play-with-docker.com/" target="_blank"> Use PWD terminal</a> instead.
 
 ## Sharing docker image via DcokerHub
 
 1. Deploy FastQC Container
 
-   Let's launch FastQC container interactively as it is easy for testing or development. For that, use *docker run* command with special flags -it so that the
-   command attaches you with an interactive terminal in the container as shown below:
+   Let's launch FastQC container interactively as it is easy for testing or development. For that, use *docker run* command with special flag **-it** so that the
+   command attaches you with an interactive terminal inside the container as shown below:
    
     ```bash
     docker container run -it biocontainers/fastqc:v0.11.9_cv7 /bin/sh
@@ -44,7 +44,7 @@ This exercise requires workstation with docker client and thus can't be done in 
  
    Sharing an image *via* docker registry such as  DockerHub (the most popular image registry, hosting hundreds of thousands of images) is an efficient way of 
    sharing and managing your images. Once an image is in a docker (public) registry, anyone can pull it from there. However, this involves setting up an account in 
-   Docker registry. Here are few steps you can do to set-up your account:
+   DockerHub. If you don't have DockerHub account already, here are few steps you can do to set-up your account:
      - One can create an account on the DockerHub using instructions [here](https://hub.docker.com/account/signup/). After verifying your email you are ready to 
    go and upload your first docker image.
      - Click on Create Repository.
