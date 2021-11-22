@@ -22,8 +22,7 @@ Upon completion of this tutorial, you will be able to:
    sinteractive -c 2 -m 4G -d 100
    ```
 2. Visit [trimmomatic software webpage](https://bioconda.github.io/recipes/trimmomatic/README.html)  as available on bioconda channel. Look for the URI (Looks
-   something like the following: quay.io/biocontainers/trimmomatic:tag) of trimmomatic image  and incorporate the latest tag information for 
-   trimmomatic software. Once you have URI path with tag information, you can build a singularity image as below:
+   something like the following: quay.io/biocontainers/trimmomatic:tag) of trimmomatic image in *docker pull* command and incorporate [the latest tag](https://quay.io/repository/biocontainers/trimmomatic?tab=tags) information for trimmomatic software. Once you have URI path with tag information, you can build a singularity image as below:
   
    ```bash
     singularity pull docker://quay.io/biocontainers/trimmomatic:0.32--hdfd78af_4
