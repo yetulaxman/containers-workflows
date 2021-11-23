@@ -84,7 +84,9 @@ After this tutorial, you will be able to:
    XP_036013149.1 protein phosphatase 1A isoform X2 [Mus musculus]       128     6e-32
    XP_036013148.1 protein phosphatase 1A isoform X1 [Mus musculus]       127     3e-31
    [..]
+   
   ```
-  You can see that several proteins phosphate isoforms in the mouse proteins database match with protein phosphatase 1G (as expected).
+  
+  You can see that several proteins phosphate isoforms in the mouse proteins database match with protein phosphatase 1G (as expected)
 
 
