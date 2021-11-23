@@ -87,6 +87,6 @@ After this tutorial, you will be able to:
    
   ```
   
-  You can see that several proteins phosphate isoforms in the mouse proteins database match with protein phosphatase 1G (as expected)
+  You can see that several protein phosphate isoforms from mouse proteins database match with protein phosphatase 1G (as expected)
 
 
