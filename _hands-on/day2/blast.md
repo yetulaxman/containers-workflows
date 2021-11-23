@@ -51,7 +51,7 @@ After this tutorial, you will be able to:
     You need to prepare the mouse database with `makeblastdb` for the search using the following command:
 
     ```bash
-    mkdir makeblastdb
+    # mkdir makeblastdb
     singularity exec -B $PWD:$PWD blast_quay.sif makeblastdb -in mouse.1.protein.faa -dbtype prot
     ```  
     After the container has finished the job, you should see several new files in the current directory.
