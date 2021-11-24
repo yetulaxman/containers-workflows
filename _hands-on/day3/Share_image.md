@@ -38,8 +38,7 @@ This exercise requires a workstation with docker client installed and thus can't
    docker ps -a
    docker commit <container id> fastqc-vim:test   # docker commit 6527b0394bdf  fastqc-vim:test
    ```
-   > note: It is a good idea to stop the container if running before performing *docker commit*  
-
+   
 4. Push your image to your DockerHub repository
  
    Sharing an image *via* docker registry such as  DockerHub (the most popular image registry, hosting hundreds of thousands of images) is an efficient way of 
