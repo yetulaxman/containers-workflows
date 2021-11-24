@@ -201,7 +201,7 @@ run one such application.
     new line characters. From the computer's point of view the whole singularity_wrapper command is just a single line.
 
     💬 This way of splitting the command can improve readability and make it easier to edit parameters, but one has to be careful with the 
-    notation, or some of the command may be omitted. Make sure "\" precedes the newline directly. If there is a e.g. a space between
+    notation, or some of the command may be omitted. Make sure "&bsol;" precedes the newline directly. If there is a e.g. a space between
     the "&bsol;" and the newline, the space gets escaped, not the newline, and the line gets cut.
 
 4. Submit the job to the queue with:
