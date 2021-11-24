@@ -68,6 +68,7 @@ After this tutorial, you will be able to:
    ```
 
    ```bash
+   
    Sequences producing significant alignments:                          (Bits)  Value
 
    XP_036016308.1 protein phosphatase 1B isoform X3 [Mus musculus]       129     3e-32
