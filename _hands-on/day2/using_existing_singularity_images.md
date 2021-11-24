@@ -197,12 +197,12 @@ run one such application.
 
    ```
 
-    💬 Note that in the above example the command line is quite long, so we have used escape charecter "\" to escape (i.e. ignore)
+    💬 Note that in the above example the command line is quite long, so we have used escape charecter "&bsol;" to escape (i.e. ignore)
     new line characters. From the computer's point of view the whole singularity_wrapper command is just a single line.
 
     💬 This way of splitting the command can improve readability and make it easier to edit parameters, but one has to be careful with the 
     notation, or some of the command may be omitted. Make sure "\" precedes the newline directly. If there is a e.g. a space between
-    the "\" and the newline, the space gets escaped, not the newline, and the line gets cut.
+    the "&bsol;" and the newline, the space gets escaped, not the newline, and the line gets cut.
 
 4. Submit the job to the queue with:
     ```bash
