@@ -31,6 +31,8 @@ git clone https://github.com/iarcbioinfo/data_test
 
 ```
 
+Here the aim of bioinformatics analysis is to plot mean coverage over a series of BAM files
+
 ### Using containers with nextflow *via* commandline option
 Here is a simple example syntax (for an alternative approach, see *profiles* section below) to use docker/singularity containers: 
 
