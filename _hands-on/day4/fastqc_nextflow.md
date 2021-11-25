@@ -114,7 +114,7 @@ You need to be in `fastqc_demo` folder as queue channel example needs fastq file
 params.greeting  = 'Hello world!'
 greeting_ch = Channel.from(params.greeting)
 greeting_ch.view{ "queue channel first time: $it" }
-// as the channel queue channel, if you uncomment below line, you can see error: Channel `greeting_ch` has been used as an input by more than a process or an operator
+// As this is queue channel, if you uncomment below line, you can see error: Channel `greeting_ch` has been used as an input by more than a process or an operator
 // greeting_ch.view{ "queue channel second time: $it" }  
 
 list = ['hello', 'world']
