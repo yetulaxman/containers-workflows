@@ -36,7 +36,7 @@ Here is a simple example syntax (for an alternative approach, see *profiles* sec
 
 ```bash
 ## For Docker
-nextflow run <nextflow_script>  -with-docker <image_path> # e.g.,image_path = docker://biocontainers/fastqc:v0.11.9_cv7
+nextflow run <nextflow_script>  -with-docker <image_path> # e.g.,image_path = biocontainers/fastqc:v0.11.9_cv7
 
 ## For Singularity
 nextflow run <nextflow_script>  -with-singularity <image_path>    
