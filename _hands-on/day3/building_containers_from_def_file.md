@@ -153,6 +153,7 @@ Add the following lines to the definition file:
   apt update
   apt install python3 -y
   apt install pip -y
+  ln -s /usr/bin/python3 /usr/bin/python
 ```
 💬Indentation is optional, but improves readability. 
 💬Comments will make the definition file easier to read for others (and also for yourself after some time has passed).
