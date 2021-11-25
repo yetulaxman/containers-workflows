@@ -106,7 +106,7 @@ Add the following lines to the definition file:
 
 ```text
 Bootstrap: docker
-From: ubuntu: 20.04
+From: ubuntu:20.04
 ```
 
 ### 2.2 Including files
