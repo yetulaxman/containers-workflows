@@ -53,7 +53,7 @@ Let's try building an image.
 
 Download an example definition file:
 ```bash
-wget https://raw.githubusercontent.com/amsaren/course_materials/main/Biocontainers_2021/Files/tutorial-1.def
+wget https://raw.githubusercontent.com/amsaren/course_materials/main/Singularity_def_file_examples/tutorial-1.def
 ```
 The basic command to use on a system where you have root access would be:
 ```bash
