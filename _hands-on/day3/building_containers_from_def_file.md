@@ -187,9 +187,9 @@ For this we also need to install git and python3-devel packages.
 
 Comment out or delete the pip command, and add the following to the definition file:
 ```text
-  apt install python3-devel -y
+  apt install python3-dev -y
   apt install git -y
-  git clone https://github.com/macs3-project/MACS.git -recurse-submodules
+  git clone https://github.com/macs3-project/MACS.git --recurse-submodules
   cd MACS
   pip install -r requirements.txt
   python setup.py install
