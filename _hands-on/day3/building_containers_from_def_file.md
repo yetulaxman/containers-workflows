@@ -319,5 +319,5 @@ singularity inspect --labes macs3.sif
 singularity run-help macs3.sif
 ```
 
-We have provided some [example definition files](https://github.com/amsaren/course_materials/blob/main/Singularity_def_file_examples/mcl.def),
+We have provided some [example definition files](https://github.com/amsaren/course_materials/tree/main/Singularity_def_file_examples),
 including the various versions of this tutorial. 
