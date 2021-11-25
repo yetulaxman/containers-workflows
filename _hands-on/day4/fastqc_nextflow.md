@@ -33,7 +33,7 @@ One can also override parameter values (here files inside `$baseDir/data/` direc
 ```bash
 nextflow run fastqc.nf --reads data2/*_{1,2}_subset.fq.gz
 ```
-Please note that *data2* folder has different samples (i.e., lymphnode4a samples) than the ones (i.e.,lung3e samples) in *data* folder which ould have been used by default. You can see that *fastqc* analysis was performed on a new set of samples now as shown below:  
+Please note that *data2* folder has different samples (i.e., lymphnode4a samples) than the ones (i.e.,lung3e samples) in *data* folder which could have been used by default. You can see that *fastqc* analysis was performed on a new set of samples now as shown below:  
 
 ```
 ls -l $PWD/work/*/*
@@ -62,7 +62,7 @@ ls -l results/
 By using `-resume` flag, the resulting files from previous analysis are simply copied to folder *results* .
 
 ### Understanding nextflow channels and operators 
-Channels and operators as core features of nextflow. Please read and learn different ways of creating [Channels](https://www.nextflow.io/docs/latest/channel.html) and [operators](https://www.nextflow.io/docs/latest/operator.html) to manupulate content of channels.  
+Channels and operators are core features of nextflow. Please read and learn different ways of creating [Channels](https://www.nextflow.io/docs/latest/channel.html) and [operators](https://www.nextflow.io/docs/latest/operator.html) to manupulate content of channels.  
 
 Here are few examples on how one can create channels in nextflow script:
 ```nextflow
