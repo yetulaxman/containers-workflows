@@ -194,7 +194,7 @@ Copy all nextflow report and visualisation files from working directory (i.e., .
 mkdir -p $HOME/nextflow_output
 cp *.html *.png *.txt *.pdf  $HOME/nextflow_output
 ```
-> **Updated note**:  if the following SSH tunneling looks complicated, feel free to use [Puhti web interface](https://www.puhti.csc.fi) to view files in HOME/nextflow_output  by launching Desktop under Apps)
+> **Updated note**:  if the following SSH tunneling looks complicated, feel free to use [Puhti web interface](https://www.puhti.csc.fi) to view files in $HOME/nextflow_output  by launching Desktop under Apps. You can find the files in you home folder.
 
 One has to open a port on Puhti login node to access files on your Puhti home directory from your local computer via browser. In this course, every participant should have a *unique port number* opened on Puhti login node. **Open a new terminal** on your local machine and replace *$port* value with some random number (e.g., a number between 7000 and 9000) before executing the following command:
 
