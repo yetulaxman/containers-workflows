@@ -152,8 +152,7 @@ Add the following lines to the definition file:
   # Install python
   apt update
   apt install python3 -y
-  apt install pip -y
-  ln -s /usr/bin/python3 /usr/bin/python
+  apt install pip -y  
 ```
 💬Indentation is optional, but improves readability. 
 💬Comments will make the definition file easier to read for others (and also for yourself after some time has passed).
@@ -193,7 +192,7 @@ Comment out or delete the pip command, and add the following to the definition f
   git clone https://github.com/macs3-project/MACS.git --recurse-submodules
   cd MACS
   pip install -r requirements.txt
-  python setup.py install
+  python3 setup.py install
 ```
 You can now try to build it:
 ```bash
@@ -222,7 +221,7 @@ installation may end up in some other location.
 To test this, let's edit the install command above a bit to install to folder /app/macs instead:
 
 ```text
-  python setup.py install --prefix=/app/macs
+  python3 setup.py install --prefix=/app/macs
 ```
 
 We will now need to adjust `$PATH` and `$PYTHONPATH`:
@@ -245,7 +244,7 @@ If the build finishes, try it:
 singularity exec macs3.sif macs3 --help
 ```
 
-## 3. Adding addition metadata
+## 3. Adding additional metadata
 
 If you are building the container image just for yourself, you may be happy with an image with
 just the basic functionality.
@@ -255,8 +254,7 @@ definition file.
 
 ### 3.1 Adding a runscript
 
-Runscript is a list of commands that will be executed when the container is run with `singularity run` or when the container 
-is run as an executable. It is defined in section `%runscript`.
+Runscript is a list of commands that will be executed when the container is run with `singularity run` or when the container is run as an executable. It is defined in section `%runscript`.
 
 In the finished container image these commands are stored in script `/singularity`.
 
