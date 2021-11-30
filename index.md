@@ -7,9 +7,6 @@ author: CSC Training
 
 {% assign items = site.hands-on |  sort: "title" %}
 
-## 0. Course Preliminaries
-###  [Slides: preliminary information](https://a3s.fi/containers-workflows/0_course_preliminaries.pdf)
-
 
 ## 1.  Introduction to CSC HPC environment and containers
 ### 1.1 [Slides:Introduction to CSC HPC environment](https://a3s.fi/containers-workflows/CSC_HPC_Environment.html)
