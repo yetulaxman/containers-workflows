@@ -76,8 +76,7 @@ copy above script and paste in `nextflow.config` file which is located in curren
 You can then launch nf_coverage workflow (from `nf_coverage_demo` folder) with defined profiles as shown below:
 
 ```bash
-module load bioconda
-source activate nextflow
+module load nextflow
 
 nextflow run plot_coverage.nf  \
           -profile singularity \
@@ -169,8 +168,7 @@ unset XDG_RUNTIME_DIR
 
 
 # Activate  Nextflow on Puhti
-module load bioconda
-source activate nextflow
+module load  nextflow
 
 # Nextflow command here
 nextflow run plot_coverage.nf  \
