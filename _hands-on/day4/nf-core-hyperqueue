@@ -61,4 +61,5 @@ Finally, submit your job
 
 ```bash
 sbatch sarek_nfcore-hq.sh
+
 ```
