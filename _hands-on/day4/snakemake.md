@@ -8,7 +8,7 @@ Snakemake workflow, which is described in terms of rules that define how to crea
 
 ## Running Snakemake with a pre-installed module on Puhti
 
-Snakemake is installed as a module on Puhti and can be used. 
+Snakemake is installed as a module on Puhti and can be used as below: 
 
 
 ```bash
@@ -23,17 +23,17 @@ Where contents of the file, test.smk are as below:
 ```bash
 
 rule all:
-        input: "HELP-CAPITALISE.txt"
+        input: "CAPITALISE.txt"
 
 rule say_hello:
-        output: "fastqc-help.txt"
+        output: "smaller_case.txt"
         shell:
                 """
-                echo "testing toy example for snakemake workflow" > fastqc-help.txt
+                echo "testing toy example for snakemake workflow" > smaller_case.txt
                 """
 rule capitalise:
-        input: "fastqc-help.txt"
-        output: "HELP-CAPITALISE.txt"
+        input: "smaller_case.txt"
+        output: "CAPITALISE.txt"
         shell:
                 """
                 tr '[:lower:]' '[:upper:]' < {input} > {output}
@@ -61,28 +61,37 @@ export PYTHONPATH="/scratch/project_xxx/yetukuri/snakemake_workflow/venv/lib/pyt
 #(this needs to be the same version of python package)
 ```
 
-test2.smk
+Contents of test2.smk file:
 
 ```bash
 import matplotlib   # You can use it if needed as part of preporcessing of data.
 
 rule all:
-        input: "HELP-CAPITALISE.txt"
+        input: "CAPITALISE.txt"
 
 rule say_hello:
-        output: "fastqc-help.txt"
-        python -c "import pandas"
+        output: "smaller_case.txt"
+        python -c "import matplotlib"
         shell:
                 """
-                echo "testing toy example for snakemake workflow where matplotlib package is installed" > fastqc-help.txt
+                echo "testing toy example for snakemake workflow where matplotlib package is installed" > smaller_case.txt
                 """
 rule capitalise:
-        input: "fastqc-help.txt"
-        output: "HELP-CAPITALISE.txt"
+        input: "smaller_case.txt"
+        output: "CAPITALISE.txt"
         shell:
                 """
                 tr '[:lower:]' '[:upper:]' < {input} > {output}
                 """
+```
+
+Run Snakemake workflow:
+
+```bash
+module load snakemake/7.17.1
+snakemake -s test2.smk      -j 1     --latency-wait 60   --cluster "sbatch -t 10 \
+--account=project_2001659 --job-name=fastqc-help  --tasks-per-node=1 --cpus-per-task=1 \
+--mem-per-cpu=4000 -p test"
 ```
 
 ## Snakemake workflow with singularity containers
@@ -100,16 +109,7 @@ Contents of test3.smk are as below:
 ```bash
 # test availability of different packages 
 import matplotlib
-import pandas as pd
-import numpy
-from snakemake.utils import validate, min_version
-from multiprocessing import cpu_count
-import glob
-import re
-import os
-import sys
-print(sys.version)
-print(sys.executable)
+
 import pkg_resources;installed_packages = pkg_resources.working_set;installed_packages_list = sorted(["%s==%s" % (i.key, i.version) for i in installed_packages]);print(installed_packages_list)
 
 rule all:
