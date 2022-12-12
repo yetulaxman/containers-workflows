@@ -38,12 +38,20 @@ author: CSC Training
 {% endif %}
 {% endfor %}
 
-## 4. Workflows (Nextflow) on HPC 
+## 4. Nextflow on HPC 
 ### 4.1 [Slides: Introduction to workflows with nextflow](https://a3s.fi/containers-workflows/Intro_workflows.pdf)
 ### 4.2 [Slides: Workflows with singularity containers](https://a3s.fi/containers-workflows/workflow_singularity_containers.pdf)
 ### 4.3 Tutorials and exercises
 {% for hands-on in items %}
 {% if hands-on.topic == 'nextflow' %}
+[{{ hands-on.title }}]({{ hands-on.url | relative_url }})
+{% endif %}
+{% endfor %}
+
+## 5. Snakemake on HPC 
+### 5.1 Tutorials and exercises
+{% for hands-on in items %}
+{% if hands-on.topic == 'snakemake' %}
 [{{ hands-on.title }}]({{ hands-on.url | relative_url }})
 {% endif %}
 {% endfor %}
