@@ -108,3 +108,14 @@ rule capitalise:
                 tr '[:lower:]' '[:upper:]' < {input} > {output}
                 """
 ```
+
+
+## Running Snakemake with HyperQueue
+If your workflow manager is using sbatch for each process execution and you have many short processes it's advisable to switch to HyperQueue to improve throughput and decrease load on the system batch scheduler.
+Snakemake
+
+Using Snakemake's --cluster flag we can use hq submit instead of sbatch:
+
+```
+snakemake --cluster "hq submit --cpus <threads> ..."
+```
