@@ -73,7 +73,7 @@ export PYTHONPATH="/scratch/project_2003682/yetukuri/snakemake_workflow/venv/lib
 ```
 test.smk
 
-
+```bash
 import matplotlib
 import pandas as pd
 import numpy
