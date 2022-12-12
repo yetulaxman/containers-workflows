@@ -1,23 +1,26 @@
 ---
 topic: snakemake
-title: Tutorial7 - Sankemake toy example
+title: Tutorial6 - Sankemake toy example
 ---
 
-Snakemake is one of the popular workflow managers in bioinformatics community and is available as a module in Puhti environment. And also, Snakemake can be easily
-installed in user's Projappl directory.
+Snakemake workflow, which is defined in terms of rules that define how to create output files from input files, is one of the popular workflow managers in bioinformatics community. Snakemae is available as a module in Puhti environment. And also, Snakemake can be easily installed in user's own space (e.g., Projappl directory) if you need to have a specific version for your scieintif workflow.
 
 
-## Installing snakemake locall using Tykky container wrapper:
+## Installing Snakemake locally using Tykky container wrapper:
 
-```
+Snakemake is available from Bioconda as well as from  PyPi. We recommend installing using [Tykky](https://docs.csc.fi/computing/containers/tykky/) container wrapper tool available at CSC to install in CSC HPC environment.
+
+Here is one way to install Snakemake using Tykky:
+
+```bash
 module load tykky
 mkdir /projappl/project_xxx/snakemake
 conda-containerize new --mamba --prefix /projappl/project_xxx/snakemake env.yaml
 
 ```
-where env.yaml file :
+Where content of env.yaml file is as below:
 
-```
+```bash
 channels:
   - conda-forge
   - bioconda
@@ -33,13 +36,12 @@ dependencies:
 
 ```
 
-Running Snakemake pipeline:
+Once Snakemake is installed as a container setup, we have to add installation bin directory to $PATH variable before start using Snakemake as shown below:
 
-
-```
+```bash
 export PATH="/projappl/project_xxx/snakemake/bin:$PATH"
 
-/projappl/project_2001659/snakemake/bin/python3.10 /projappl/project_2001659/snakemake/bin/snakemake -s hello-world.smk -j 1 \ 
+/projappl/project_xxx/snakemake/bin/python3.10 /projappl/project_xxx/snakemake/bin/snakemake -s hello-world.smk -j 1 \ 
 --latency-wait 60 --cluster "sbatch -t 300 --account=project_2001659 --job-name=hello_world --tasks-per-node=1 --cpus-per-task=1 \
 -p medium " --scheduler greedy
 
