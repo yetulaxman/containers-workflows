@@ -3,13 +3,14 @@ topic: nextflow
 title: Tutorial5 - Run nf-core pipeline with hyperqueue executor
 ---
 
-nf-core is a community effort to collect a curated set of analysis pipelines built using Nextflow. Here we use [Sarek workflow](https://github.com/nf-core/sarek) as an example pipeline to detect variants on whole genome or targeted sequencing data. 
+nf-core is a community effort to collect a curated set of analysis pipelines built using Nextflow. Here we use [Sarek workflow](https://github.com/nf-core/sarek) as an example pipeline to detect variants on whole genome or targeted sequencing data.  In this tutorial we use HyperQueue executor instead of 'local' or 'slurm' executor.
+
 
 Here is an example batch script to run the pipeline on Puhti:
 ```bash
 #!/bin/bash
 #SBATCH --job-name=MetaPhage_Demo
-#SBATCH --account=project_2001659
+#SBATCH --account=project_xxxx
 #SBATCH --time=02:00:00
 #SBATCH --nodes=2
 #SBATCH --cpus-per-task=40
@@ -50,6 +51,19 @@ hq server stop
 ```
 
 copy and paste the above script to a file named sarek_nfcore-hq.sh and replace your project number with project_xxxx in slurm directives.
+
+> Note: In order to use hyperqueue executor for nextflow; use the latest version of Nextflow and add the following script :
+
+```bash
+echo "executor {
+   queueSize = $(( 40*SLURM_NNODES ))   
+   name = 'hq'
+  cpus = $(( 40*SLURM_NNODES )) 
+ }" >>  ~/.nextflow/assets/nf-core/sarek/conf/test/test.config 
+
+```
+
+Please note that all the nextflow scripts from underlying GitHub repository are cloned to "~/.nextflow/assets/" when launching pipelines with specific version (``` nextflow run nf-core/sarek -r 3.1.1 ... ```).  Replace SLURM_NNODES with exact number of nodes as Nextflow may not detected the value of variable "SLURM_NNODES". 
 
 Finally, submit your job
 
