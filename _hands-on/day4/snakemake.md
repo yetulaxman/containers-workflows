@@ -3,7 +3,7 @@ topic: snakemake
 title: Tutorial6 - Sankemake toy example (WIP)
 ---
 
-Snakemake workflow, which is described in terms of rules that define how to create output files from input files, is one of the popular workflow managers in bioinformatics community. Snakemake is available as a module in Puhti environment. And also, Snakemake can be easily installed in user's own space (e.g., Projappl directory) if you need to have a specific version for your scientific workflows.
+Snakemake workflow, which is described in terms of rules that define how to create output files from input files, is one of the popular workflow managers in the bioinformatics community. Snakemake is available as a module in Puhti environment. And also, Snakemake can be easily installed in the user's own disk space (e.g., Projappl directory) if you need to have a specific version for your scientific workflows.
 
 
 ## Running Snakemake with a pre-installed module on Puhti
@@ -18,7 +18,7 @@ snakemake -s test.smk      -j 1     --latency-wait 60   --cluster "sbatch -t 10 
 --mem-per-cpu=4000 -p test"
 ```
 
-Where contents of the file, test.smk are as below:
+In the above script, contents of nextflow script, *test.smk* are as below:
 
 ```bash
 
@@ -43,12 +43,12 @@ rule capitalise:
 
 ### Installing other python packages needed for Snakemake workflow
 
-Current Snakemake module on Puhti is based on pip-installation and has a limited set of other python packages. For any real-world examples, one needs to have other python packages which can be installed using *pip* in a user defined folder (e.g., a directory in scratch or Projappl)
+The current Snakemake module on Puhti is based on pip-installation and has a limited set of other python packages. For any real-world examples, one needs to have other python packages which can be installed using *pip* in a user defined folder (e.g., a directory in scratch or Projappl)
 
-Change to working directory to e.g., scratch area  and create a folder for installing python packages (Here, let' install *matplotlib* package that is not avaialable in Snakemake module) 
+Change to working directory to e.g., scratch area  and create a folder for installing python packages (Here, let's install *matplotlib* package that is not available in Snakemake module) 
 
 ```bash
-cd /scratch/project_2003682/$USER/snakemake_workflow/ && mkdir venv
+cd /scratch/project_xxx/$USER/snakemake_workflow/ && mkdir venv
 ```
 
 Install the needed packages:
@@ -61,7 +61,7 @@ export PYTHONPATH="/scratch/project_xxx/yetukuri/snakemake_workflow/venv/lib/pyt
 #(this needs to be the same version of python package)
 ```
 
-Contents of test2.smk file:
+Content of test2.smk file is as shown below:
 
 ```bash
 import matplotlib   # You can use it if needed as part of preporcessing of data.
@@ -134,7 +134,6 @@ rule capitalise:
 
 ## Running Snakemake with HyperQueue
 If your workflow manager is using sbatch for each process execution and you have many short processes it's advisable to switch to HyperQueue to improve throughput and decrease load on the system batch scheduler.
-Snakemake
 
 Using Snakemake's --cluster flag we can use hq submit instead of sbatch:
 
@@ -143,7 +142,5 @@ snakemake --cluster "hq submit --cpus <threads> ..."
 
 ```
 
-
-
-> Note:f you want to install a specific version of Snakemake along with other python packages, we recommend installing  using pip. This way, one can use
+> Note: If you want to install a specific version of Snakemake along with other python packages, we recommend installing  using pip. This way, one can use
   singularity containers smoothly in Snakemake workflow.
