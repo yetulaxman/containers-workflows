@@ -3,12 +3,13 @@ topic: snakemake
 title: Tutorial6 - Sankemake toy example
 ---
 
-Snakemake workflow, which is defined in terms of rules that define how to create output files from input files, is one of the popular workflow managers in bioinformatics community. Snakemake is available as a module in Puhti environment. And also, Snakemake can be easily installed in user's own space (e.g., Projappl directory) if you need to have a specific version for your scientific workflows.
+Snakemake workflow, which is described in terms of rules that define how to create output files from input files, is one of the popular workflow managers in bioinformatics community. Snakemake is available as a module in Puhti environment. And also, Snakemake can be easily installed in user's own space (e.g., Projappl directory) if you need to have a specific version for your scientific workflows.
 
 
 ## Running Snakemake with a pre-installed module on Puhti
 
 Snakemake is installed as a module on Puhti and can be used. 
+
 
 ```bash
 module load snakemake/7.17.1
@@ -17,7 +18,7 @@ snakemake -s test.smk      -j 1     --latency-wait 60   --cluster "sbatch -t 10 
 --mem-per-cpu=4000 -p test"
 ```
 
-Where contents of the file, test.smk:
+Where contents of the file, test.smk are as below:
 
 ```bash
 
@@ -42,17 +43,17 @@ rule capitalise:
 
 ### Installing other python packages needed for Snakemake workflow
 
-Current Snakemake module on Puhti is based on pip-installation and has limited python packages. For any real-world examples, one needs to have other python packages as well. One can install the needed packages using *pip* in a user defined folder (e.g., a directory in scratch or Projappl)
+Current Snakemake module on Puhti is based on pip-installation and has a limited set of other python packages. For any real-world examples, one needs to have other python packages which can be installed using *pip* in a user defined folder (e.g., a directory in scratch or Projappl)
 
-Change working directory to e.g., scratch area  and create a folder for installing python packages (Here, let' install matplotlib package that is not avaialable in Snakemake module) 
+Change to working directory to e.g., scratch area  and create a folder for installing python packages (Here, let' install *matplotlib* package that is not avaialable in Snakemake module) 
 
 ```bash
 cd /scratch/project_2003682/$USER/snakemake_workflow/ && mkdir venv
 ```
 
-Install needed packages:
+Install the needed packages:
 
-```
+```bash
 export PYTHONUSERBASE="/scratch/project_xxx/$USER/snakemake_workflow/venv"
 pip3.9 install --user matplotlib 
 export PATH="/scratch/project_xxx/yetukuri/snakemake_workflow/venv/bin:$PATH"
@@ -63,6 +64,41 @@ export PYTHONPATH="/scratch/project_xxx/yetukuri/snakemake_workflow/venv/lib/pyt
 test2.smk
 
 ```bash
+import matplotlib   # You can use it if needed as part of preporcessing of data.
+
+rule all:
+        input: "HELP-CAPITALISE.txt"
+
+rule say_hello:
+        output: "fastqc-help.txt"
+        python -c "import pandas"
+        shell:
+                """
+                echo "testing toy example for snakemake workflow where matplotlib package is installed" > fastqc-help.txt
+                """
+rule capitalise:
+        input: "fastqc-help.txt"
+        output: "HELP-CAPITALISE.txt"
+        shell:
+                """
+                tr '[:lower:]' '[:upper:]' < {input} > {output}
+                """
+```
+
+## Snakemake workflow with singularity containers
+
+Use * --use-singularity* flag to activate singularity environement and bind mount necessary disk space 
+
+```bash
+module load snakemake/7.17.1
+snakemake -s test3.smk      -j 1     --latency-wait 60     --use-singularity --singularity-args "-B /scratch/project_2001659/yetukuri/snakemake_workflow:/scratch/project_2001659/yetukuri/snakemake_workflow"   \
+--cluster "sbatch -t 10 --account=project_xxx --job-name=fastqc-help  --tasks-per-node=1 --cpu
+
+
+Contents of test3.smk are as below:
+
+```bash
+# test availability of different packages 
 import matplotlib
 import pandas as pd
 import numpy
@@ -81,10 +117,12 @@ rule all:
 
 rule say_hello:
         output: "fastqc-help.txt"
+        singularity: "docker://biocontainers/fastqc:v0.11.9_cv8"
         shell:
                 """
-                echo "testing toy example for snakemake workflow" > fastqc-help.txt
+                fastqc --help > "fastqc-help.txt"
                 """
+
 rule capitalise:
         input: "fastqc-help.txt"
         output: "HELP-CAPITALISE.txt"
@@ -92,47 +130,6 @@ rule capitalise:
                 """
                 tr '[:lower:]' '[:upper:]' < {input} > {output}
                 """
-```
-
-# Installing Snakemake locally using Tykky container wrapper:
-
-Snakemake is available from Bioconda as well as from  PyPi. We recommend installing using [Tykky](https://docs.csc.fi/computing/containers/tykky/) container wrapper tool available at CSC to install in CSC HPC environment.
-
-Here is one way to install Snakemake using Tykky:
-
-```bash
-module load tykky
-mkdir /projappl/project_xxx/snakemake
-conda-containerize new --mamba --prefix /projappl/project_xxx/snakemake env.yaml
-
-```
-Where content of env.yaml file is as below:
-
-```bash
-channels:
-  - conda-forge
-  - bioconda
-  - defaults
-
-dependencies:
-  - python
-  - mamba
-  - igvtools
-  - samtools
-#  - snakemake>=5.4,!=6.4
-  - snakemake=7.15.2-0
-
-```
-
-Once Snakemake is installed as a container setup, we have to add installation bin directory to $PATH variable before start using Snakemake as shown below:
-
-```bash
-export PATH="/projappl/project_xxx/snakemake/bin:$PATH"
-
-/projappl/project_xxx/snakemake/bin/python3.10 /projappl/project_xxx/snakemake/bin/snakemake -s hello-world.smk -j 1 \ 
---latency-wait 60 --cluster "sbatch -t 300 --account=project_2001659 --job-name=hello_world --tasks-per-node=1 --cpus-per-task=1 \
--p medium " --scheduler greedy
-
 ```
 
 ## Running Snakemake with HyperQueue
@@ -143,4 +140,10 @@ Using Snakemake's --cluster flag we can use hq submit instead of sbatch:
 
 ```
 snakemake --cluster "hq submit --cpus <threads> ..."
+
 ```
+
+
+
+> Note:f you want to install a specific version of Snakemake along with other python packages, we recommend installing  using pip. This way, one can use
+  singularity containers smoothly in Snakemake workflow.
