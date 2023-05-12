@@ -15,12 +15,12 @@ Here is an example batch script to run the pipeline on Puhti:
 #SBATCH --mem-per-cpu=4000
 
 
-export SINGULARITY_TMPDIR=$PWD
-export SINGULARITY_CACHEDIR=$PWD
+export SINGULARITYENV_TMPDIR=$PWD
+export SINGULARITYENV_CACHEDIR=$PWD
 unset XDG_RUNTIME_DIR
 
 # Activate  Nextflow on Puhti
-module load nextflow
+nextflow/22.10.1 
 
 # nf-core pipeline examples here
 # Variant calling on genome data
