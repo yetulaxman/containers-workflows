@@ -56,6 +56,15 @@ author: CSC Training
 {% endif %}
 {% endfor %}
 
+## 5. Rstudio on HPC 
+### 5.1 Tutorials and exercises
+{% for hands-on in items %}
+{% if hands-on.topic == 'rstudio' %}
+[{{ hands-on.title }}]({{ hands-on.url | relative_url }})
+{% endif %}
+{% endfor %}
+
+
 ## Information
 <p></p>
 
