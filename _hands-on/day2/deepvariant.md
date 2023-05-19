@@ -36,7 +36,7 @@ Upon completion of this tutorial you will learn to:
     export APPTAINER_TMPDIR=$LOCAL_SCRATCH
     export APPTAINER_CACHEDIR=$LOCAL_SCRATCH
     unset XDG_RUNTIME_DIR
-    Apptainer build deepvariant_cpu_1.2.0.sif docker://google/deepvariant:1.2.0
+    apptainer build deepvariant_cpu_1.2.0.sif docker://google/deepvariant:1.2.0
    ```
    This image conversion process for DeepVariant takes sometime as it is a bigger image with several layers.
 6. Download and unpack the test data for DeepVariant analysis
