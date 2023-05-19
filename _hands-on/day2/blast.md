@@ -8,10 +8,10 @@ There are many bioinformatics applications available as docker images in  differ
 ### Expected learning outcome from tutorial:
 After this tutorial, you will be able to: 
 - Search a bioinformatics application (in this case, BLAST) as a docker image from a registry (from Quay.io)
-- Deploy the application as a singularity container in Puhti environment interactively
+- Deploy the application as a singularity/apptainer container in Puhti environment interactively
 
 
-### Run BLAST analysis using a singularity container
+### Run BLAST analysis using an apptainer container
 
 1. Navigate to your *scratch* folder and launch an interactive terminal on Puhti supercomputer:
 
@@ -23,17 +23,17 @@ After this tutorial, you will be able to:
 2. You'll use a BLAST (Basic Local Alignment Search Tool) container image as available from [Quay Registry](https://quay.io). Visit the webpage of Quay registry 
    and search for the BLAST image (using keyword: BLAST) on the top right hand corner. You can find the BLAST images from different repositories/accounts. Pick the 
    one under biocontainer repository (i.e., biocontainers/blast). And also search for different tags available for the image (hint: on the left side menu, click on
-   *tags* icon). Once you managed to find a fully qualified URI (= docker://hostname/repository/imagename:tag) for docker image, you can convert it to singularity 
-   image using **singularity build** subcommand as below:
+   *tags* icon). Once you managed to find a fully qualified URI (= docker://hostname/repository/imagename:tag) for docker image, you can convert it to apptainer
+   image using **apptainer build** subcommand as below:
     
    ```bash
-   singularity build blast_quay.sif docker://quay.io/biocontainers/blast:2.12.0--pl5262h3289130_0
+   apptainer build blast_quay.sif docker://quay.io/biocontainers/blast:2.12.0--pl5262h3289130_0
    ```
-   Once the image is built successfully, you should be able to see singularity image file (file name: blast_quay.sif) in the current directory.
+   Once the image is built successfully, you should be able to see apptainer image file (file name: blast_quay.sif) in the current directory.
 
-3. Run a simple command inside of the singularity container to get commanline help for blastp  
+3. Run a simple command inside of the apptainer container to get commanline help for blastp  
    ```bash
-   singularity exec blast_quay.sif blastp -help
+   apptainer exec blast_quay.sif blastp -help
    ```
 
 4. Download and prepare the data needed to start analysis with BLAST tool
