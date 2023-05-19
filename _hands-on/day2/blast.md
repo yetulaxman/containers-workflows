@@ -52,14 +52,14 @@ After this tutorial, you will be able to:
 
     ```bash
     # mkdir makeblastdb
-    singularity exec -B $PWD:$PWD blast_quay.sif makeblastdb -in mouse.1.protein.faa -dbtype prot
+    apptainer exec -B $PWD:$PWD blast_quay.sif makeblastdb -in mouse.1.protein.faa -dbtype prot
     ```  
     After the container has finished the job, you should see several new files in the current directory.
     
 5. Finally, as you have all the input data ready for analysis, you can now do the final alignment step using `blastp` as below:
 
    ```bash
-   singularity exec -B $PWD:$PWD blast_quay.sif blastp -query Q61074.fasta -db mouse.1.protein.faa -out results.txt
+   apptainer exec -B $PWD:$PWD blast_quay.sif blastp -query Q61074.fasta -db mouse.1.protein.faa -out results.txt
    ```
    The final results are stored in `results.txt`;
 
