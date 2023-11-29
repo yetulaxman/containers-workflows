@@ -15,8 +15,8 @@ Here is an example batch script to run the pipeline on Puhti:
 #SBATCH --mem-per-cpu=4000
 
 
-export SINGULARITYENV_TMPDIR=$PWD
-export SINGULARITYENV_CACHEDIR=$PWD
+export SINGULARITY_TMPDIR=$PWD
+export SINGULARITY_CACHEDIR=$PWD
 unset XDG_RUNTIME_DIR
 
 # Activate  Nextflow on Puhti
