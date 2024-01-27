@@ -1,6 +1,6 @@
 ---
 topic: snakemake
-title: Tutorial9 - Sankemake with singularity containers
+title: Tutorial9 - Sankemake with singularity containers (WIP)
 ---
 
 Snakemake workflow, which is described in terms of rules that define how to create output files from input files, is one of the popular workflow managers in the bioinformatics community. Snakemake is available as a module in Puhti environment. And also, Snakemake can be easily installed in the user's own disk space (e.g., Projappl directory) if you need to have a specific version for your scientific workflows.
@@ -36,3 +36,23 @@ rule say_hello:
 
 > Note: If you want to install a specific version of Snakemake along with other python packages, we recommend installing  using pip. This way, one can use
   singularity containers smoothly in Snakemake workflow.
+
+you can also define your profiles in a config file (config.yaml) and run the snakemake workflow as below:
+```bash
+cluster:
+  mkdir -p logs/{rule} &&
+  sbatch
+    --cpus-per-task={threads}
+    --job-name=smk-{rule}-{wildcards}
+    --output=logs/{rule}/{rule}-{wildcards}-%j.out
+jobs: 10
+printshellcmds: True
+jobscript: slurm_jobscript.sh
+use-conda: False
+use-singularity: True
+```
+and one can run workflow as below:
+
+```
+snakemake --profile
+```
