@@ -8,7 +8,7 @@ Snakemake workflow, which is described in terms of rules that define how to crea
 
 ## Run jobs inside a singularity container
 
-Singularity/Apptainer is istalled on login and compute nodes on CSC computers. so no need to install it separately. Use * --use-singularity* flag to activate singularity environement and bind mount necessary disk space when usig snakemake workflows.
+Singularity/Apptainer is istalled on login and compute nodes on CSC computers. so no need to install it separately. Use * --use-singularity* flag to activate singularity environement and bind mount necessary disk space when usig snakemake workflows. This example relies on the user having some method for obtaining docker images that can be converted to singularity images. This example uses a publicly available dockerhub Fastqc image. A major caveat of using dockerhub is that if you run this example on a widely use cluster it is possible you will get an error.
 
 ```bash
 module load snakemake/7.17.1
