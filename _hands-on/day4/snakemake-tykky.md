@@ -58,50 +58,6 @@ snakemake -s test2.smk      -j 1     --latency-wait 60   --cluster "sbatch -t 10
 --mem-per-cpu=4000 -p test"
 ```
 
-## Snakemake workflow with singularity containers
-
-Use * --use-singularity* flag to activate singularity environement and bind mount necessary disk space 
-
-```bash
-module load snakemake/7.17.1
-snakemake -s test3.smk      -j 1     --latency-wait 60     --use-singularity --singularity-args "-B /scratch/project_2001659/yetukuri/snakemake_workflow:/scratch/project_2001659/yetukuri/snakemake_workflow"   \
---cluster "sbatch -t 10 --account=project_xxx --job-name=fastqc-help  --tasks-per-node=1 --cpu
-
-
-Contents of test3.smk are as below:
-
-```bash
-# test availability of different packages 
-import matplotlib
-
-import pkg_resources;installed_packages = pkg_resources.working_set;installed_packages_list = sorted(["%s==%s" % (i.key, i.version) for i in installed_packages]);print(installed_packages_list)
-
-rule all:
-        input: "HELP-CAPITALISE.txt"
-
-rule say_hello:
-        output: "fastqc-help.txt"
-        singularity: "docker://biocontainers/fastqc:v0.11.9_cv8"
-        shell:
-                """
-                fastqc --help > "fastqc-help.txt"
-                """
-
-rule capitalise:
-        input: "fastqc-help.txt"
-        output: "HELP-CAPITALISE.txt"
-        shell:
-                """
-                tr '[:lower:]' '[:upper:]' < {input} > {output}
-                """
-```
-
-## Running Snakemake with HyperQueue
-If your workflow manager is using sbatch for each process execution and you have many short processes it's advisable to switch to HyperQueue to improve throughput and decrease load on the system batch scheduler.
-
-Using Snakemake's --cluster flag we can use hq submit instead of sbatch:
-
-```
 snakemake --cluster "hq submit --cpus <threads> ..."
 
 ```
