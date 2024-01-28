@@ -81,6 +81,27 @@ In the above example, Tykky installs a basic setup (as listed in the file, env.y
 
 Once the environment is successfully installed, one has to use add the installed path as below:
 ```
-export PATH="/projappl/project_2001659/$USER/snakemake_tykky/bin:$PATH"
+export PATH="/projappl/project_xxxx/$USER/snakemake_tykky/bin:$PATH"
+```
+Download the needed codes for installation and data from [allas](https://a3s.fi/snakemake/snakemake_tutorial.tar.gz)
+```bash
+wget https://a3s.fi/snakemake/snakemake_tutorial.tar.gz
+tar -xavf snakemake_tutorial.tar.gz
+```
+Install necessary python environment using tykky as described above. Once installation is succesful, add the fillowing code to run as batch script:
+```bash
+#!/bin/bash
+#SBATCH --job-name=myTest
+#SBATCH --account=project_xxxxx
+#SBATCH --time=00:10:00
+#SBATCH --mem-per-cpu=2G
+#SBATCH --partition=test
+#SBATCH --cpus-per-task=4
+
+snakemake -s Snakefile    -j 4
 ```
 
+finally run the code as below:
+```bash
+sbatch batch.sh
+```
