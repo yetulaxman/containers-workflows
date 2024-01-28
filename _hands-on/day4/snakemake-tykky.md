@@ -59,7 +59,7 @@ snakemake -s test2.smk      -j 1     --latency-wait 60   --cluster "sbatch -t 10
 ```
 
 
-### Installing python packages with tykky needed for Snakemake workflow
+### Installing the needed python packages with tykky for Snakemake workflow
 
 Conda installations should not be done directly on Puhti. [Tykky wrapper tool](https://docs.csc.fi/computing/containers/tykky/) instead be used to install python packages in setting up your compute environment. The wrapper tool installs applications inside of a singularity container and thus  facilitates better performance in terms of faster startup times, reduced IO load, and reduced number of files on parallel filesystems. 
 
