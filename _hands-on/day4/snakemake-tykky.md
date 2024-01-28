@@ -58,9 +58,5 @@ snakemake -s test2.smk      -j 1     --latency-wait 60   --cluster "sbatch -t 10
 --mem-per-cpu=4000 -p test"
 ```
 
-snakemake --cluster "hq submit --cpus <threads> ..."
 
-```
 
-> Note: If you want to install a specific version of Snakemake along with other python packages, we recommend installing  using pip. This way, one can use
-  singularity containers smoothly in Snakemake workflow.
