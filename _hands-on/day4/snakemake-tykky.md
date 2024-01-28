@@ -59,4 +59,28 @@ snakemake -s test2.smk      -j 1     --latency-wait 60   --cluster "sbatch -t 10
 ```
 
 
+### Installing python packages with tykky needed for Snakemake workflow
+
+Conda installations should not be done directly on Puhti. [Tykky wrapper tool](https://docs.csc.fi/computing/containers/tykky/) instead be used to install python packages in setting up your compute environment. The wrapper tool installs applications inside of a singularity container and thus  facilitates better performance in terms of faster startup times, reduced IO load, and reduced number of files on parallel filesystems. 
+
+Here is an example of tykky-based custom installation for cytodata 2023 hackathon (make sure to edit with correct CSC project name and user name as needed):
+
+```bash
+# start an interactive session once you are in login node
+sinteractive -c 8 -m 30000 -d 100  # this command requests a compute node with 8 cores, 30 GB memory and 100 GB local disk space; change settings as needed
+# load needed packages
+module load git   # git command is not available by default on interactive nodes
+module load purge  # clean environment 
+module load tykky # load tykky wrapper 
+# install python libraries using tykky wrapper tool; make sure to use proper project/username
+mkdir -p /projappl/<project>/$USER && mkdir -p /projappl/<project>/$USER/snakemake_tykky
+conda-containerize new --prefix  /projappl/<project>/$USER/snakemake_tykky env.yaml    
+```
+
+In the above example, Tykky installs a basic setup (as listed in the file, env.yml) to the directory '/projappl/project_xxxx/snakemake_tykky'. Please note that you have to add the bin directory of installation to the $PATH variable before start using the installed environment.
+
+Once the environment is successfully installed, one has to use add the installed path as below:
+```
+export PATH="/projappl/project_2001659/$USER/snakemake_tykky/bin:$PATH"
+```
 
