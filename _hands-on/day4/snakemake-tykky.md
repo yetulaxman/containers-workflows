@@ -98,6 +98,7 @@ Install necessary python environment using tykky as described above. Once instal
 #SBATCH --partition=test
 #SBATCH --cpus-per-task=4
 
+export PATH="/projappl/project_2001659/$USER/snakemake_tykky/bin:$PATH"
 snakemake -s Snakefile    -j 4
 ```
 
