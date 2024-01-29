@@ -70,6 +70,8 @@ sbatch sbatch-hq-tykky.sh
 ### running snakemake workflow with singularity container
 
 sbatch script (sbatch-hq-sing.sh):
+
+```bash
 #!/bin/bash
 #SBATCH --job-name=myTest
 #SBATCH --account=project_2001659
