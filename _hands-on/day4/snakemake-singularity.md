@@ -5,6 +5,100 @@ title: Tutorial9 - Sankemake with singularity containers (WIP)
 
 Snakemake workflow, which is described in terms of rules that define how to create output files from input files, is one of the popular workflow managers in the bioinformatics community. Snakemake is available as a module in Puhti environment. And also, Snakemake can be easily installed in the user's own disk space (e.g., Projappl directory) if you need to have a specific version for your scientific workflows.
 
+## A singularity refresher at CSC
+Please check our CSC documentation on how to use [singularity containers at CSC](https://docs.csc.fi/computing/containers/run-existing/). You can consult [Singularity documentation](https://docs.sylabs.io/guides/latest/user-guide/) for more details.
+
+### How to get containers
+
+#### 1. Run or pull an existing Singularity container from a repository
+
+1. It is possible to run containers directly from a repository:
+
+```bash
+apptainer run shub://vsoch/hello-world:latest
+```
+
+- This can, however, lead to a batch job failing if there are network problems.
+
+{:start="2"}
+2. Usually it is better to pull the container first and then use the image file:
+
+```bash
+apptainer pull shub://vsoch/hello-world:latest
+apptainer run hello-world_latest.sif
+```
+
+### 2. Convert an existing Docker container to an Apptainer container
+
+💬 Docker images are downloaded as layers. These layers are stored in a cache directory.
+
+- Default location of the cache is `$HOME/.singularity/cache`.
+- Since the home directory has limited capacity and some images can be large, it's best to set `$SINGULARITY_CACHE` to point to some other location with more space.
+
+### Option A
+
+1. If you're running on a node with no fast local storage, you can use e.g. `/scratch`:
+
+```bash
+export APPTAINER_TMPDIR=/scratch/<project>/$USER      # replace <project> with your CSC project, e.g. project_2001234
+export APPTAINER_CACHEDIR=/scratch/<project>/$USER    # replace <project> with your CSC project, e.g. project_2001234
+```
+
+### Option B
+
+1. If you're running interactively or as a batch job on an I/O node, you can use the fast local storage:
+
+```bash
+export APPTAINER_TMPDIR=$LOCAL_SCRATCH
+export APPTAINER_CACHEDIR=$LOCAL_SCRATCH
+```
+
+{:start="2"}
+2. Avoid some unnecessary warnings by unsetting a certain environment variable:
+
+```bash
+unset XDG_RUNTIME_DIR
+```
+
+{:start="3"}
+3. You can now run `singularity build`:
+
+```bash
+apptainer build alpine.sif docker://library/alpine:latest
+```
+
+💡 You can find more detailed instructions on converting Docker containers in [Docs CSC](https://docs.csc.fi/computing/containers/creating/#converting-a-docker-container).
+### ## Minimial script for building singularity image on Puhti
+
+One can use the following script and conda environment defined in the tutorial.yaml file and build a singualirty image from it. One ca use the built image to run the snakemake workflow instead of installing the required tools either locally or usig tykky wrapper tool.
+```
+Bootstrap : docker
+From :  continuumio/miniconda3
+IncludeCmd : yes
+
+%files
+tutorial.yml
+
+%post
+apt-get update && apt-get install -y procps && apt-get clean -y
+/opt/conda/bin/conda env create -n snakemake_env -f /environment.yml
+/opt/conda/bin/conda clean -a
+
+
+%environment
+export PATH=/opt/conda/bin:$PATH
+. /opt/conda/etc/profile.d/conda.sh
+conda activate snakemake_env
+
+%runscript
+echo "This is as tutorial singularity/appatainer image"
+```
+Build the image as below:
+
+```bash
+singularity build --fakeroot tutorial.sif tutorial.def 
+```
+
 
 ## Run snakemake rule inside of a singularity container
 
@@ -77,35 +171,4 @@ batch script to run the workflow:
 module load snakemake/7.17.1
 snakemake -s Snakefile  --use-singularity  -j 4
 ```
-## Minimial script for building singularity image on Puhti
 
-One can use the following script and conda environment defined in the tutorial.yaml file and build a singualirty image from it. One ca use the built image to run the snakemake workflow instead of installing the required tools either locally or usig tykky wrapper tool.
-```
-Bootstrap : docker
-From :  continuumio/miniconda3
-IncludeCmd : yes
-
-%files
-tutorial.yml
-
-%post
-apt-get update && apt-get install -y procps && apt-get clean -y
-/opt/conda/bin/conda env create -n snakemake_env -f /environment.yml
-/opt/conda/bin/conda clean -a
-
-
-%environment
-export PATH=/opt/conda/bin:$PATH
-. /opt/conda/etc/profile.d/conda.sh
-conda activate snakemake_env
-
-%runscript
-echo "This is as tutorial singularity/appatainer image"
-```
-
-
-Build the image as below:
-
-```bash
-singularity build --fakeroot tutorial.sif tutorial.def 
-```
