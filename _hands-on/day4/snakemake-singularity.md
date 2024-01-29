@@ -68,7 +68,7 @@ apptainer build alpine.sif docker://library/alpine:latest
 ```
 
 💡 You can find more detailed instructions on converting Docker containers in [Docs CSC](https://docs.csc.fi/computing/containers/creating/#converting-a-docker-container).
-### ## Minimial script for building singularity image on Puhti
+### Minimial script for building singularity image on Puhti
 
 One can use the following script and conda environment defined in the tutorial.yaml file and build a singualirty image from it. One ca use the built image to run the snakemake workflow instead of installing the required tools either locally or usig tykky wrapper tool.
 ```
