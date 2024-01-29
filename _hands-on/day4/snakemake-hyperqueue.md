@@ -16,5 +16,97 @@ snakemake --cluster "hq submit --cpus <threads> ..."
 
 ```
 
-> Note: If you want to install a specific version of Snakemake along with other python packages, we recommend installing  using pip. This way, one can use
-  singularity containers smoothly in Snakemake workflow.
+### running snakemake workflow with tykky environemnt
+
+
+batch script as sbatch-hq-tykky.sh :
+
+```
+#!/bin/bash
+#SBATCH --job-name=myTest
+#SBATCH --account=project_2001659
+#SBATCH --time=00:10:00
+#SBATCH --mem-per-cpu=2G
+#SBATCH --nodes=1
+#SBATCH --cpus-per-task=40
+#SBATCH --ntasks-per-node=1
+#SBATCH --partition=small
+
+module load hyperqueue
+
+export PATH="/projappl/project_2001659/$USER/snakemake_tykky2/bin:$PATH"
+
+# Create a per job directory
+
+export HQ_SERVER_DIR=$PWD/.hq-server-$SLURM_JOB_ID
+mkdir -p $HQ_SERVER_DIR
+
+hq server start &
+srun --cpu-bind=none --hint=nomultithread --mpi=none -N $SLURM_NNODES -n $SLURM_NNODES -c 40 hq worker start --cpus=40 &
+
+num_up=$(hq worker list | grep RUNNING | wc -l)
+while true; do
+
+    echo "Checking if workers have started"
+    if [[ $num_up -eq $SLURM_NNODES ]];then
+        echo "Workers started"
+        break
+    fi
+    echo "$num_up/$SLURM_NNODES workers have started"
+    sleep 1
+    num_up=$(hq worker list | grep RUNNING | wc -l)
+
+done
+snakemake -s Snakefile -j 1  --cluster "hq submit --cpus 2 "
+hq worker stop all
+hq server stop
+```
+
+and run the script as below:
+
+```bash
+sbatch sbatch-hq-tykky.sh
+```
+### running snakemake workflow with singularity container
+
+sbatch script (sbatch-hq-sing.sh):
+#!/bin/bash
+#SBATCH --job-name=myTest
+#SBATCH --account=project_2001659
+#SBATCH --time=00:10:00
+#SBATCH --mem-per-cpu=2G
+#SBATCH --nodes=1
+#SBATCH --cpus-per-task=40
+#SBATCH --ntasks-per-node=1
+#SBATCH --partition=small
+
+module load hyperqueue
+module load snakemake/7.17.1
+
+# Create a per job directory
+
+export HQ_SERVER_DIR=$PWD/.hq-server-$SLURM_JOB_ID
+mkdir -p $HQ_SERVER_DIR
+
+hq server start &
+srun --cpu-bind=none --hint=nomultithread --mpi=none -N $SLURM_NNODES -n $SLURM_NNODES -c 40 hq worker start --cpus=40 &
+
+num_up=$(hq worker list | grep RUNNING | wc -l)
+while true; do
+
+    echo "Checking if workers have started"
+    if [[ $num_up -eq $SLURM_NNODES ]];then
+        echo "Workers started"
+        break
+    fi
+    echo "$num_up/$SLURM_NNODES workers have started"
+    sleep 1
+    num_up=$(hq worker list | grep RUNNING | wc -l)
+
+done
+
+snakemake -s Snakefile -j 1  --use-singularity  --cluster "hq submit --cpus 2 "
+
+hq worker stop all
+hq server stop
+```
