@@ -3,13 +3,13 @@ topic: snakemake
 title: Tutorial8 - Sankemake tykky example
 ---
 
-Snakemake workflow, which is described in terms of rules that define how to create output files from input files, is one of the popular workflow managers in the bioinformatics community. Snakemake is available as a module in Puhti environment. And also, Snakemake can be easily installed in the user's own disk space (e.g., Projappl directory) if you need to have a specific version for your scientific workflows.
+Snakemake workflow, which is described in terms of rules that define how to create output files from input files, is one of the popular workflows in the bioinformatics community. Snakemake is available as a module in Puhti environment. And also, Snakemake can be easily installed in the user's own disk space (e.g., Projappl directory) if a specific version of snakemake is needed.
 
-### Installing the needed python packages with tykky for Snakemake workflow
+### Installing the needed python packages with tykky wrapper
 
 Conda installations should not be done directly on Puhti. [Tykky wrapper tool](https://docs.csc.fi/computing/containers/tykky/) instead be used to install python packages in setting up your compute environment. The wrapper tool installs applications inside of a singularity container and thus  facilitates better performance in terms of faster startup times, reduced IO load, and reduced number of files on parallel filesystems. 
 
-Here is an example of tykky-based custom installation for cytodata 2023 hackathon (make sure to edit with correct CSC project name and user name as needed):
+Here is an example of tykky-based custom installation for installing your python packages (make sure to edit with correct CSC project name and user name as needed):
 
 ```bash
 # start an interactive session once you are in login node
@@ -22,19 +22,21 @@ module load tykky # load tykky wrapper
 mkdir -p /projappl/<project>/$USER && mkdir -p /projappl/<project>/$USER/snakemake_tykky
 conda-containerize new --prefix  /projappl/<project>/$USER/snakemake_tykky env.yaml    
 ```
+In the above example, Tykky installs a basic setup (as listed in the file, env.yml) to the directory '/projappl/project_xxxx/$USER/snakemake_tykky'. Please note that you have to add the bin directory of installation to the $PATH variable before start using the installed environment.
 
-In the above example, Tykky installs a basic setup (as listed in the file, env.yml) to the directory '/projappl/project_xxxx/snakemake_tykky'. Please note that you have to add the bin directory of installation to the $PATH variable before start using the installed environment.
+Once the environment is successfully installed, one has to use add the installed bin path as below:
 
-Once the environment is successfully installed, one has to use add the installed path as below:
 ```
 export PATH="/projappl/project_xxxx/$USER/snakemake_tykky/bin:$PATH"
 ```
-Download the needed codes for installation and data from [allas](https://a3s.fi/snakemake/snakemake_tutorial.tar.gz)
+Download tutorial material ( codes for installation and data)  from [allas](https://a3s.fi/snakemake/snakemake_tutorial.tar.gz) object storage as below:
+
 ```bash
 wget https://a3s.fi/snakemake/snakemake_tutorial.tar.gz
 tar -xavf snakemake_tutorial.tar.gz
 ```
-Install necessary python environment using tykky as described above. Once installation is succesful, add the fillowing code to run as batch script:
+Install necessary python environment using tykky wrapper as instructed above. Once installation is succesful, you can use the following code to run as batch script (file: tutorial-sbatch.sh):
+
 ```bash
 #!/bin/bash
 #SBATCH --job-name=myTest
@@ -47,10 +49,10 @@ Install necessary python environment using tykky as described above. Once instal
 export PATH="/projappl/project_2001659/$USER/snakemake_tykky/bin:$PATH"
 snakemake -s Snakefile  -j 4
 ```
+Finally, you can submit batch job from the login nodes as below:
 
-finally run the code as below:
 ```bash
-sbatch batch.sh
+sbatch tutorial-sbatch.sh
 ```
 
 ### Installing fewer missing packages with pip
@@ -71,4 +73,4 @@ pip3.9 install --user matplotlib
 export PATH="/scratch/project_xxx/yetukuri/snakemake_workflow/venv/bin:$PATH"
 export PYTHONPATH="/scratch/project_xxx/yetukuri/snakemake_workflow/venv/lib/python3.9/site-packages/"  
 #(this needs to be the same version of python package)
-
+```
