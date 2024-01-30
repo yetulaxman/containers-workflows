@@ -85,6 +85,9 @@ snakemake --cluster-config cluster.yaml \
 ```
  snakemake -n     # Dry-runs are a great way to check your commands before running them
  snakemake -p     #  Prints the shell commands that are being run to the terminal
+ snakemake --rulegraph | dot -Tpng > rulegraph.png # Generate the rule based graph 
+ snakemake --dag | dot -Tpng > dag.png # Generate directed acyclic graph
+
 ```
 
 ### Fix/caveates (WIP)
