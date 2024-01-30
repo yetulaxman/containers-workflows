@@ -1,5 +1,5 @@
 ---
-topic: snakemake
+topic: snakemakes
 title: Tutorial3 - Sankemake with singularity containers (WIP)
 ---
 
