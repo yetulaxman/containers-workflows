@@ -16,7 +16,7 @@ snakemake --cluster "hq submit --cpus <threads> ..."
 
 ```
 
-### running snakemake workflow with tykky environemnt
+### running snakemake workflow with tykky environment
 
 
 batch script as sbatch-hq-tykky.sh :
