@@ -8,7 +8,7 @@ Snakemake is available as a module in Puhti supercomputing environment. And also
 
 ## Running Snakemake workflow with a pre-installed snakemake module on Puhti
 
-Please make sure that you have a [user account at CSC](https://docs.csc.fi/accounts/how-to-create-new-user-account/) that is a member of a project which [has access to the Puhti service](https://docs.csc.fi/accounts/how-to-add-service-access-for-project/) before start running workflows on Puhti.  More instructions on logging into Puhti supercomputer can be found [here](https://csc-training.github.io/csc-env-eff/hands-on/connecting/ssh-puhti.html). Please note that one should avoid launching snakemake workflows on login nodes and can use interactive or batch jobs. More information on using interactive jobs can be found [here](https://docs.csc.fi/computing/running/interactive-usage/).
+Please make sure that you have a [user account at CSC](https://docs.csc.fi/accounts/how-to-create-new-user-account/) and are a member of a project which [has access to the Puhti service](https://docs.csc.fi/accounts/how-to-add-service-access-for-project/) before start running workflows on Puhti.  More instructions on logging into Puhti supercomputer can be found [here](https://csc-training.github.io/csc-env-eff/hands-on/connecting/ssh-puhti.html). Please note that one should avoid launching snakemake workflows on login nodes and can use interactive or batch jobs. More information on using interactive jobs can be found [here](https://docs.csc.fi/computing/running/interactive-usage/).
 
 The toy snakemake example file, Snakefile (with a capital S and no file extension), has the following content:
 
