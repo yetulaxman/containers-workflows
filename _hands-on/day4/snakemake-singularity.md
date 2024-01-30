@@ -152,10 +152,13 @@ and one can run workflow as below:
 snakemake --profile
 ```
 
-##  Run snakemake workflow with local singularity container
-One can run build a singularity container (--with fakeroot) option CSC supercomputer and use that image to run snakem ake workflow on the top of snakemake file as below:
+##  Run snakemake workflow with  singularity container
+One can run build a singularity container (--with fakeroot) option CSC supercomputer and use that image to run snakem ake workflow on the top level of snakemake file as below:
 
 ```
+##### setup singularity #####
+# this container defines the underlying OS for each job when using the workflow
+# e.g., singularity: "docker://ginolhac/snake-rna-seq:0.2"
 singularity: "image/turotial.sif"
 
 ```
@@ -175,3 +178,5 @@ module load snakemake/7.17.1
 snakemake -s Snakefile  --use-singularity  -j 4
 ```
 
+Tips:
+- snakemake --containerize > Dockerfile  (to create docker file from the snakemake)
