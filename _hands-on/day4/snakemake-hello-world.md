@@ -87,9 +87,12 @@ snakemake --cluster-config cluster.yaml \
  snakemake -p     #  Prints the shell commands that are being run to the terminal
  snakemake --rulegraph | dot -Tpng > rulegraph.png # Generate the rule based graph 
  snakemake --dag | dot -Tpng > dag.png # Generate directed acyclic graph
-
 ```
 
+### Good to know
+- {input} and {output} are placeholders - Snakemake will replace them with appropriate values
+-  One can use {name} as wildcards (* pattern)
+  
 ### Fix/caveates (WIP)
 1. Deprecated option --cluster-config to customize job resources
 2. Scale up with caution. Check slurm options [here](https://github.com/Snakemake-Profiles/slurm)
