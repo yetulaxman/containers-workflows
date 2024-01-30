@@ -78,9 +78,16 @@ snakemake --cluster-config cluster.yaml \
 	--latency-wait 60
 ```
 
+
+
 ### Useful commandline options
 
 ```
  snakemake -n     # Dry-runs are a great way to check your commands before running them
  snakemake -p     #  Prints the shell commands that are being run to the terminal
 ```
+
+### Fix/caveates (WIP)
+1. Deprecated option --cluster-config to customize job resources
+2. Scale up with caution. Check slurm options [here](https://github.com/Snakemake-Profiles/slurm)
+3. 
