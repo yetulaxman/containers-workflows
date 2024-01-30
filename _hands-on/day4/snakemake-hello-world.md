@@ -1,16 +1,16 @@
 ---
 topic: snakemake
-title: Tutorial7 - Sankemake hello-world example
+title: Tutorial7 - Sankemake toy example
 ---
-Snakemake workflow, which is described in terms of rules that define how to create output files from input files, is one of the popular workflow managers in the bioinformatics community. The workflow manager enables scalable and reproducible scientific pipelines as a series of chained rules. One can share these reproducible workflows with a fully-specified software environment. 
+Snakemake workflow, which is described in terms of rules that define how to create output files from input files, is one of the popular scientific workflows in the bioinformatics community. The workflow manager enables scalable and reproducible scientific pipelines as a series of chained rules. These reproducible workflows come with a fully-specified software environment. 
 
-Snakemake is available as a module in Puhti supercomputing environment. And also, it can be easily installed in the user's own disk space (e.g., Projappl directory) if you need to have a specific version for your scientific needs.This hands-on exercise introduces hello-world example using a pre-installed module on Puhti
+Snakemake is available as a module in Puhti supercomputing environment. And also, you can easily install it in the your own disk space (e.g., Projappl directory) if a specific version of snakemake is desired. The following session introduces a hello-world example using a pre-installed *snakemake* module on Puhti.
 
-## Running Snakemake workflow with a pre-installed module on Puhti
+## Running Snakemake workflow with a pre-installed snakemake module on Puhti
 
-Please sure that you have a [user account at CSC](https://docs.csc.fi/accounts/how-to-create-new-user-account/) that is a member of a project which [has access to the Puhti service](https://docs.csc.fi/accounts/how-to-add-service-access-for-project/) before start running workflows on Puhti.  More instructions on logging into Puhti environment can be found [here](https://csc-training.github.io/csc-env-eff/hands-on/connecting/ssh-puhti.html)
+Please make sure that you have a [user account at CSC](https://docs.csc.fi/accounts/how-to-create-new-user-account/) that is a member of a project which [has access to the Puhti service](https://docs.csc.fi/accounts/how-to-add-service-access-for-project/) before start running workflows on Puhti.  More instructions on logging into Puhti supercomputer can be found [here](https://csc-training.github.io/csc-env-eff/hands-on/connecting/ssh-puhti.html). Please note that one should avoid launching snakemake workflows on login nodes and can use interactive or batch jobs. More information on using interactive jobs can be found [here](https://docs.csc.fi/computing/running/interactive-usage/).
 
-Hello-world snakemake example file, Snakefile (with a capital S and no file extension), has the following content:
+The toy snakemake example file, Snakefile (with a capital S and no file extension), has the following content:
 
 ```bash
 
@@ -31,15 +31,14 @@ rule capitalise:
                 tr '[:lower:]' '[:upper:]' < {input} > {output}
                 """
 ```
-
-Snakemake is installed as a module on Puhti and can be loaded as below: 
+Snakemake is installed as a module on Puhti. So one can load it withouting needing to install it by yourself. One can write below bash script to execute the above toy example. 
 
 ```bash
 module load snakemake/7.17.1
 snakemake --help   #  to get information on more options.
 
 # The following command shows how to run a snakemake workflow on a cluster using slurm executor
-snakemake -s Snakemake \ # the Snakemake filename is the default name; no need specify with -s flag
+snakemake -s Snakefile \ # the Snakefile is the default file name; no need specify with -s flag
  -j 1  \     # this will execute up to 3 tasks in parallel)       
 --latency-wait 60 \  # snakemake to wait up to 60 seconds after a job completes for the output files to become available.
 --cluster "sbatch -t 10  --account=project_xxx --job-name=hello-world --tasks-per-node=1 --cpus-per-task=1 
@@ -47,17 +46,16 @@ snakemake -s Snakemake \ # the Snakemake filename is the default name; no need s
 # cluster option to execute snakemake workflow on cluster given other options for slurm
 ```
 
-One  should not launch snakemake workflows on login nodes and can use interactive or batch jobs. More information on using interactive jobs can be found [here](https://docs.csc.fi/computing/running/interactive-usage/).
-
-Finally, run the workflow. The above script can be put in a file (run_snakemak.sh) can be submitted as below:
+Finally, run the workflow. The above script can be put in a file (run_snakemak.sh) can be submitted in the interactive node as below:
 
 ```bash
-bash run_snakemake.sh
+sinteractive -c 2 -m 10000 # type this command on login node
+bash run_snakemake.sh   # run the workflow
 ```
 
 ### Using cluster configuration for snakemake workflow
 
-Please pay attention to --cluster-config and --cluster options. One can define (--cluster-config) the values of cluster in cluster.yaml file and can retrieved in the command line e.g., {cluster.partition}. 
+Please pay attention to --cluster-config  and --cluster options of snakemake workflow manager. One can define the values of cluster in cluster.yaml (--cluster-config) file and can be retrieved in the command line options of the flag --cluster e.g., {cluster.partition}. 
 
 ```bash
 # cluster.yaml 
@@ -78,8 +76,6 @@ snakemake --cluster-config cluster.yaml \
 	--latency-wait 60
 ```
 
-
-
 ### Useful commandline options
 
 ```
@@ -91,9 +87,9 @@ snakemake --cluster-config cluster.yaml \
 
 ### Good to know
 - {input} and {output} are placeholders - Snakemake will replace them with appropriate values
--  One can use {name} as wildcards (* pattern)
+-  One can use {name} as wildcards (just as * pattern)
   
 ### Fix/caveates (WIP)
 1. Deprecated option --cluster-config to customize job resources
 2. Scale up with caution. Check slurm options [here](https://github.com/Snakemake-Profiles/slurm)
-3. 
+   
