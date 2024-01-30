@@ -1,5 +1,5 @@
 ---
-topic: snakemake
+topic: snakemake1
 title: Tutorial6 - Sankemake toy example (WIP)
 ---
 
