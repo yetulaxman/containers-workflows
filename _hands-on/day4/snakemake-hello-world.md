@@ -2,9 +2,9 @@
 topic: snakemake
 title: Tutorial1 - Sankemake toy example
 ---
-Snakemake workflow, which is described in terms of rules that define how to create output files from input files, is one of the popular scientific workflows in the bioinformatics community. The workflow manager enables scalable and reproducible scientific pipelines as a series of chained rules. These reproducible workflows come with a fully-specified software environment. 
+Snakemake workflow is one of the popular scientific workflows in the bioinformatics community. The workflow manager enables scalable and reproducible scientific pipelines as a series of chained rules. These reproducible workflows come with a fully-specified software environment. 
 
-Snakemake is available as a module in Puhti supercomputing environment. And also, you can easily install it in the your own disk space (e.g., Projappl directory) if a specific version of snakemake is desired. The following session introduces a hello-world example using a pre-installed *snakemake* module on Puhti.
+Snakemake is available as a module in Puhti supercomputing environment. And also, you can easily install it in the your own disk space (e.g., Projappl directory) if a specific version of snakemake is desired. The following session introduces a toy example using a pre-installed *snakemake* module on Puhti.
 
 ## Running Snakemake workflow with a pre-installed snakemake module on Puhti
 
