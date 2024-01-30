@@ -76,6 +76,9 @@ Bootstrap : docker
 From :  continuumio/miniconda3
 IncludeCmd : yes
 
+%labels
+AUTHOR email@email.com
+
 %files
 tutorial.yml
 
