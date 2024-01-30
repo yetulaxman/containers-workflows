@@ -1,6 +1,6 @@
 ---
 topic: snakemake
-title: Tutorial7 - Sankemake toy example
+title: Tutorial1 - Sankemake toy example
 ---
 Snakemake workflow, which is described in terms of rules that define how to create output files from input files, is one of the popular scientific workflows in the bioinformatics community. The workflow manager enables scalable and reproducible scientific pipelines as a series of chained rules. These reproducible workflows come with a fully-specified software environment. 
 
