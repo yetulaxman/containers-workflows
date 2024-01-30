@@ -3,7 +3,7 @@ topic: snakemake
 title: Tutorial10 - Sankemake with hyperqueue executor
 ---
 
-Snakemake workflow, which is described in terms of rules that define how to create output files from input files, is one of the popular workflow managers in the bioinformatics community. Snakemake is available as a module in Puhti environment. And also, Snakemake can be easily installed in the user's own disk space (e.g., Projappl directory) if you need to have a specific version for your scientific workflows.
+Snakemake workflow, which is described in terms of rules that define how to create output files from input files, is one of the popular workflows in the bioinformatics community. Snakemake is available as a module in Puhti environment. And also, Snakemake can be easily installed in the user's own disk space (e.g., Projappl directory) if you need to have a specific version for your scientific workflows.
 
 
 ## Running Snakemake with HyperQueue
@@ -16,15 +16,14 @@ snakemake --cluster "hq submit --cpus <threads> ..."
 
 ```
 
-### running snakemake workflow with tykky environment
+### Running snakemake workflow with software environment installed with tykky
 
-
-batch script as sbatch-hq-tykky.sh :
+Batch script as sbatch-hq-tykky.sh :
 
 ```
 #!/bin/bash
 #SBATCH --job-name=myTest
-#SBATCH --account=project_2001659
+#SBATCH --account=project_xxxx
 #SBATCH --time=00:10:00
 #SBATCH --mem-per-cpu=2G
 #SBATCH --nodes=1
@@ -67,7 +66,8 @@ and run the script as below:
 ```bash
 sbatch sbatch-hq-tykky.sh
 ```
-### running snakemake workflow with singularity container
+
+### Running snakemake workflow with singularity container
 
 sbatch script (sbatch-hq-sing.sh):
 
