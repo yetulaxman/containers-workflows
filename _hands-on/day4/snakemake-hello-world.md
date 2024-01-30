@@ -77,3 +77,10 @@ snakemake --cluster-config cluster.yaml \
 	--cluster "--cluster "sbatch -t {cluster.account}  --account={cluster.account} --job-name={cluster.job-name} --tasks-per-node=1 --cpus-per-task=1 --mem-per-cpu=4000 -p {cluster.partition}"
 	--latency-wait 60
 ```
+
+### Useful commandline options
+
+```
+ snakemake -n     # Dry-runs are a great way to check your commands before running them
+ snakemake -p     #  Prints the shell commands that are being run to the terminal
+```
