@@ -1,6 +1,6 @@
 ---
 topic: snakemake
-title: Tutorial8 - Sankemake tykky example
+title: Tutorial2 - Sankemake tykky example
 ---
 
 Snakemake workflow, which is described in terms of rules that define how to create output files from input files, is one of the popular workflows in the bioinformatics community. Snakemake is available as a module in Puhti environment. And also, Snakemake can be easily installed in the user's own disk space (e.g., Projappl directory) if a specific version of snakemake is needed.
