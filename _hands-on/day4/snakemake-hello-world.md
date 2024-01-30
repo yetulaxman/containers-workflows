@@ -46,7 +46,7 @@ snakemake -s Snakefile \ # the Snakefile is the default file name; no need speci
 # cluster option to execute snakemake workflow on cluster given other options for slurm
 ```
 
-Finally, run the workflow. The above script can be put in a file (run_snakemak.sh) can be submitted in the interactive node as below:
+Finally, run the workflow. The above script can be put in a file (run_snakemak.sh) and can be submitted in the interactive node as below:
 
 ```bash
 sinteractive -c 2 -m 10000 # type this command on login node
