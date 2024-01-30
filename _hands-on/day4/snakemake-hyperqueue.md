@@ -16,7 +16,7 @@ snakemake --cluster "hq submit --cpus <threads> ..."
 
 ```
 
-### example: Hyperqueue executor for snakemake workflow where python packages are installed with tykky
+### example 1: Hyperqueue executor for snakemake workflow where python packages are installed with tykky
 
 Batch script as sbatch-hq-tykky.sh :
 
@@ -67,7 +67,7 @@ and run the script as below:
 sbatch sbatch-hq-tykky.sh
 ```
 
-### example: Hyperqueue executor for snakemake workflow where python packages are installed in singularity container
+### example 2: Hyperqueue executor for snakemake workflow where python packages are installed in singularity container
 
 sbatch script (sbatch-hq-sing.sh):
 
