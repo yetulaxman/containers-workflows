@@ -16,6 +16,13 @@ snakemake --cluster "hq submit --cpus <threads> ..."
 
 ```
 
+For the completion of this tutorial, you can download the needed scripts and data from Allas object storage as below:
+
+```
+wget https://a3s.fi/snakemake/snakemake_tutorial.tar.gz
+tar -xavf snakemake_tutorial.tar.gz
+```
+
 ### example 1: Hyperqueue executor for snakemake workflow where python packages are installed with tykky
 
 Batch script as sbatch-hq-tykky.sh :
@@ -33,7 +40,7 @@ Batch script as sbatch-hq-tykky.sh :
 
 module load hyperqueue
 
-export PATH="/projappl/project_2001659/$USER/snakemake_tykky2/bin:$PATH"
+export PATH="/projappl/project_xxxx/$USER/snakemake_tykky/bin:$PATH"
 
 # Create a per job directory
 
@@ -74,7 +81,7 @@ sbatch script (sbatch-hq-sing.sh):
 ```bash
 #!/bin/bash
 #SBATCH --job-name=myTest
-#SBATCH --account=project_2001659
+#SBATCH --account=project_xxxx
 #SBATCH --time=00:10:00
 #SBATCH --mem-per-cpu=2G
 #SBATCH --nodes=1
