@@ -95,8 +95,10 @@ rule say_hello:
                 """
 ```
 
-> Note: If you want to install a specific version of Snakemake along with other python packages, we recommend installing  using pip. This way, one can use
+‼️  If you want to install a specific version of Snakemake along with other python packages, we recommend installing  using pip. This way, one can use
   singularity containers smoothly in Snakemake workflow.
+
+‼️ Please note that scaling up of jobs with slurm executor should be done carefully. In case you need to submit lot of small jobs to cluster, please use hyper executor which can allocate a large resource block and then submit your jobs to the same resource allocation.  Slurm executor submits each of your computational tasks as separate Slurm jobs or job step.
 
 ##  Run snakemake workflow with singularity container
 
