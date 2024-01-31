@@ -52,7 +52,7 @@ tutorial.yaml
 
 %post
 apt-get update && apt-get install -y procps && apt-get clean -y
-/opt/conda/bin/conda env create -n snakemake_env -f /environment.yml
+/opt/conda/bin/conda env create -n snakemake_env -f /tutorial.yaml
 /opt/conda/bin/conda clean -a
 
 %environment
@@ -61,7 +61,7 @@ export PATH=/opt/conda/bin:$PATH
 conda activate snakemake_env
 
 %runscript
-echo "This is as tutorial singularity/appatainer image"
+echo "This is a tutorial for building singularity/appatainer image"
 ```
 
 Finally, build the container image as below:
@@ -98,26 +98,6 @@ rule say_hello:
 > Note: If you want to install a specific version of Snakemake along with other python packages, we recommend installing  using pip. This way, one can use
   singularity containers smoothly in Snakemake workflow.
 
-you can also define your profiles in a config file (config.yaml) and run the snakemake workflow as below:
-```bash
-cluster:
-  mkdir -p logs/{rule} &&
-  sbatch
-    --cpus-per-task={threads}
-    --job-name=smk-{rule}-{wildcards}
-    --output=logs/{rule}/{rule}-{wildcards}-%j.out
-jobs: 10
-printshellcmds: True
-jobscript: slurm_jobscript.sh
-use-conda: False
-use-singularity: True
-```
-and one can run workflow as below:
-
-```
-snakemake --profile
-```
-
 ##  Run snakemake workflow with singularity container
 
 One can run build a singularity container (--with fakeroot) option CSC supercomputer and define the image on the top level of Snakefile as shown below:
@@ -131,7 +111,6 @@ singularity: "image/turotial.sif"
 ```
 
 Finally, one can submit the snakemake workflow as slurm job as shown below:
-
 ```
 #!/bin/bash
 #SBATCH --job-name=myTest
