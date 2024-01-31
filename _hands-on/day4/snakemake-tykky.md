@@ -46,7 +46,7 @@ Install necessary python environment using tykky wrapper as instructed above. On
 #SBATCH --partition=test
 #SBATCH --cpus-per-task=4
 
-export PATH="/projappl/project_2001659/$USER/snakemake_tykky/bin:$PATH"
+export PATH="/projappl/project_xxxx/$USER/snakemake_tykky/bin:$PATH"
 snakemake -s Snakefile  -j 4
 ```
 Finally, you can submit batch job from the login nodes as below:
