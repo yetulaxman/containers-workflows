@@ -37,7 +37,7 @@ Please check our CSC documentation on how to use [singularity containers at CSC]
 
 ### Minimial script for building singularity image on Puhti
 
-One can build singualrity image on Puhti and use it to run the snakemake workflow instead of installing the required tools  using tykky wrapper tool. One can build singularity image on Puhti using *--fakeroot* option. An example singularity definition file, with conda environment defined in a file(e.g, tutorial.yaml), is shown below:
+One can use singualrity image as an alternative to using conda packages installed via tykky container wrapper. Building of singularity image on Puhti can done using *--fakeroot* option. An example singularity definition file, with conda environment defined in a file(e.g, tutorial.yaml), is shown below:
 
 ```
 Bootstrap : docker
