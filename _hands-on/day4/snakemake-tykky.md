@@ -22,11 +22,9 @@ module load tykky # load tykky wrapper
 mkdir -p /projappl/<project>/$USER && mkdir -p /projappl/<project>/$USER/snakemake_tykky
 conda-containerize new --prefix  /projappl/<project>/$USER/snakemake_tykky env.yaml    
 ```
-In the above example, Tykky installs a basic setup (as listed in the file, env.yml) to the directory '/projappl/project_xxxx/$USER/snakemake_tykky'. Please note that you have to add the bin directory of installation to the $PATH variable before start using the installed environment.
+In the above example, Tykky installs a basic setup (as listed in the file, env.yml) to the directory '/projappl/project_xxxx/$USER/snakemake_tykky'. Please note that you have to append the bin directory of installation to the $PATH variable before start using the installed environment as below:
 
-Once the environment is successfully installed, one has to use add the installed bin path as below:
-
-```
+```bash
 export PATH="/projappl/project_xxxx/$USER/snakemake_tykky/bin:$PATH"
 ```
 Download tutorial material ( codes for installation and data)  from [allas](https://a3s.fi/snakemake/snakemake_tutorial.tar.gz) object storage as below:
