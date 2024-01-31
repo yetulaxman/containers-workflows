@@ -75,7 +75,7 @@ Singularity/Apptainer is istalled on login and compute nodes on CSC computers. s
 
 ```bash
 module load snakemake/7.17.1
-snakemake -s test3.smk      -j 1     --latency-wait 60     --use-singularity --singularity-args "-B /scratch/project_2001659/yetukuri/snakemake_workflow:/scratch/project_2001659/yetukuri/snakemake_workflow"   \
+snakemake -s snakemake-singularity.smk      -j 1     --latency-wait 60     --use-singularity --singularity-args "-B /scratch/project_2001659/yetukuri/snakemake_workflow:/scratch/project_2001659/yetukuri/snakemake_workflow"   \
 --cluster "sbatch -t 10 --account=project_xxx --job-name=fastqc-help  --tasks-per-node=1 --cpu
 
 
@@ -124,6 +124,17 @@ Finally, one can submit the snakemake workflow as slurm job as shown below:
 
 module load snakemake/7.17.1
 snakemake -s Snakefile  --use-singularity  -j 4
+```
+For the completion of this tutorial, you can download the needed scripts and data from Allas object storage as below:
+
+```
+wget https://a3s.fi/snakemake/snakemake_tutorial.tar.gz
+tar -xavf snakemake_tutorial.tar.gz
+```
+You can finally submit snakemake workflow as below:
+
+```
+bash sbatch-sing.sh
 ```
 
 
