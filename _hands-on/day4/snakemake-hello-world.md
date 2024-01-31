@@ -2,7 +2,7 @@
 topic: snakemake
 title: Tutorial1 - Sankemake toy example
 ---
-Snakemake workflow is one of the popular scientific workflows in the bioinformatics community. The workflow manager enables scalable and reproducible scientific pipelines as a series of chained rules. These reproducible workflows come with a fully-specified software environment. 
+Snakemake workflow is one of the popular scientific workflows in the bioinformatics community. The workflow manager enables scalable and reproducible scientific pipelines by chanining a series of rules in a fully-specified software environment. 
 
 Snakemake is available as a module in Puhti supercomputing environment. And also, you can easily install it in the your own disk space (e.g., Projappl directory) if a specific version of snakemake is desired. The following session introduces a toy example using a pre-installed *snakemake* module on Puhti.
 
@@ -10,7 +10,7 @@ Snakemake is available as a module in Puhti supercomputing environment. And also
 
 Please make sure that you have a [user account at CSC](https://docs.csc.fi/accounts/how-to-create-new-user-account/) and are a member of a project which [has access to the Puhti service](https://docs.csc.fi/accounts/how-to-add-service-access-for-project/) before start running workflows on Puhti.  More instructions on logging into Puhti supercomputer can be found [here](https://csc-training.github.io/csc-env-eff/hands-on/connecting/ssh-puhti.html). Please note that one should avoid launching snakemake workflows on login nodes and can use interactive or batch jobs. More information on using interactive jobs can be found [here](https://docs.csc.fi/computing/running/interactive-usage/).
 
-The toy snakemake example file, Snakefile (with a capital S and no file extension), has the following content:
+A toy snakemake example file, Snakefile (with a capital S and no file extension), has the following content:
 
 ```bash
 
@@ -66,6 +66,7 @@ __default__:
         time: 00:10:00
         job-name: hello-world
 ```
+Please note that one can override these default parameters in the rules section of Snakefile.
 
 The snakemake command can be written as :
 ```
