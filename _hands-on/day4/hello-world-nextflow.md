@@ -35,7 +35,7 @@ mkdir -p  /scratch/project_xxxx/$USER/nextflow_tutorial && cd /scratch/project_x
 Lanuch an [interactive session](https://docs.csc.fi/computing/running/interactive-usage/) on Puhti as below:
 ```
 sinteractive -c 2 -m 4G -d 250 -A project_xxxx  # replace actual project number here
-module load nextflow
+module load nextflow/21.10.6
 ```
 
 ## Tutorial 1: Hello-world example 
