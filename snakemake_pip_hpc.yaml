@@ -1,0 +1,9 @@
+# On Puhti
+export PATH=/appl/soft/bio/snakemake/Python-3.11.8:$PATH
+python -m venv /appl/soft/bio/snakemake/snakemake-8.4.6/venv
+source venv/bin/activate
+pip3 install snakemake==8.4.6
+pip3 install snakemake-executor-plugin-slurm
+pip3 install snakemake-executor-plugin-cluster-generic
+pip3 install pandas numpy matplotlib
+pip3 install pygments
